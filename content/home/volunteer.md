@@ -35,14 +35,5 @@ date_format = "Jan 2006"
   date_start = "2010-06-01"
   date_end = ""
   description = ""
-  
-[[item]]
-  organization = "Solar Energy International"
-  organization_url = "https://www.solarenergy.org/"
-  title = "Records of Completion: Solar Energy Installation, Design, & Business"
-  url = ""
-  date_start = "2011"
-  date_end = ""
-  description = ""
 
 +++
