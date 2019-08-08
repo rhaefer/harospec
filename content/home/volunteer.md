@@ -3,9 +3,9 @@
 widget = "accomplishments"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 130  # Order that this section will appear.
+weight = 140  # Order that this section will appear.
 
-title = "Accomplish&shy;ments"
+title = "Volunteer"
 subtitle = ""
 
 # Date format
@@ -19,12 +19,12 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[item]]
-  organization = "Air & Waste Management Association (AWMA)"
-  organization_url = "https://www.awma.org/"
-  title = "1st Place Winner: PNWIS/AWMA Environmental Challenge"
+  organization = "Urban Forestry Commission - City of Seattle"
+  organization_url = "https://www.seattle.gov/urbanforestrycommission"
+  title = "Commissioner"
   url = ""
-  date_start = "2009-11-01"
-  date_end = ""
+  date_start = "2016-09-01"
+  date_end = "2017-09-01" 
   description = ""
   
 [[item]]
