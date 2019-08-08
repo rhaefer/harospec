@@ -3,7 +3,7 @@
 widget = "experience"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 40  # Order that this section will appear.
+weight = 110  # Order that this section will appear.
 
 title = "Experience"
 subtitle = ""
@@ -17,28 +17,33 @@ date_format = "Jan 2006"
 #   Required fields are `title`, `company`, and `date_start`.
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
+
 [[experience]]
-  title = "CEO"
-  company = "GenCoin"
+  title = "Data Modeler/Analyst"
+  company = "Tahoe Regional Planning Agency (TRPA)"
   company_url = ""
-  location = "California"
-  date_start = "2017-01-01"
+  location = "Stateline, Nevada"
+  date_start = "2017-07-01"
   date_end = ""
-  description = """
-  Responsibilities include:
+  description = """Support regional land use and transportation planning through a variety of analytical responsibilities. Managing the transportation modeling program, which includes the activity-based Tahoe travel demand model and other sketch modeling tools; developing web-based analytical tools using R-Shiny; organizing data collection such as the regional travel survey; managing state of California air quality reporting requirements; regional transportation plan forecasting; project analysis"""
   
-  * Analysing
-  * Modelling
-  * Deploying
+[[experience]]
+  title = "Assistant Planner"
+  company = "Puget Sound Regional Council (PSRC)"
+  company_url = ""
+  location = "Seattle, California"
+  date_start = "2014-10-01"
+  date_end = "2017-06-01"
+  description = """ Supported the regional Transportation Improvement Program (TIP) and transportation funding project selection for the largest MPO in the state of Washington. Responsibilities included SQL database management, web-mapping, project analysis, and project tracking.
   """
 
 [[experience]]
-  title = "Professor"
-  company = "University X"
+  title = "Outreach & Data Analyst"
+  company = "City of Seattle"
   company_url = ""
-  location = "California"
-  date_start = "2016-01-01"
-  date_end = "2016-12-31"
-  description = """Taught electronic engineering and researched semiconductor physics."""
+  location = "Seattle, Washington"
+  date_start = "2013-07-01"
+  date_end = "2014-04-01"
+  description = """Managed a nation-wide survey of public street light systems as part of the Municipal Solid State Street Light Consortium. Reponsibilities included data collection and analysis, which culminated in a report published by the US Department of Energy on energy efficient public street lighting. Presented findings at the national IES Street & Area Lighting Conference."""
 
 +++

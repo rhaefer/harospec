@@ -1,48 +1,36 @@
 ---
 authors:
-- admin
-bio: My research interests include distributed robotics, mobile computing and programmable
-  matter.
+- Reid Haefer
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: Master of Urban Planning
+    institution: University of Washington, College of Built Environment
+    year: 2014
+  - course: B.A in Environmental Studies
+    institution: Western Washington University, Huxley College
+    year: 2010
 email: ""
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
-name: Nelson Bighetti
+- Data Science
+- Big Data
+- Transportation Modeling
+- Urban Planning
+name: Reid Haefer
 organizations:
-- name: Stanford University
+- name: Tahoe Regional Planning Agency
   url: ""
-role: Professor of Artificial Intelligence
+role: Data Modeler & Urban Planner
 social:
 - icon: envelope
   icon_pack: fas
   link: '#contact'
-- icon: twitter
-  icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
-- icon: google-scholar
-  icon_pack: ai
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/rhaefer
 superuser: true
 user_groups:
 - Researchers
 - Visitors
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate. 
+Reid Haefer is an urban planner that specializes in using data science to support decision-making for transportation and land use planning. He has over 5-years experience working for multiple public agencies on projects that include travel demand modeling, regional transportation planning, forecasting, project analysis, and land use planning. His technnical interests include GIS, data visualization, and open-source computer programming. Reid has a bachelor's degree from Western Washington University and a master's degree from the University of Washington. He currently works for the Tahoe Regional Planning Agency.

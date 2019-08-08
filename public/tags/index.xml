@@ -21,14 +21,6 @@
     </item>
     
     <item>
-      <title>Source Themes</title>
-      <link>/tags/source-themes/</link>
-      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/source-themes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Academic</title>
       <link>/tags/academic/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
@@ -57,6 +49,14 @@
       <link>/tags/regression/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       <guid>/tags/regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Source Themes</title>
+      <link>/tags/source-themes/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
+      <guid>/tags/source-themes/</guid>
       <description></description>
     </item>
     

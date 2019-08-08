@@ -3,7 +3,7 @@
 widget = "accomplishments"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 50  # Order that this section will appear.
+weight = 130  # Order that this section will appear.
 
 title = "Accomplish&shy;ments"
 subtitle = ""
@@ -19,33 +19,21 @@ date_format = "Jan 2006"
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 
 [[item]]
-  organization = "Coursera"
-  organization_url = "https://www.coursera.org"
-  title = "Neural Networks and Deep Learning"
+  organization = "Air & Waste Management Association (AWMA)"
+  organization_url = "https://www.awma.org/"
+  title = "1st Place Winner: PNWIS/AWMA Environmental Challenge"
   url = ""
-  certificate_url = "https://www.coursera.org"
-  date_start = "2018-10-01"
+  date_start = "2009-11-01"
   date_end = ""
   description = ""
-
-[[item]]
-  organization = "edX"
-  organization_url = "https://www.edx.org"
-  title = "Blockchain Fundamentals"
-  url = "https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals"
-  certificate_url = "https://www.edx.org"
-  date_start = "2018-03-01"
-  date_end = ""
-  description = "Formulated informed blockchain models, hypotheses, and use cases."
   
 [[item]]
-  organization = "DataCamp"
-  organization_url = "https://www.datacamp.com"
-  title = "Object-Oriented Programming in R: S3 and R6 Course"
+  organization = "Air & Waste Management Association (AWMA)"
+  organization_url = "https://www.awma.org/eci"
+  title = "1st Place Winner: Environmental Challenge International (ECi) Competition"
   url = ""
-  certificate_url = "https://www.datacamp.com"
-  date_start = "2017-07-01"
-  date_end = "2017-12-21"
+  date_start = "2010-06-01"
+  date_end = ""
   description = ""
 
 +++

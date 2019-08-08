@@ -1,15 +1,9 @@
 ---
-abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus
-  ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed
-  ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis
-  sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida
-  egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id
-  dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus.
-  Vestibulum sit amet erat at nulla eleifend gravida.
+abstract: There is limited understanding of aggregate quantities and characteristics of public street and area lighting installations across the United States, despite the fact that associated expenditures on electricity can be a significant component of municipal energy budgets, frequently accounting for up to or even exceeding half (e.g., see Figure 1.) Nevertheless, a growing number of municipalities and other government agencies are recognizing high performance street and outdoor lighting as a means to save energy and money, and reduce associated carbon emissions.
 authors:
 - admin
-- Robert Ford
-date: "2015-09-01T00:00:00Z"
+- Reid Haefer
+date: "2014-06-01T00:00:00Z"
 doi: ""
 featured: false
 image:
@@ -21,16 +15,16 @@ publication: '*Journal of Source Themes, 1*(1)'
 publication_short: ""
 publication_types:
 - "2"
-publishDate: "2017-01-01T00:00:00Z"
+publishDate: "2014-06-01T00:00:00Z"
 slides: example
 summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus
   ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum.
 tags:
 - Source Themes
-title: An example journal article
+title: Energy Efficient Public Street Lighting
 url_code: ""
 url_dataset: ""
-url_pdf: http://arxiv.org/pdf/1512.04133v1
+url_pdf: https://drive.google.com/file/d/0B8T2r7MVXupGc3JnTDRSazZJX0U/view
 url_poster: ""
 url_project: ""
 url_slides: ""
