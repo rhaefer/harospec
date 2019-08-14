@@ -41,7 +41,7 @@ date_format = "Jan 2006"
   organization_url = "https://www.solarenergy.org/"
   title = "Records of Completion: Solar Energy Installation, Design, & Business"
   url = ""
-  date_start = "2011"
+  date_start = "2011-01-01"
   date_end = ""
   description = ""
 
