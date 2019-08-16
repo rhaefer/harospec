@@ -122,7 +122,7 @@
       <description>
 
 
-&lt;p&gt;The Tahoe Regional Planning Agency plays a role in regulation land use in the Tahoe region to protect environmental quality in Lake Tahoe. The permissible use dashboard is an analytical tool that allows analysts, planners, and members of the public to analyze the ‘uses’ are permitted at various scales such as regional, sub-regional, and parcel. The tool was created within the R-Shiny framework and utilizes other R packages including tidyverse, sf, and leaflet.&lt;/p&gt;
+&lt;p&gt;The Tahoe Regional Planning Agency plays a role in regulation land use in the Tahoe region to protect environmental quality in Lake Tahoe. The permissible use dashboard is an analytical tool that allows analysts, planners, and members of the public to analyze the ‘uses’ are permitted at various scales such as regional, sub-regional, and parcel. The tool was created within the R-Shiny framework and utilizes other R packages including tidyverse, sf, and leaflet. The full aplication and code can be found at &lt;a href=&#34;https://reidhaefer.shinyapps.io/use_dashboard/&#34;&gt;shinyapps.io&lt;/a&gt;&lt;/p&gt;
 &lt;iframe src=&#34;https://reidhaefer.shinyapps.io/use_dashboard/&#34; width=&#34;900px&#34; height=&#34;800px&#34;&gt;
 &lt;/iframe&gt;
 </description>
