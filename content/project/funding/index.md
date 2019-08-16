@@ -12,7 +12,7 @@ links:
 slides: example
 summary: Transportation Project Funding
 tags:
-- Deep Learning
+- Transportation
 title: Funding 
 url_code: ""
 url_pdf: ""

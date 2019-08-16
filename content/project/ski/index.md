@@ -12,7 +12,7 @@ links:
 slides: example
 summary: backcountry ski touring
 tags:
-- Deep Learning
+- Personal
 title: Snow
 url_code: ""
 url_pdf: ""

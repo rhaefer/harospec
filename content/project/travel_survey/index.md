@@ -12,7 +12,7 @@ links:
 slides: example
 summary: Survey report using Rmarkdown
 tags:
-- Deep Learning
+- Transportation
 title: Travel Survey
 url_code: ""
 url_pdf: ""

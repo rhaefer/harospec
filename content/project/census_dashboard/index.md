@@ -12,7 +12,7 @@ links:
 slides: example
 summary: Socioeconomic analysis w/ census API
 tags:
-- Deep Learning
+- Urban Planning
 title: Census Data
 url_code: ""
 url_pdf: ""

@@ -10,10 +10,10 @@ links:
   name: Follow
   url: https://twitter.com/georgecushen
 slides: example
-summary: vmt, vmt vmt..
+summary: activity-based travel demand modeling
 tags:
-- Deep Learning
-title: Travel Demand Modeling
+- Transportation
+title: Transport Modeling
 url_code: ""
 url_pdf: ""
 url_slides: ""
