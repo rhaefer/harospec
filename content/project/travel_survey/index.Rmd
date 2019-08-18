@@ -1,0 +1,21 @@
+---
+date: "2018-08-01T00:00:00Z"
+external_link: ""
+image:
+  caption: Photo by Reid Haefer
+  focal_point: Smart
+links:
+summary: Interactive reporting
+tags:
+- Transportation
+title: Travel Behavior Survey
+url_code: ""
+url_pdf: ""
+url_video: ""
+---
+
+Travel Surveys are an important input of travel models and help researchers understand regional travel behavior. I managed the 2018 TRPA Summer Travel Survey, which consisted of a field-based intercept travel survey. This report summarizes the survey methodology and results in an interactive web-based format.
+
+```{r, out.width="900px", echo=FALSE, warning=FALSE, error=FALSE}
+knitr::include_url("https://rhaefer.github.io/travel_survey_report.html", height="800px")
+```
