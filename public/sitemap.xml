@@ -110,11 +110,6 @@
   </url>
   
   <url>
-    <loc>/project/census_dashboard/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/project/funding/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url>
@@ -132,6 +127,11 @@
   
   <url>
     <loc>/project/ski/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/census_dashboard/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url>
   

@@ -1,0 +1,608 @@
+---
+date: "2016-04-27T00:00:00Z"
+external_link: ""
+image:
+  caption: Photo by Reid Haefer
+  focal_point: Smart
+links:
+- icon: twitter
+  icon_pack: fab
+  name: Follow
+  url: https://twitter.com/georgecushen
+slides: example
+summary: Census API
+tags:
+- Urban Planning
+title: Socioeconomic Analysis
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+---
+
+The U.S. Census is a primary source of the socioeconomic data used for urban planning and demographic anlaysis. But the data is often difficult to acquire and display from the census database. This tool is an example of acquirng the data from the census api using the tidycensus R library and displaying the information using rmarkdown.
+
+```{css, echo=FALSE}
+div.sourceCode {
+    overflow: hidden;
+}
+```
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# {.tabset}
+
+## Overview
+
+The U.S. Census Bureau collects and distributes data under a handful of different programs. Two of the more commonly used programs are the [Decennial Census](https://www.census.gov/history/www/programs/demographic/decennial_census.html) and the [American Community Survey (ACS)](https://www.census.gov/programs-surveys/acs/). The Decennial Census is a definite source of demographic data but only is collected every ten years; it includes a limited number of variables such as number of households and total population. The ACS is a program that provides data estimates on a one, three, and five year timeline; ACS data is collected more frequently but the data estimates have a margin of error that must considered because the data is taken from a small sample of the total population. The ACS includes many more variables compared to the Decennial Census that relate to transportation, income, and housing. Both the Decennial and ACS datasets have similiar data structures. Each row in both datasets include a particular variable and a number the indicates the total number of households or persons that characterize that variable. Currently, data is available for the ACS for years 2010-2016 and for the Decennial Census in 1990, 2000, & 2010. The 2017 ACS 5-year estimate will be published in December of 2018.
+
+Navigate the tabs at the top of this page to explore different aspects of the census data. The first tab displays a few high level data points. The two tabs to the right show all of the census variables that are available (there are thousands of available data points). To the far right, you can find the census GIS layers (tracts, block groups, & blocks). 
+
+This data is drawn from the Census APIs through the [tidycensus](https://walkerke.github.io/tidycensus/) package. All source code for this dashboard can be found on [github](https://github.com/trpa-reid/census).
+
+
+```{r, warning=F, message=F, echo=F}
+library(pacman)
+p_load(tidycensus, tidyverse,leaflet, geojsonio, sf, tmap, tmaptools, DT, xfun)
+census_api_key("680398dff0a2f4c566f10c95888da7f25e55147b")
+options(tigris_use_cache = TRUE)
+tract <- geojson_read("https://opendata.arcgis.com/datasets/85a2e8e4bf994742a5855c1339517681_3.geojson", what="sp") %>%
+  st_as_sf()
+block_group<-geojson_read("https://opendata.arcgis.com/datasets/85a2e8e4bf994742a5855c1339517681_2.geojson", what="sp") %>% st_as_sf()
+block<-geojson_read("https://opendata.arcgis.com/datasets/85a2e8e4bf994742a5855c1339517681_1.geojson", what="sp") %>% st_as_sf()
+
+
+```
+
+### Summary of TRPA Census Data
+
+________________________________________________________________________
+
+#### Population
+```{r, message=F, warning =F, echo=F}
+  nv_acs <- get_acs(geography = "tract", year=2016, 
+                variables =  c("B01003_001"),
+                state = "NV", county=c("Washoe", "Douglas")) %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate")
+ca_acs <- get_acs(geography = "tract", year=2016, 
+                variables =  c("B01003_001"),
+                state = "CA",county=c("El Dorado", "Placer")) %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate")
+ca_decen <- get_decennial(geography="tract", variables= c("P001001"), 
+                          state= "CA", year= 2010, county=c("El Dorado", "Placer")) %>% 
+  rename(estimate=value) %>% mutate(moe=0, data_source="2010 Decennial Census")
+nv_decen <- get_decennial(geography="tract", variables= c("P001001"), 
+                          state= "NV", year= 2010, county=c("Washoe", "Douglas")) %>% 
+  rename(estimate=value) %>% mutate(moe=0, data_source="2010 Decennial Census")
+all<- bind_rows(nv_decen,ca_decen, ca_acs, nv_acs) %>%
+  left_join(data.frame(tract), by="GEOID") %>%
+    filter(!is.na(STATEFP)) %>%
+  group_by(variable, data_source) %>% summarise(total=sum(estimate), moe=sum(moe)) %>%
+  mutate(variable_name = case_when ( variable== "P001001" ~ "Total Population",
+                                    variable== "B01003_001" ~ "Total Population",
+                                    variable== "B25060_001" ~ "rental units"),
+         total=format(total, big.mark=",", scientific=FALSE),
+         moe=format(moe, big.mark=",", scientific=FALSE)) %>%
+  dplyr::select(variable_name, variable, total,moe, data_source)
+datatable(all, extensions = 'Buttons',
+rownames=F,options=list(dom='t', 
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe', 
+colnames = c('Category', 'Code', 'Total', 'Margin of Error','Source'))
+```
+
+________________________________________________________________________
+
+#### Households
+```{r, message=F, warning =F, echo=F}
+  nv_acs <- get_acs(geography = "tract", year=2016, 
+                variables =  c("B19001_001"),
+                state = "NV", county=c("Washoe", "Douglas")) %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate")
+ca_acs <- get_acs(geography = "tract", year=2016, 
+                variables =  c("B19001_001"),
+                state = "CA",county=c("El Dorado", "Placer")) %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate")
+ca_decen <- get_decennial(geography="tract", variables= c("H013001"), 
+                          state= "CA", year= 2010, county=c("El Dorado", "Placer")) %>% 
+  rename(estimate=value) %>% mutate(moe=0, data_source="2010 Decennial Census")
+nv_decen <- get_decennial(geography="tract", variables= c("H013001"), 
+                          state= "NV", year= 2010, county=c("Washoe", "Douglas")) %>% 
+  rename(estimate=value) %>% mutate(moe=0, data_source="2010 Decennial Census")
+all<- bind_rows(nv_decen,ca_decen, ca_acs, nv_acs) %>%
+  left_join(data.frame(tract), by="GEOID") %>%
+    filter(!is.na(STATEFP)) %>%
+  group_by(variable, data_source) %>% summarise(total=sum(estimate), moe=sum(moe)) %>%
+  mutate(variable_name = case_when ( variable== "H013001" ~ "Total Households",
+                                    variable== "B19001_001" ~ "Total Households"),
+         total=format(total, big.mark=",", scientific=FALSE),
+         moe=format(moe, big.mark=",", scientific=FALSE)) %>%
+  dplyr::select(variable_name, variable, total,moe, data_source)
+datatable(all, extensions = 'Buttons',
+rownames=F,options=list(dom='t', 
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe', 
+colnames = c('Category', 'Code', 'Total', 'Margin of Error','Source'))
+```
+
+________________________________________________________________________
+
+#### Housing 
+```{r, message=F, warning=F, echo=F}
+ca_decen <- get_decennial(geography="tract", variables= c("H001001","H003002","H003003" ,"H004004","H005002","H005006"), 
+                          state= "CA", year= 2010, county=c("El Dorado", "Placer")) %>% 
+  rename(estimate=value) %>% mutate(moe=0, data_source="2010 Decennial Census")
+nv_decen <- get_decennial(geography="tract", variables= c("H001001","H003002","H003003","H004004", "H005002","H005006"), 
+                          state= "NV", year= 2010, county=c("Washoe", "Douglas")) %>% 
+  rename(estimate=value) %>% mutate(moe=0, data_source="2010 Decennial Census")
+nv_acs <- get_acs(geography = "tract", year=2016, 
+                  variables =  c("B25002_001","B25002_002","B25002_003"),
+                  state = "NV", county=c("Washoe", "Douglas")) %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate")
+ca_acs <- get_acs(geography = "tract", year=2016, 
+                  variables =  c("B25002_001","B25002_002","B25002_003"),
+                  state = "CA",county=c("El Dorado", "Placer")) %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate")
+all<- bind_rows(nv_decen,ca_decen, ca_acs, nv_acs) %>%
+  left_join(data.frame(tract), by="GEOID") %>%
+    filter(!is.na(STATEFP)) %>%
+  group_by(variable, data_source) %>% summarise(total=sum(estimate), moe=sum(moe)) %>%
+  mutate(variable_name = case_when (variable== "H001001" ~ "Housing Units",
+                                    variable== "H003002" ~ "Occupied Units",
+                                    variable== "H003003" ~ "Vacant Units",
+                                    variable== "H004004" ~ "Renter Occupied Units",
+                                    variable== "H005002" ~ "For Rent Units",
+                                    variable== "H005006" ~ "Seasonal/Occasional/Recreational Units",
+                                    variable== "B25002_001" ~ "Housing Units",
+                                    variable== "B25002_002" ~ "Occupied Units",
+                                    variable== "B25002_003" ~ "Vacant Units"),
+         total=format(total, big.mark=",", scientific=FALSE),
+         moe=format(moe, big.mark=",", scientific=FALSE)) %>%
+  dplyr::select(variable_name, variable, total,moe, data_source)
+datatable(all, extensions = 'Buttons',
+rownames=F,options=list(dom = 'Bfrtip',buttons = c('csv','pdf'),
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe', 
+colnames = c('Category', 'Code', 'Total', 'Margin of Error','Source'))
+```
+
+________________________________________________________________________
+
+#### Income
+```{r, message=F, warning=F, echo=F}
+income <- c(`Less than $10,000`= "B19001_002",
+                    `$10,000 to $14,999`= "B19001_003",
+                    `$15,000 to $19,999` = "B19001_004",
+                    `$20,000 to $24,999` = "B19001_005",
+                    `$25,000 to $29,999` = "B19001_006",
+                    `$30,000 to $34,999` = "B19001_007",
+                    `$35,000 to $39,999` = "B19001_008", 
+                    `$40,000 to $44,999` = "B19001_009",
+                    `$45,000 to $49,999` = "B19001_010",
+                    `$50,000 to $59,999` = "B19001_011", 
+                    `$60,000 to $74,999` = "B19001_012",
+                    `$75,000 to $99,999` = "B19001_013",
+                    `$100,000 to $124,999` = "B19001_014", 
+                    `$125,000 to $149,999` = "B19001_015",
+                    `$150,000 to $199,999` = "B19001_016", 
+                    `$200,000 or more` = "B19001_017")
+  nv_acs <- get_acs(geography = "tract", year=2016, 
+                variables =  income,
+                state = "NV", county=c("Washoe", "Douglas"), summary_var = "B19001_001") %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate")
+ca_acs <- get_acs(geography = "tract", year=2016, 
+                variables =  income,
+                state = "CA",county=c("El Dorado", "Placer"), summary_var = "B19001_001") %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate")
+income1<-rownames_to_column(data.frame(income), "name") %>% dplyr::select(name) %>% pull()
+all<- bind_rows( ca_acs, nv_acs) %>%
+  left_join(data.frame(tract), by="GEOID") %>%
+    filter(!is.na(STATEFP)) %>%
+  group_by(variable, data_source) %>% 
+  summarise(total=sum(estimate), moe=sum(moe),total_estimate=sum(summary_est)) %>%
+  mutate(total=format(total, big.mark=",", scientific=FALSE),
+         moe=format(moe, big.mark=",", scientific=FALSE),
+         variable_name="Household Income") %>%
+  arrange(factor(variable, levels=income1)) %>%
+  dplyr::select(variable_name, variable, total,moe, total_estimate, data_source)
+datatable(all, extensions = 'Buttons',
+rownames=F,options=list(pageLength = 8, dom = 'Bfrtip',buttons = c('csv','pdf'),searching = FALSE,
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe', 
+colnames = c('Category', 'Variable', 'Number of Households', 'Margin of Error','Total Households' ,'Source'))
+```
+
+________________________________________________________________________
+
+#### School Enrollment
+```{r, message=F, warning =F, echo=F}
+  nv_acs <- get_acs(geography = "tract", year=2016, 
+                variables =  c("B14001_001"),
+                state = "NV", county=c("Washoe", "Douglas")) %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate")
+ca_acs <- get_acs(geography = "tract", year=2016, 
+                variables =  c("B14001_001"),
+                state = "CA",county=c("El Dorado", "Placer")) %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate")
+all<- bind_rows(ca_acs, nv_acs) %>%
+  left_join(data.frame(tract), by="GEOID") %>%
+    filter(!is.na(STATEFP)) %>%
+  group_by(variable, data_source) %>% summarise(total=sum(estimate), moe=sum(moe)) %>%
+  mutate(variable_name = case_when ( variable== "B14001_001" ~ "School Enrollment"),
+         total=format(total, big.mark=",", scientific=FALSE),
+         moe=format(moe, big.mark=",", scientific=FALSE)) %>%
+  dplyr::select(variable_name, variable, total,moe, data_source)
+datatable(all, extensions = 'Buttons',
+rownames=F,options=list(dom='t', 
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe', 
+colnames = c('Category', 'Code', 'Total', 'Margin of Error','Source'))
+```
+
+________________________________________________________________________
+
+#### Median Gross Rental Costs
+```{r, message=F, warning=F , echo=F}
+rent <- c(`No bedroom - Less than $300`= "B25068_004",
+                    `No bedroom - $300 to $499`= "B25068_005",
+                    `No bedroom - $500 to $749` = "B25068_006",
+                    `No bedroom - $750 to $999` = "B25068_007",
+                    `No bedroom - $1,000 to $1,499` = "B25068_008",
+                    `No bedroom - $1,500 or more` = "B25068_009",
+                    `No bedroom - no cash rent` = "B25068_010",
+                    `1 bedroom - Less than $300` = "B25068_013", 
+                    `1 bedroom - $300 to $499`= "B25068_014",
+                    `1 bedroom - $500 to $749` = "B25068_015",
+                    `1 bedroom - $750 to $999` = "B25068_016",
+                    `1 bedroom - $1,000 to $1,499` = "B25068_017",
+                    `1 bedroom - $1,500 or more` = "B25068_018",
+                    `1 bedroom - no cash rent` = "B25068_019",
+                    `2 bedroom - Less than $300` = "B25068_022", 
+                    `2 bedroom - $300 to $499`= "B25068_023",
+                    `2 bedroom - $500 to $749` = "B25068_024",
+                    `2 bedroom - $750 to $999` = "B25068_025",
+                    `2 bedroom - $1,000 to $1,499` = "B25068_026",
+                    `2 bedroom - $1,500 or more` = "B25068_027",
+                    `2 bedroom - no cash rent` = "B25068_028",
+                    `3 or more bedroom - Less than $300` = "B25068_031", 
+                    `3 or more bedroom - $300 to $499`= "B25068_032",
+                    `3 or more bedroom - $500 to $749` = "B25068_033",
+                    `3 or more bedroom - $750 to $999` = "B25068_034",
+                    `3 or more bedroom - $1,000 to $1,499` = "B25068_035",
+                    `3 or more bedroom - $1,500 or more` = "B25068_036",
+                    `3 or more bedroom - no cash rent` = "B25068_037")
+  nv <- get_acs(geography = "tract", year=2016, 
+                variables = rent, summary_var = "B25068_001",
+                state = "NV", geometry = TRUE)
+  ca <- get_acs(geography = "tract", year=2016, 
+                variables = rent, summary_var = "B25068_001", 
+                state = "CA", geometry= TRUE)
+   all<- rbind(nv, ca) %>%
+    left_join(data.frame(tract), by="GEOID") %>%
+    filter(!is.na(STATEFP)) %>%
+    dplyr::select(GEOID, NAME.x, variable, estimate, moe, County, summary_est) %>%
+    data.frame() %>% dplyr::select(-geometry.x) %>%
+    mutate(source="2016 ACS 2016 5-year Estimate", category="Rental Costs/Housing Type") %>%
+    group_by(category,variable,source) %>% 
+    summarise(number= sum(estimate), moe=sum(moe), summary_est=sum(summary_est)) %>%         
+    mutate(number=format(number, big.mark=",", scientific=FALSE),
+         moe=format(moe, big.mark=",", scientific=FALSE)) %>%
+  dplyr::select(category,variable, number, moe, summary_est, source)
+  datatable(all, extensions = 'Buttons',
+rownames=F,options=list(pageLength = 8, dom = 'Bfrtip',buttons = c('csv','pdf'),searching = FALSE,
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe', 
+colnames= c ('Category','Variable', 'Estimate', 'Margin of Error', 'Total Estimate', 'Source'))
+```
+
+________________________________________________________________________
+
+#### Rent as Percent of Household Income
+```{r, message=F, warning=F, echo=F }
+rent <- c(`Less than 10%`= "B25070_002",
+                    `10-14.9%`= "B25070_003",
+                    `15-19.9%` = "B25070_004",
+                    `20-24.9%` = "B25070_005",
+                    `25-29.9%` = "B25070_006",
+                    `30-34.9%` = "B25070_007",
+                    `35-39.9%` = "B25070_008",
+                    `40-49.9%` = "B25070_009",
+                    `Over 50%` = "B25070_010",
+                    `Not Computed` = "B25070_011")
+  nv <- get_acs(geography = "tract", year=2016, 
+                variables = rent, summary_var = "B25070_001",
+                state = "NV", geometry = TRUE)
+  ca <- get_acs(geography = "tract", year=2016, 
+                variables = rent, summary_var = "B25070_001", 
+                state = "CA", geometry= TRUE)
+   all<- rbind(nv, ca) %>%
+    left_join(data.frame(tract), by="GEOID") %>%
+    filter(!is.na(STATEFP)) %>%
+    dplyr::select(GEOID, NAME.x, variable, estimate, moe, County, summary_est) %>%
+    data.frame() %>% dplyr::select(-geometry.x) %>%
+    mutate(source="2016 ACS 2016 5-year Estimate", category="Rent as Percent of Household Income") %>%
+    group_by(category,variable,source) %>% 
+    summarise(number= sum(estimate), moe=sum(moe), summary_est=sum(summary_est)) %>%         
+    mutate(number=format(number, big.mark=",", scientific=FALSE),
+         moe=format(moe, big.mark=",", scientific=FALSE)) %>%
+  dplyr::select(category,variable, number, moe, summary_est, source)
+  datatable(all, extensions = 'Buttons',
+rownames=F,options=list(pageLength = 10, dom = 'Bfrtip',buttons = c('csv','pdf'),searching = FALSE,
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe', 
+colnames= c ('Category','Number of Households', 'Estimate', 'Margin of Error', 'Total Househholds', 'Source'))
+```
+
+________________________________________________________________________
+
+#### Household Size
+
+```{r, message=F, warning=F, echo=F}
+hhsize<- c(`Household Size - 1 Person`="H013002",
+           `Household Size - 2 Person`= "H013003",
+           `Household Size - 3 Person`="H013004",
+            `Household Size - 4 Person`= "H013005",
+            `Household Size - 5 Person`= "H013006",
+           `Household Size - 6 Person` = "H013007", 
+           `Household Size - 7 Person or More` = "H013008")
+  nv <- get_decennial(geography = "tract", year=2010, 
+                variables =  hhsize, county=c("Washoe", "Douglas"),
+                state = "NV", geometry = F, summary_var = "H013001" )
+  ca <- get_decennial(geography = "tract", year=2010, county=c("El Dorado", "Placer"),
+                variables = hhsize, summary_var = "H013001", 
+                state = "CA", geometry= F)
+  all<- bind_rows(nv, ca) %>%
+    left_join(data.frame(tract), by="GEOID") %>%
+    filter(!is.na(STATEFP)) %>%
+    dplyr::select(GEOID, NAME.x, variable, value, County, summary_value) %>%
+    data.frame() %>%
+    mutate(data_source="2010 Decennial Census") %>%
+    group_by(variable, data_source) %>% summarise(number=sum(value), total=sum(summary_value)) %>%
+   mutate( total=format(total, big.mark=",", scientific=FALSE),
+           number=format(number, big.mark=",", scientific=FALSE)) %>%
+  dplyr::select(variable, number, total, data_source)
+  datatable(all, extensions = 'Buttons',
+rownames=F,options=list(dom = 'Bfrtip',buttons = c('csv','pdf'), searching = FALSE,
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe', colnames = c('Variable Name', 'Number of Households', 'Total Regional Households','Source'))
+```
+
+________________________________________________________________________
+
+#### Demographics: Race
+
+```{r, warning=F, message=F, echo=F}
+race<- c(`White alone`="P003002",
+           `Black or African American alone`= "P003003",
+           `American Indian and Alaska Native alone`="P003004",
+            `Asian alone`= "P003005",
+            `Native Hawaiian and Other Pacific Islander alone`= "P003006",
+           `Some Other Race alone` = "P003007", 
+           `Two or More Races` = "P003008")
+  nv <- get_decennial(geography = "tract", year=2010, 
+                variables =  race, county=c("Washoe", "Douglas"),
+                state = "NV", geometry = F, summary_var="P003001" )
+  ca <- get_decennial(geography = "tract", year=2010, county=c("El Dorado", "Placer"),
+                variables = race, summary_var="P003001", 
+                state = "CA", geometry= F)
+all<- bind_rows(nv, ca) %>%
+    left_join(data.frame(tract), by="GEOID") %>%
+    filter(!is.na(STATEFP)) %>%
+    group_by(variable) %>% summarise(value=sum(value), total=sum(summary_value)) %>%
+    mutate(source="2010 Decennial Census")
+
+datatable(all, extensions = 'Buttons',
+rownames=F,options=list(dom = 'Bfrtip',buttons = c('csv','pdf'), searching = FALSE,
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe', colnames = c('Variable Name', 'Population Count', 'Regional Population','Source'))
+```
+
+________________________________________________________________________
+
+#### Travel Mode to Work
+```{r, message=F, warning=F, echo=F }
+work_transport <- c(Drive= "B08301_002",
+                    Walk= "B08301_019",
+                    Bike = "B08301_018",
+                    `Public Transport` = "B08301_010",
+                    `Work from Home` = "B08301_021",
+                    Other = "B08301_020",
+                    Motorcycle = "B08301_017", 
+                    Taxi = "B08301_016")
+  nv <- get_acs(geography = "tract", year=2016, 
+                variables =  work_transport, 
+                state = "NV", geometry = TRUE, summary_var = "B08301_001" )
+  ca <- get_acs(geography = "tract", year=2016, 
+                variables = work_transport, summary_var = "B08301_001", 
+                state = "CA", geometry= TRUE)
+   all<- rbind(nv, ca) %>%
+    left_join(data.frame(tract), by="GEOID") %>%
+    filter(!is.na(STATEFP)) %>%
+    dplyr::select(GEOID, NAME.x, variable, estimate, moe, summary_est, summary_moe, County) %>%
+    data.frame() %>% dplyr::select(-geometry.x) %>%
+    mutate(source="2016 ACS 2016 5-year Estimate", category="Travel Mode to Work") %>%
+    group_by(category,variable,source ) %>% 
+    summarise(number= sum(estimate), total=sum(summary_est), moe=sum(moe)) %>%         
+    mutate(total=format(total, big.mark=",", scientific=FALSE),
+           number=format(number, big.mark=",", scientific=FALSE),
+         moe=format(moe, big.mark=",", scientific=FALSE)) %>%
+  dplyr::select(category,variable, number, moe,total, source)
+  datatable(all, extensions = 'Buttons',
+rownames=F,options=list(dom = 'Bfrtip',buttons = c('csv','pdf'), searching = FALSE,
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe', 
+colnames= c ('Category','Variable', 'Worker Estimate', 'Margin of Error', 'Total Workers','Source'))
+```
+
+
+
+## Browse ACS Variables
+
+Search through the list below to determine which variable(s) you want to analyze. You can download all of the variables 
+
+```{r, warning= F, message=F, echo=F}
+acs_var <- load_variables(2016, "acs5", cache = TRUE)
+
+datatable(acs_var, extensions = 'Buttons',
+rownames=F,options=list(pageLength = 15, dom = 'Bfrtip',buttons = c('csv','pdf'), 
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe')
+```
+
+## Browse Decennial Variables
+
+Search through the list below to determine which variable(s) you want to analyze.
+
+```{r, warning= F, message=F, echo=F}
+decen_var <- load_variables(2010, "sf1", cache = TRUE)
+
+datatable(decen_var, extensions = 'Buttons',
+rownames=F,options=list(pageLength = 15, dom = 'Bfrtip',buttons = c('csv','pdf'), 
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe')
+```
+
+## Tracts GIS
+```{r, message=F, warning=F, echo=F}
+tmap_mode("view")
+
+ca_decen <- get_decennial(geography="tract", variables= c("P001001", "H013001","H001001"), 
+                          state= "CA", year= 2010, county=c("El Dorado", "Placer")) %>% 
+  rename(estimate=value) %>% mutate(moe=0, data_source="2010 Decennial Census")
+nv_decen <- get_decennial(geography="tract", variables= c("P001001", "H013001", "H001001"), 
+                          state= "NV", year= 2010, county=c("Washoe", "Douglas")) %>% 
+  rename(estimate=value) %>% mutate(moe=0, data_source="2010 Decennial Census")
+all<- bind_rows(nv_decen,ca_decen) %>%
+  left_join(data.frame(tract), by="GEOID") %>%
+    filter(!is.na(STATEFP)) %>%
+  mutate(variable_name = case_when (variable== "P001001" ~ "Total Population",
+                                    variable== "H013001" ~ "Households",
+                                    variable== "H001001" ~ "Housing Units")) %>%
+  dplyr::select(GEOID, estimate, variable) %>%
+  spread(variable, estimate)
+tract_map<-tract %>%
+  left_join(all, by="GEOID") %>%
+  dplyr::select(GEOID, P001001,H013001,H001001)
+popup1 <- paste0("<strong>GEOID: </strong>", tract_map$GEOID,
+                 "<br><strong>Population (2010 Decennial): </strong>", tract_map$P001001,
+                 "<br><strong>Households (2010 Decennial): </strong>", tract_map$H013001,
+                 "<br><strong>Housing Units (2010 Decennial): </strong>", tract_map$H001001) 
+leaflet(tract_map) %>% 
+  addPolygons(popup=popup1,color="white", opacity=1,fillColor = "#bc0114",
+                   weight=1, fillOpacity = .5,
+              highlightOptions = highlightOptions(
+                color = "#F9D2D2", opacity = 1, weight = 2, fillOpacity = 1,
+                bringToFront = TRUE, sendToBack = TRUE)) %>% 
+  addProviderTiles("Wikimedia") %>% 
+  setView(-120.020493,39.041803,zoom=10)
+```
+[Download the Data Tahoe Open Data](http://data-trpa.opendata.arcgis.com/datasets/85a2e8e4bf994742a5855c1339517681_3)
+```{r, message=F, warning=F, echo=F}
+datatable(tract_map %>% data.frame() %>% mutate(Note="TRPA Census Tracts") %>%
+            dplyr::select(-geometry), 
+          extensions = 'Buttons',
+rownames=F,options=list(pageLength = 10, dom = 'Bfrtip',buttons = c('csv','pdf'), 
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe',
+colnames= c ('GEOID','Population (2010 Decen)', 'Households (2010 Decen)', 'Housing Units (2010 Decen)', 'Source'))
+
+```
+
+## Block Groups GIS
+```{r, message=F, warning=F, echo=F}
+tmap_mode("view")
+
+ca_acs <- get_acs(geography="block group", variables= c("B01003_001","B25002_001","B19001_001"), 
+                          state= "CA", year= 2016, county=c("El Dorado", "Placer")) %>% 
+   mutate(moe=0, data_source="2016 ACS")
+nv_acs <- get_acs(geography="block group", variables= c("B01003_001","B25002_001","B19001_001"), 
+                          state= "NV", year= 2016, county=c("Washoe", "Douglas")) %>% 
+   mutate(moe=0, data_source="2016 ACS")
+all<- bind_rows(nv_acs,ca_acs) %>%
+  left_join(data.frame(block_group), by="GEOID") %>%
+    filter(!is.na(OBJECTID)) %>%
+  mutate(variable_name = case_when (variable== "B01003_001" ~ "Total Population",
+                                    variable== "B19001_001" ~ "Households",
+                                    variable== "B25002_001" ~ "Housing Units")) %>%
+  dplyr::select(GEOID, estimate, variable) %>%
+  spread(variable, estimate)
+bg_map<-block_group %>%
+  left_join(all, by="GEOID") %>%
+  dplyr::select(GEOID, B01003_001,B19001_001,B25002_001)
+popup1 <- paste0("<strong>GEOID: </strong>", bg_map$GEOID,
+                 "<br><strong>Population (2016 ACS): </strong>", bg_map$B01003_001,
+                 "<br><strong>Households (2016 ACS): </strong>", bg_map$B19001_001,
+                 "<br><strong>Housing Units (2016 ACS): </strong>", bg_map$B25002_001) 
+leaflet(bg_map) %>% 
+  addPolygons(popup=popup1,color="white", opacity=1,fillColor = "#bc0114",
+                   weight=1, fillOpacity = .5,
+              highlightOptions = highlightOptions(
+                color = "#F9D2D2", opacity = 1, weight = 2, fillOpacity = 1,
+                bringToFront = TRUE, sendToBack = TRUE)) %>% 
+  addProviderTiles("Wikimedia") %>% 
+  setView(-120.020493,39.041803,zoom=10)
+```
+[Download the Data Tahoe Open Data](http://www.tahoeopendata.org/datasets/85a2e8e4bf994742a5855c1339517681_1)
+```{r, message=F, warning=F, echo=F}
+datatable(bg_map %>% data.frame() %>% mutate(Note="TRPA Census Block Groups") %>%
+            dplyr::select(-geometry), 
+          extensions = 'Buttons',
+rownames=F,options=list(pageLength = 10, dom = 'Bfrtip',buttons = c('csv','pdf'), 
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe',
+colnames= c ('GEOID','Population (2016 ACS)', 'Households (2016 ACS)', 'Housing Units (2016 ACS)', 'Source'))
+```
+
+
+## Block GIS
+```{r, message=F, warning=F, echo=F}
+tmap_mode("view")
+
+ca_decen <- get_decennial(geography="block", variables= c("P001001", "H013001","H001001"), 
+                          state= "CA", year= 2010, county=c("El Dorado", "Placer")) %>% 
+  rename(estimate=value) %>% mutate(moe=0, data_source="2010 Decennial Census")
+nv_decen <- get_decennial(geography="block", variables= c("P001001", "H013001", "H001001"), 
+                          state= "NV", year= 2010, county=c("Washoe", "Douglas")) %>% 
+  rename(estimate=value) %>% mutate(moe=0, data_source="2010 Decennial Census")
+all<- bind_rows(nv_decen,ca_decen) %>%
+  left_join(data.frame(block), by="GEOID") %>%
+    filter(!is.na(OBJECTID)) %>%
+  mutate(variable_name = case_when (variable== "P001001" ~ "Total Population",
+                                    variable== "H013001" ~ "Households",
+                                    variable== "H001001" ~ "Housing Units")) %>%
+  dplyr::select(GEOID, estimate, variable) %>%
+  spread(variable, estimate)
+block_map<-block %>%
+  left_join(all, by="GEOID") %>%
+  dplyr::select(GEOID, P001001,H013001,H001001)
+popup1 <- paste0("<strong>GEOID: </strong>", block_map$GEOID,
+                 "<br><strong>Population (2010 Decennial): </strong>", block_map$P001001,
+                 "<br><strong>Households (2010 Decennial): </strong>", block_map$H013001,
+                 "<br><strong>Housing Units (2010 Decennial): </strong>", block_map$H001001) 
+leaflet(block_map) %>% 
+  addPolygons(popup=popup1,color="white", opacity=1,fillColor = "#bc0114",
+                   weight=1, fillOpacity = .5,
+              highlightOptions = highlightOptions(
+                color = "#F9D2D2", opacity = 1, weight = 2, fillOpacity = 1,
+                bringToFront = TRUE, sendToBack = TRUE)) %>% 
+  addProviderTiles("Wikimedia") %>% 
+  setView(-120.020493,39.041803,zoom=10)
+```
+[Download the Data Tahoe Open Data](http://www.tahoeopendata.org/datasets/85a2e8e4bf994742a5855c1339517681_1)
+```{r, message=F, warning=F, echo=F}
+datatable(block_map %>% data.frame() %>% mutate(Note="TRPA Census Blocks") %>%
+            dplyr::select(-geometry), 
+          extensions = 'Buttons',
+rownames=F,options=list(pageLength = 10, dom = 'Bfrtip',buttons = c('csv','pdf'), 
+          columnDefs = list(list(className = 'dt-center', targets = 0:1))), 
+  class = 'cell-border stripe',
+colnames= c ('GEOID','Population (2010 Decen)', 'Households (2010 Decen)', 'Housing Units (2010 Decen)', 'Source'))
+
+```
+
+
+
+ 
+
+
