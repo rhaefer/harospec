@@ -14,7 +14,7 @@ url_pdf: ""
 url_video: ""
 ---
 
-Travel Surveys are an important input of travel models and help researchers understand regional travel behavior. I managed the 2018 TRPA Summer Travel Survey, which consisted of a field-based intercept travel survey. This report summarizes the survey methodology and results in an interactive web-based format.
+Travel Surveys are an important input of travel models and help researchers understand regional travel behavior. I managed the 2018 TRPA Summer Travel Survey, which consisted of a field-based intercept travel survey. This report summarizes the survey methodology and results in an interactive web-based format. The report was created entirely in R using Rmarkdown. All development [code can be found here.](https://github.com/trpa-reid/travel_survey/blob/master/travel_survey_report.Rmd)
 
 ```{r, out.width="900px", echo=FALSE, warning=FALSE, error=FALSE}
 knitr::include_url("https://rhaefer.github.io/travel_survey_report.html", height="800px")
