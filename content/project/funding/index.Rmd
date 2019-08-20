@@ -1,0 +1,29 @@
+---
+date: "2016-04-27T00:00:00Z"
+external_link: ""
+image:
+  caption: Photo by Reid Haefer
+  focal_point: Smart
+links:
+- icon: twitter
+  icon_pack: fab
+  name: Follow
+  url: https://twitter.com/georgecushen
+slides: example
+summary: Transportation Project Funding
+tags:
+- Transportation
+title: Funding 
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+---
+
+PSRC's 2016 FHWA/FTA Project Selection Process distributed $200 million in federal transportation dollars to transportation projects around the Puget Sound region. I provided support to this process by helping to build the selection criteria and subsequently comparing each project and weighing the benefits of each against criteria to develop comparable scores. In additional, I developed data visualizations that displayed the funds awarded to the winning projects.
+
+
+```{r, out.width="950px", echo=FALSE, warning=FALSE, error=FALSE}
+knitr::include_url("https://public.tableau.com/profile/reid5830#!/vizhome/project_selection_RH/Story1", height="800px")
+```
+
