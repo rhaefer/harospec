@@ -1,0 +1,23 @@
+---
+date: "2016-04-27T00:00:00Z"
+external_link: ""
+image:
+  caption: Photo by Reid Haefer
+  focal_point: Smart
+links:
+summary: backcountry ski touring
+tags:
+- Personal
+title: Snow
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+---
+
+Information about snowpack and weather conditions is important for safe and enjoyable experiences skiing in the backcountry. I track my ski tours using GAIA GPS and record information on each tour, such as elevation gain, weather, and other observations. This rmarkdown webapp displays some of the backcountry ski tours I've taken over the last few years.
+
+```{r, out.width="950px", echo=FALSE, warning=FALSE, error=FALSE}
+knitr::include_url("https://reidhaefer.shinyapps.io/model_dashboard/", height="800px")
+```
+
