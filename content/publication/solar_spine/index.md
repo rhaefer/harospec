@@ -16,7 +16,6 @@ publication_short: ""
 publication_types:
 - "2"
 publishDate: "2014-06-01T00:00:00Z"
-slides: example
 summary: 
 tags:
 - Source Themes

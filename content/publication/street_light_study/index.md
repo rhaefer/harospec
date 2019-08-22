@@ -7,7 +7,7 @@ date: "2014-06-01T00:00:00Z"
 doi: ""
 featured: false
 image:
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/jdD8gXaTZsc)'
+  caption: 'Image credit: [Reid Haefer]()'
   focal_point: ""
   preview_only: false
 projects: []
@@ -16,7 +16,6 @@ publication_short: ""
 publication_types:
 - "2"
 publishDate: "2014-06-01T00:00:00Z"
-slides: example
 summary: Research for the City of Seattle published by the U.S. Department of Energy, 2014
 tags:
 - Source Themes
