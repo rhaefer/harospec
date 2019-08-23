@@ -4,19 +4,7 @@ author: "Frida Gomam"
 date: 2015-07-23T21:13:14-05:00
 categories: ["R"]
 tags: ["R Markdown", "plot", "regression"]
-output:
-  html_document:
-    highlight: tango
-    code_folding: hide
 ---
-
-```{css, echo=FALSE}
-div.sourceCode {
-    overflow: hidden;
-}
-```
-
-# {.tabset}
 
 ```{r message=FALSE, warning=FALSE}
 library(pacman)
@@ -44,7 +32,7 @@ lon_recent<-lon_recent[1,]
 
 ## Bird Map
 
-```{r message=FALSE, warning=FALSE}
+```{r}
 #custom base map map created with Mapbox
 base_map <- "https://api.mapbox.com/styles/v1/reidhaefer/cipbjqldq0017cvnfmduk5unx/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmVpZGhhZWZlciIsImEiOiJjaW80bW92cGowMW8zdjRrcWlsMzg5dGVjIn0.TxdQscN__5Nlu_jSYxZplA"
 mb_attribution <- "<a href='https://www.mapbox.com/map-feedback/'>Mapbox</a> <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
@@ -74,7 +62,7 @@ leaflet (width=900, height=700) %>%
 
 ## List of Observations
 
-```{r message=FALSE, warning=FALSE}
+```{r}
 
 bird1$Date<-ymd(bird1$Date)
 
