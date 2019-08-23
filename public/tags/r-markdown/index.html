@@ -401,9 +401,7 @@
     <h2><a href="/post/2015-07-23-r-rmarkdown/">Hello R Markdown</a></h2>
     <div class="article-style">
       
-      R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.
+      div.sourceCode {overflow: hidden;}library(pacman)pacman::p_load(raster,dplyr,gsheet, leaflet, shiny,knitr, rsconnect, rgdal, datasets, ggplot2, ggthemes, gtools, scales, DT, lubridate, gganimate)bird &lt;- data.frame(gsheet2tbl(&quot;https://docs.google.com/spreadsheets/d/1Lj1_ezsF_7_sfWFCYy0BCuic5iLayzpKsCGVyOE-5sQ/edit?usp=sharing&quot;)) %&gt;%mutate(Location=as.character(Location),Common.Name=gsub(&quot;&#39;&quot;,&quot;&quot;,Common.Name),lat = jitter(Latitude, factor = .2),lon = jitter(Longitude, factor = .2),County=paste(County, &quot;County&quot;),Area =paste(sep=&quot;&quot;,State.Province,&quot;-&quot;, County),url = paste0(&quot;https://www.allaboutbirds.org/guide/&quot;, gsub(&quot; &quot;,&quot;_&quot;,Common.Name), &quot;/id&quot;),html = paste0(&quot;&lt;a href=&quot;, &quot;\&quot;&quot;, url, &quot;\&quot;&quot;, &quot;target=&quot;, &quot;\&quot;&quot;, &quot;blank&quot;, &quot;\&quot;&quot;, &quot;&gt;&quot;, &quot;All About Birds&quot;, &quot;&lt;/a&gt;&quot;),id=paste(Common.
       
     </div>
   </div>

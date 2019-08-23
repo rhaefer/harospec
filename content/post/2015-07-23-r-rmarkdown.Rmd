@@ -4,34 +4,99 @@ author: "Frida Gomam"
 date: 2015-07-23T21:13:14-05:00
 categories: ["R"]
 tags: ["R Markdown", "plot", "regression"]
+output:
+  html_document:
+    highlight: tango
+    code_folding: hide
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(collapse = TRUE)
+```{css, echo=FALSE}
+div.sourceCode {
+    overflow: hidden;
+}
 ```
 
-# R Markdown
+# {.tabset}
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r message=FALSE, warning=FALSE}
+library(pacman)
+pacman::p_load(raster,dplyr,gsheet, leaflet, shiny,knitr, rsconnect, rgdal, datasets, ggplot2, ggthemes, gtools, scales, DT, lubridate, gganimate)
 
-You can embed an R code chunk like this:
+bird <- data.frame(gsheet2tbl("https://docs.google.com/spreadsheets/d/1Lj1_ezsF_7_sfWFCYy0BCuic5iLayzpKsCGVyOE-5sQ/edit?usp=sharing")) %>%
+  mutate(Location=as.character(Location),
+    Common.Name=gsub("'","",Common.Name),
+    lat = jitter(Latitude, factor = .2),
+    lon = jitter(Longitude, factor = .2),
+    County=paste(County, "County"),
+    Area =paste(sep="",State.Province,"-", County),
+    url = paste0("https://www.allaboutbirds.org/guide/", gsub(" ","_",Common.Name), "/id"),
+    html = paste0("<a href=", "\"", url, "\"", "target=", "\"", "blank", "\"",  ">", "All About Birds", "</a>"),
+    id=paste(Common.Name, Date, sep =" -- "))
 
-```{r cars}
-summary(cars)
-fit <- lm(dist ~ speed, data = cars)
-fit
+table<-bird %>% dplyr::select(Common.Name, Count, Scientific.Name, Location, Area, Date)
+bird1<-bird
+lat_recent<-bird %>% filter (Date==max(Date)) %>% dplyr::select (lat)
+lat_recent<-lat_recent[1,]
+lat_recent <-lat_recent + .005
+lon_recent<-bird%>% filter (Date==max(Date)) %>% dplyr::select (lon)
+lon_recent<-lon_recent[1,]
 ```
 
-# Including Plots
+## Bird Map
 
-You can also embed plots. See Figure \@ref(fig:pie) for example:
+```{r message=FALSE, warning=FALSE}
+#custom base map map created with Mapbox
+base_map <- "https://api.mapbox.com/styles/v1/reidhaefer/cipbjqldq0017cvnfmduk5unx/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmVpZGhhZWZlciIsImEiOiJjaW80bW92cGowMW8zdjRrcWlsMzg5dGVjIn0.TxdQscN__5Nlu_jSYxZplA"
+mb_attribution <- "<a href='https://www.mapbox.com/map-feedback/'>Mapbox</a> <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
 
-```{r pie, fig.cap='A fancy pie chart.', tidy=FALSE}
-par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c('Sky', 'Sunny side of pyramid', 'Shady side of pyramid'),
-  col = c('#0292D8', '#F7EA39', '#C4B632'),
-  init.angle = -50, border = NA
-)
+#custom inset map created with Mapbox
+inset_map <- "https://api.mapbox.com/styles/v1/reidhaefer/cj04a1fmm00332sroid5qzzwb/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmVpZGhhZWZlciIsImEiOiJjaW80bW92cGowMW8zdjRrcWlsMzg5dGVjIn0.TxdQscN__5Nlu_jSYxZplA"
+mb_attribution <- "<a href='https://www.mapbox.com/map-feedback/'>Mapbox</a> <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
+
+leaflet (width=900, height=700) %>%
+ addPopups(lng=lon_recent, lat = lat_recent, "recent observation", options = popupOptions(closeButton = FALSE)) %>%
+   addProviderTiles(providers$OpenStreetMap.BlackAndWhite) %>%
+    addTiles(urlTemplate = base_map, attribution = mb_attribution)%>%
+    addMarkers(bird$lon, bird$lat, 
+               popup=paste(sep="","<b>", bird$Common.Name,"</b>",
+                           "<br/>","<font size=2 color=#B40404>","Scientific Name: ","</font>" ,bird$Scientific.Name,
+                           "<br/>","<font size=2 color=#B40404>", "Date: ", "</font>", bird$Date,
+                           "<br/>","<font size=2 color=#B40404>","Number Observed: ","</font>", bird$Count,
+                           "<br/>","<font size=2 color=#B40404>","Location: ","</font>", bird$Location,
+                           "<br/>","<font size=2 color=#B40404>","Region: ","</font>", bird$Area,
+                           "<br/>", "<font size=2 color=#B40404>", "More Info About This Bird @ ", "</font>",bird$html),
+               clusterOptions = markerClusterOptions())  %>%
+    addMiniMap(toggleDisplay = TRUE, tiles=providers$OpenStreetMap.BlackAndWhite) %>%
+   addEasyButton(easyButton(icon="fa-globe", title="Zoom to Level 1", onClick=JS("function(btn, map){ map.setZoom(3); }"))) %>%
+    addLegend("topright", title= "Recent Bird Observations", colors= "#3487db", labels= "birds observed")
+
+```
+
+## List of Observations
+
+```{r message=FALSE, warning=FALSE}
+
+bird1$Date<-ymd(bird1$Date)
+
+bird_table<-bird1 %>% data.frame() %>%
+                         group_by(Common.Name, url) %>% 
+                         summarise(Count=sum(Count), 
+                                   Location=paste(unique(State.Province), collapse=" & "),mydates=format(max(Date), '%Y/%m/%d')) %>%
+  mutate(Location= case_when( Location=="US-WA" ~ "Washington State",
+                              Location=="US-OR"~"Oregon",
+                              Location=="US-MT"~"Montana",
+                              Location=="US-CA"~"California",
+                              Location=="MX-BCS"~"Baja, Mexico",
+                              Location=="CA-BC"~"British Columbia",
+                              TRUE~as.character(Location)),
+         url =paste0("<a href=", "\"", url, "\"","target=", "\"", "blank", "\"", ">", 
+                     Common.Name, " @ All About Birds","</a>")) %>%
+rename(`Common Name`=Common.Name, `Total Observed`=Count, Locations=Location, `More Information`=url, RecentObservation=mydates) %>% 
+      dplyr::select(`Common Name`, `Total Observed`, Locations, `More Information`, RecentObservation) %>%
+  mutate(RecentObservation=as.Date(RecentObservation, "%Y/%m/%d"))
+bird_table<-bird_table[order(bird_table$RecentObservation, decreasing = TRUE),]
+bird_table$RecentObservation<-format(bird_table$RecentObservation, "%B %d, %Y")
+bird_table<-bird_table %>% rename (`Recent Observation`=RecentObservation)
+
+DT::datatable(bird_table, rownames=FALSE, escape=FALSE, options=list(pageLength = 200, dom = 'ft'))
 ```
