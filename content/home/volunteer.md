@@ -28,12 +28,30 @@ date_format = "Jan 2006"
   description = ""
   
 [[item]]
-  organization = "Air & Waste Management Association (AWMA)"
-  organization_url = "https://www.awma.org/eci"
-  title = "1st Place Winner: Environmental Challenge International (ECi) Competition"
+  organization = "Friends of North Lake Union (FONLU)"
+  organization_url = "https://lakeunion.wixsite.com/fonlu"
+  title = "Founder"
   url = ""
-  date_start = "2010-06-01"
-  date_end = ""
+  date_start = "2015-06-01"
+  date_end = "2017-06-01"
   description = ""
-
+  
+[[item]]
+  organization = "Seattle Audobon Society"
+  organization_url = "http://www.seattleaudubon.org/sas/about/science/citizenscience/pugetsoundseabirdsurvey.aspx"
+  title = "Field Surveyor - Puget Sound Seabird Study"
+  url = ""
+  date_start = "2015-06-01"
+  date_end = "2017-06-01"
+  description = ""
+  
+[[item]]
+  organization = "Wallingford Community Council"
+  organization_url = "http://www.seattleaudubon.org/sas/about/science/citizenscience/pugetsoundseabirdsurvey.aspx"
+  title = "Board Member"
+  url = ""
+  date_start = "2015-06-01"
+  date_end = "2016-06-01"
+  description = ""
+  
 +++

@@ -1,33 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Reid R. Haefer</title>
+    <title>Authors | Reid R. Haefer</title>
     <link>/authors/</link>
       <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
-    <description>Reid R. Haefer</description>
+    <description>Authors</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 05 Feb 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
-      <title>Reid R. Haefer</title>
+      <title>Authors</title>
       <link>/authors/</link>
     </image>
     
     <item>
-      <title>City Growth &amp; Electricity Consumption</title>
-      <link>/publication/thesis/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
-      <guid>/publication/thesis/</guid>
-      <description>&lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.&lt;/p&gt;
+      <title></title>
+      <link>/authors/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/authors/admin/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/admin/</guid>
+      <description>&lt;p&gt;Reid Haefer is an urban planner that specializes in using data science to support decision-making for transportation and land use planning. He has over 5-years experience working for multiple public agencies on projects that include travel demand modeling, regional transportation planning, forecasting, project analysis, and land use planning. His technnical interests include GIS, data visualization, and open-source computer programming. Reid has a bachelor&amp;rsquo;s degree from Western Washington University and a master&amp;rsquo;s degree from the University of Washington. He currently works for the Tahoe Regional Planning Agency.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Energy Efficient Public Street Lighting</title>
-      <link>/publication/street_light_study/</link>
+      <title>Reid Haefer</title>
+      <link>/authors/reid-haefer/</link>
       <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
-      <guid>/publication/street_light_study/</guid>
-      <description>&lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <guid>/authors/reid-haefer/</guid>
+      <description></description>
     </item>
     
   </channel>
