@@ -16,10 +16,10 @@ publication_short: ""
 publication_types:
 - "2"
 publishDate: "2014-06-01T00:00:00Z"
-summary: 
+summary: Field study and publication of urban planning in Chandigarh, India, 2014
 tags:
 - Source Themes
-title: Planning in India - Solar Spine
+title: Planning in India
 url_code: ""
 url_dataset: ""
 url_pdf: https://drive.google.com/file/d/0B8T2r7MVXupGRXdTaFNxTDAxTE0/view
