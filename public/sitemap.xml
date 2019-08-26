@@ -3,21 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/courses/example/example1/</loc>
-    <lastmod>2019-05-05T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/courses/example/</loc>
-    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/courses/example/example2/</loc>
-    <lastmod>2019-05-05T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/talk/example/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
   </url>
@@ -221,7 +206,18 @@
   </url>
   
   <url>
-    <loc>/courses/</loc>
+    <loc>/false/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/false/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/show/</loc>
+    <priority>0</priority>
   </url>
   
 </urlset>
