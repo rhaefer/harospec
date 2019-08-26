@@ -211,12 +211,12 @@
   </url>
   
   <url>
-    <loc>/false/</loc>
+    <loc>/hide/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/show/</loc>
+    <loc>/true/</loc>
     <priority>0</priority>
   </url>
   

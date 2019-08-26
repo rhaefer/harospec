@@ -3,12 +3,13 @@
 <article class="article" itemscope itemtype="http://schema.org/Article">
 
   {{ partial "page_header" . }}
+  {{ partial "header_maincodefolding" . }}
 
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
       {{ .Content }}
-	  {{ partial "header_maincodefolding" . }}
+	  
     </div>
 
     {{ partial "page_edit" . }}
