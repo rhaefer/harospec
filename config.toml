@@ -70,9 +70,11 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
   publication_type = "publication_types"
   author = "authors"
   
-  # Set to true to disable code folding
+# Set to true to disable code folding
 disable_codefolding = false
 # Set to "hide" or "show" all codes by default
 codefolding_show = "hide"
 # Set to true to exclude the "Show/hide all" button
 codefolding_nobutton = true
+
+#custom_css = ["codefolding.css"]

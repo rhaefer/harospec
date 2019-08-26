@@ -21,7 +21,7 @@ date_format = "Jan 2006"
 [[experience]]
   title = "Data Modeler/Analyst"
   company = "Tahoe Regional Planning Agency (TRPA)"
-  company_url = ""
+  company_url = "http://www.trpa.org/"
   location = "Stateline, Nevada"
   date_start = "2017-07-01"
   date_end = ""
@@ -30,7 +30,7 @@ date_format = "Jan 2006"
 [[experience]]
   title = "Assistant Planner"
   company = "Puget Sound Regional Council (PSRC)"
-  company_url = ""
+  company_url = "https://www.psrc.org/"
   location = "Seattle, California"
   date_start = "2014-10-01"
   date_end = "2017-06-01"
@@ -40,10 +40,46 @@ date_format = "Jan 2006"
 [[experience]]
   title = "Outreach & Data Analyst"
   company = "City of Seattle"
-  company_url = ""
+  company_url = "https://www.seattle.gov/"
   location = "Seattle, Washington"
   date_start = "2013-07-01"
   date_end = "2014-04-01"
   description = """Managed a nation-wide survey of public street light systems as part of the Municipal Solid State Street Light Consortium. Reponsibilities included data collection and analysis, which culminated in a report published by the US Department of Energy on energy efficient public street lighting. Presented findings at the national IES Street & Area Lighting Conference."""
+
+[[experience]]
+  title = "Green the Capitol Intern"
+  company = "U.S. House of Representatives"
+  company_url = ""
+  location = "Washington D.C."
+  date_start = "2010-07-01"
+  date_end = "2010-10-01"
+  description = ""
+
+[[experience]]
+  title = "Assistant"
+  company = "Solar Energy International"
+  company_url = "https://www.solarenergy.org/"
+  location = "Carbondale, Colorado"
+  date_start = "2011-01-01"
+  date_end = "2011-03-01"
+  description = ""
+  
+[[experience]]
+  title = "Communication Specialist"
+  company = "University of Washington"
+  company_url = "http://depts.washington.edu/gpss/"
+  location = "Seattle, Washington"
+  date_start = "2012-09-01"
+  date_end = "2013-06-15"
+  description = ""
+
+[[experience]]
+  title = "Assistant"
+  company = "The Defenders Association"
+  company_url = "http://defender.org/"
+  location = "Seattle, Washington"
+  date_start = "2011-08-01"
+  date_end = "2012-08-15"
+  description = ""
 
 +++
