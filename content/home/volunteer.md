@@ -25,7 +25,7 @@ date_format = "Jan 2006"
   url = ""
   date_start = "2016-09-01"
   date_end = "2017-09-01" 
-  description = ""
+  description = "Reviewed urban forestry policies and projects and made recommendations to the Seattle City Council"
   
 [[item]]
   organization = "Friends of North Lake Union (FONLU)"
@@ -34,7 +34,7 @@ date_format = "Jan 2006"
   url = ""
   date_start = "2015-06-01"
   date_end = "2017-06-01"
-  description = ""
+  description = "Founded and managed an environmental restoration and advocacy community group."
   
 [[item]]
   organization = "Seattle Audobon Society"
@@ -43,7 +43,7 @@ date_format = "Jan 2006"
   url = ""
   date_start = "2015-06-01"
   date_end = "2017-06-01"
-  description = ""
+  description = "Surveyed winter seabird activity in the Puget Sound."
   
 [[item]]
   organization = "Wallingford Community Council"
@@ -52,6 +52,6 @@ date_format = "Jan 2006"
   url = ""
   date_start = "2015-06-01"
   date_end = "2016-06-01"
-  description = ""
+  description = "Reviewed and discussed infrastructure, urban planning, and community projects and made recommendations to the City of Seattle."
   
 +++
