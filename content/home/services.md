@@ -62,4 +62,9 @@ subtitle = ""
   name = "Modeling"
   description = "Applying theory and statistics to create tools that estimate, predict, and forecast into the future."
 
+[[feature]]
+  icon = "wifi"
+  icon_pack = "fas"
+  name = "Big Data"
+  description = "Harnessing the power of large, complex datasets sourced from new technololgies."
 +++
