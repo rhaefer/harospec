@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 160  # Order that this section will appear.
 
 title = "Contact"
-subtitle = ""
+subtitle = "To solicit services, submiy questions, or request additional information please send a message using this form and we will reply shortly."
 
 # Automatically link email and phone?
 autolink = true
