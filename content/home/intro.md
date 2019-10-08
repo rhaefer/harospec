@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 9  # Order that this section will appear.
 
 title = "Harospec"
-subtitle = "Transformation data into meaningful information"
+subtitle = "Transforming data into meaningful information"
 
 # Showcase personal skills or business features.
 # 
