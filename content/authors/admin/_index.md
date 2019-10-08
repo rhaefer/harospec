@@ -17,7 +17,7 @@ interests:
 - Urban Planning
 name: Reid Haefer
 organizations:
-- name: Tahoe Regional Planning Agency
+- name:
   url: ""
 role: Data Modeler & Urban Planner
 social:
@@ -33,4 +33,4 @@ user_groups:
 - Visitors
 ---
 
-Reid Haefer is an urban planner that specializes in using data science to support decision-making for transportation and land use planning. He has over 5-years experience working for multiple public agencies on projects that include travel demand modeling, regional transportation planning, forecasting, project analysis, and land use planning. His technnical interests include GIS, data visualization, and open-source computer programming. Reid has a bachelor's degree from Western Washington University and a master's degree from the University of Washington. He currently works for the Tahoe Regional Planning Agency.
+Reid Haefer is an urban planner that specializes in using data science to support decision-making for transportation and land use planning. He has over 6-years experience working for large and small public agencies on projects that include travel demand modeling, regional transportation planning, forecasting, project analysis, and land use planning. His technnical interests include GIS, data visualization, and open-source computer programming. Reid has a bachelor's degree from Western Washington University and a master's degree from the University of Washington. He currently works for the Tahoe Regional Planning Agency.
