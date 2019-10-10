@@ -6,10 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 160  # Order that this section will appear.
 
 title = "Contact"
-subtitle = "To solicit services, submit questions, or request additional information please submit a message and we will reply shortly."
-
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
-
+subtitle = "To solicit services, submit questions, or request additional information please submit a message and we will reply shortly"
 
 # Automatically link email and phone?
 autolink = true
