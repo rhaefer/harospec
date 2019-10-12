@@ -6,14 +6,19 @@ library(osmdata)
 library(gsheet)
 library(tidyverse)
 library(geojsonio)
+library(shinydashboard)
 
-
-ski.tab <- data.frame(gsheet2tbl("https://docs.google.com/spreadsheets/d/151RiUSQP0qMcUCGk9iO2zz7cdMbmOt64IiwzndeFWbI/edit?usp=sharing"))
-ski.geo<-geojson_read("C:/Users/reidh/Documents/GitHub/rhaefer.github.io/ski_tours/all_ski_tours.geojson", what="sp") %>% st_as_sf()
-ski <- ski.geo %>% left_join(ski.tab,  by="id")
-
-bird <- data.frame(gsheet2tbl("https://docs.google.com/spreadsheets/d/1Lj1_ezsF_7_sfWFCYy0BCuic5iLayzpKsCGVyOE-5sQ/edit?usp=sharing")) %>%
+bird<-read_csv("content/project/bird/MyEBirdData.csv") %>%
   st_as_sf(coords=c("Longitude","Latitude"))
+
+
+ui <- dashboardPage(
+  dashboardHeader(),
+  dashboardSidebar(),
+  dashboardBody()
+)
+server <- function(input, output) { }
+shinyApp(ui, server)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
