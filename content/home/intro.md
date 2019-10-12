@@ -52,9 +52,9 @@ subtitle = "*hare-o-spec*"
 
 Data is messy and increasingly complex. Using innovative and cost-effective tools, we transform **data** into meaningful **information** for decision-makers. Our [services](http://reidhaefer.rbind.io/#services) inform all stages of the analytical process and maintain a strong emphasis data visualization. Our analytical philosophy includes several core tenets:
 
-* Analysis should directly inform decision-making 
-* Information should be presenting in modern, accessible formats
-* Methodologies should be tranparent and reproducible
-* Tools should be modular and cost-effective
+-- *Analysis should directly inform decision-making* --
+-- *Information should be presenting in modern, accessible formats* --
+-- *Methodologies should be tranparent and reproducible* --
+-- *Tools should be modular and cost-effective* --
 
 [Contact](http://reidhaefer.rbind.io/#contact) us for more information and to solicit work.

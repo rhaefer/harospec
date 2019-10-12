@@ -1,0 +1,98 @@
+---
+date: "2019-04-27T00:00:00Z"
+external_link: ""
+image:
+  caption: 
+  focal_point: Smart
+links:
+summary: data prep & cleaning
+tags:
+- Urban Planning
+title: Munging
+url_code: ""
+url_pdf: ""
+url_video: ""
+---
+
+
+
+<p>Data cleaning and preparation (munging) is often the most time intensive element of an analytical project. Before you can create any analysis, visualization, or map, data needs to be in a consistent and coherent format. We create workflows that automate the data munging process, which saves time and resources compared to traditional manual methods.</p>
+<p>The example below demonstrates a workflow that transforms messy, disparate data into
+a clean, coherent dataset that is ready to be analyzed. The original data consisted of 200-300 excel spreadsheets - representing hourly traffic count data - which included complex formatting and data structures. Our workflow reformatted and then combined all of the individual spreadsheets, geocoded the spatial elements of the data, formatted the time series elements of the data into relevant date formats (Hour, Day, Week, Month), and finalized the data into one clean dataset that is ready to be analyzed and visualized.</p>
+<p><img src="dirty.jpg" width="100%" /></p>
+<pre class="r"><code>library(pacman)
+p_load(tidyverse, readxl, lubridate, purrr, janitor, scales, plotly, tmap, leaflet, DT,lubridate,sf,xfun, ggridges, ggmap)
+
+## A function that reads in and combines several dozen California PEMS traffic count spreadsheets
+
+file.list &lt;- list.files(pattern=&#39;*.xlsx&#39;)
+file.list &lt;- setNames(file.list, file.list) # only needed when you need an id-column with the file-names
+pems &lt;- map_df(file.list, read_excel, .id = &quot;id&quot;) %&gt;%
+  mutate(Hour=as.character(as.POSIXct(Hour, format=&quot;%m/%d/%Y %H:%M&quot;))) %&gt;%
+  mutate(station=sub(&quot;(^[^-]+)-.*&quot;, &quot;\\1&quot;, id)) %&gt;%
+  rename(Date=Hour, Count=`Lane 1 Flow (Veh/Hour)`, station_code=id) %&gt;%
+  #filter(`% Observed` !=0) %&gt;%
+select(Date, station, Count, station_code,`% Observed`)
+  
+## A function that reads, reformatts, and combines over 200 Nevada DOT traffic count spreadsheets
+
+ndot&lt;- function (filename){
+ test99&lt;-read_xls(paste0(&quot;H:/model/model_update_2019/validation/NDOT_2018_counts_hourly/all/&quot;,filename), sheet=&quot;DV02P&quot;, skip=8, col_names = F) %&gt;%
+   select(1,2,4,12,15,21,23,30,32,39,41,48,50,58,61)
+  row1&lt;-lead(test99[1,],1)
+  test99[1,] &lt;- row1
+ test99 &lt;-test99 %&gt;% remove_empty(&quot;rows&quot;)%&gt;% 
+   remove_empty(&quot;cols&quot;)
+ my.names &lt;- test99[1,]
+colnames(test99) &lt;- my.names
+test99 &lt;- test99 %&gt;%
+  slice(-1) 
+names(test99)[1]&lt;-&quot;time&quot;
+test99[test99 == 99999] &lt;- NA
+test99 &lt;- test99 %&gt;% remove_empty(&quot;rows&quot;) %&gt;% slice(1:24) %&gt;%
+  pivot_longer(c(2:8))
+}
+setwd(&quot;H:/model/model_update_2019/validation/NDOT_2018_counts_hourly/all&quot;)
+file.list &lt;- list.files(pattern=&#39;*.xls&#39;)
+file.list &lt;- setNames(file.list, file.list) 
+ndot1 &lt;- map_df(file.list, possibly(ndot, otherwise = tibble(x=&quot;error reading&quot;)), .id = &quot;id&quot;)
+
+ndot_clean &lt;- ndot1 %&gt;%
+  mutate(Date=as.character(as.POSIXct(paste(sub(&quot; &quot;,&quot;&quot;,substring(name, 6)), time), format=&quot;%m/%d/%Y %H:%M&quot;)),
+         `% Observed`=100,
+         station_code=substr(id,26,31),
+         value=as.numeric(value),
+         station=case_when(station_code== &quot;005211&quot; ~ &quot;US 50 &amp; Lake Parkway&quot;,
+                           station_code== &quot;005315&quot; ~ &quot;Lower Kingsbury (SR 207)&quot;,
+                           station_code== &quot;025212&quot; ~ &quot;US 50 &amp; Carson St (Spooner Summit)&quot;,
+                           station_code== &quot;031224&quot; ~ &quot;SR 28 &amp; Lakeshore Dr (Incline)&quot;),
+         value=na_if(value, &quot;99999&quot;)) %&gt;%
+  rename(Count=value) %&gt;%
+  select(Date, station, Count, station_code,`% Observed`) %&gt;%
+  filter(station_code != &quot;005211&quot;)
+
+## Combines the California and NDOT data into one final dataset
+
+continuous_prep&lt;-bind_rows(ndot_clean, pems) %&gt;%
+  #complete(station,Date) %&gt;%
+  mutate(Date=as.POSIXct(Date, format=&quot;%Y-%m-%d %H:%M:%S&quot;),weekday=wday(Date, label=TRUE), Day=date(Date), Day1=as.character(Day), month=month(Date, label=TRUE), hour=hour(Date),
+         wday_wknd = case_when(weekday %in% c(&quot;Mon&quot;,&quot;Tue&quot;,&quot;Wed&quot;,&quot;Thu&quot;) ~ &quot;Weekday&quot;,
+                              weekday %in% c(&quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;) ~ &quot;Weekend&quot;),
+         ext_int=case_when(station %in% c(&quot;Echo_Summit&quot;,&quot;US 50 &amp; Carson St (Spooner Summit)&quot;,&quot;Brockway_Summit&quot;) ~ &quot;External Station&quot;,
+                           TRUE ~ as.character(&quot;Internal Station&quot;))) %&gt;%
+    filter(Day &gt;= &quot;2018-01-01&quot; &amp; Day &lt;= &quot;2018-12-31&quot;) %&gt;%
+  select(station,Date, Day, weekday, hour, month, Count, wday_wknd, ext_int, station_code,`% Observed`,Day1) %&gt;%
+left_join(
+data.frame(
+  station=c(&quot;Lower Kingsbury (SR 207)&quot;, #&quot;US 50 &amp; Lake Parkway&quot;,
+            &quot;US 50 &amp; Carson St (Spooner Summit)&quot;,&quot;SR 28 &amp; Lakeshore Dr (Incline)&quot;,&quot;Bigler&quot;,&quot;Brockway_Summit&quot;,&quot;Echo_Summit&quot;,&quot;F_Street&quot;,&quot;Midway&quot;,&quot;Sawmill&quot;),
+lat=c(38.967500,#38.965484,
+      39.121111,39.249357,38.935389,39.260764,38.815358,38.904321,38.952279,38.875694), 
+lon=c(-119.923004,#-119.937834,
+      -119.824151,-119.985101,-119.977477,-120.071504,-120.027960,-119.999118,-119.949293,-120.005384)
+), by=&quot;station&quot;)
+
+## Export the dataset into one final, clean .csv file
+
+write.csv(continuous_prep,&quot;filepath&quot;)</code></pre>
+<p><img src="clean.jpg" width="100%" /></p>

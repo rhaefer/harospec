@@ -45,18 +45,26 @@
     </item>
     
     <item>
-      <title>Personal</title>
-      <link>/tags/personal/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>/tags/personal/</guid>
+      <title>Urban Planning</title>
+      <link>/tags/urban-planning/</link>
+      <pubDate>Sat, 27 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/urban-planning/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Urban Planning</title>
-      <link>/tags/urban-planning/</link>
+      <title>GIS</title>
+      <link>/tags/gis/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      <guid>/tags/urban-planning/</guid>
+      <guid>/tags/gis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Personal</title>
+      <link>/tags/personal/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>/tags/personal/</guid>
       <description></description>
     </item>
     
