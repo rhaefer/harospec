@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Reid R. Haefer</title>
+    <title>Harospec</title>
     <link>/authors/admin/</link>
       <atom:link href="/authors/admin/index.xml" rel="self" type="application/rss+xml" />
-    <description>Reid R. Haefer</description>
+    <description>Harospec</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 01 Jun 2014 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
-      <title>Reid R. Haefer</title>
+      <title>Harospec</title>
       <link>/authors/admin/</link>
     </image>
     

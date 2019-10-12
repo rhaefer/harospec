@@ -8,8 +8,8 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 10  # Order that this section will appear.
 
-title = "Harospec"
-subtitle = "Transforming into meaningful information"
+title = "Harospec Data"
+subtitle = "*hare-o-spec*"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
@@ -50,16 +50,6 @@ subtitle = "Transforming into meaningful information"
  css_class = ""
 +++
 
-Transforming **data** into meaningful **information**
+We transform **data** into meaningful **information** using innovative, cost-effective tools. Our [services] include GIS, data visualization, reporting, & analysis. The fields we [work] within vary but include urban planning, mobility, & sustainability. [Contact] us for more information and to solicit work.
 
-- [**Project Demo** (Academic's actual site)](https://sourcethemes.com/academic/)
-
-**Over 100,000 [Amazing Websites](https://sourcethemes.com/academic/#expo) have Already Been Built with Academic**
-
-**[Join](https://sourcethemes.com/academic/docs/install/) the Most Empowered Hugo Community**
-
-{{% alert note %}}
-This homepage section is an example of adding [elements](https://sourcethemes.com/academic/docs/writing-markdown-latex/) to the [*Blank* widget](https://sourcethemes.com/academic/docs/widgets/).
-
-Backgrounds can be applied to any section. Here, the *background* option is set give an *image parallax* effect.
-{{% /alert %}}
+Placeholder for more text.
