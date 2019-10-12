@@ -118,7 +118,7 @@
   <meta property="og:description" content="Data Modeler &amp; Urban Planner"><meta property="og:image" content="/img/icon-192.png">
   <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2015-07-23T21:13:14-05:00">
+    <meta property="og:updated_time" content="2019-07-23T00:00:00&#43;00:00">
   
 
   
@@ -398,10 +398,10 @@
   
   
   <div>
-    <h2><a href="/post/2015-07-23-r-rmarkdown/">Hello R Markdown</a></h2>
+    <h2><a href="/post/2015-07-23-r-rmarkdown/">Backcountry Ski Tours</a></h2>
     <div class="article-style">
       
-      library(pacman)pacman::p_load(raster,dplyr,gsheet, leaflet, shiny,knitr, rsconnect, rgdal, datasets, ggplot2, ggthemes, gtools, scales, DT, lubridate, gganimate)bird &lt;- data.frame(gsheet2tbl(&quot;https://docs.google.com/spreadsheets/d/1Lj1_ezsF_7_sfWFCYy0BCuic5iLayzpKsCGVyOE-5sQ/edit?usp=sharing&quot;)) %&gt;%mutate(Location=as.character(Location),Common.Name=gsub(&quot;&#39;&quot;,&quot;&quot;,Common.Name),lat = jitter(Latitude, factor = .2),lon = jitter(Longitude, factor = .2),County=paste(County, &quot;County&quot;),Area =paste(sep=&quot;&quot;,State.Province,&quot;-&quot;, County),url = paste0(&quot;https://www.allaboutbirds.org/guide/&quot;, gsub(&quot; &quot;,&quot;_&quot;,Common.Name), &quot;/id&quot;),html = paste0(&quot;&lt;a href=&quot;, &quot;\&quot;&quot;, url, &quot;\&quot;&quot;, &quot;target=&quot;, &quot;\&quot;&quot;, &quot;blank&quot;, &quot;\&quot;&quot;, &quot;&gt;&quot;, &quot;All About Birds&quot;, &quot;&lt;/a&gt;&quot;),id=paste(Common.
+      Information about snowpack and weather conditions is important for safe and enjoyable experiences skiing in the backcountry. I track my ski tours using GAIA GPS and record information on each tour, such as elevation gain, weather, and other observations. This rmarkdown webapp displays some of the backcountry ski tours I’ve taken over the last few years.
       
     </div>
   </div>

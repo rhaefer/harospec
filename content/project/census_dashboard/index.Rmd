@@ -9,7 +9,7 @@ slides: example
 summary: Census API
 tags:
 - Urban Planning
-title: Socioeconomic Analysis
+title: Data Collection
 url_code: ""
 url_pdf: ""
 url_video: ""

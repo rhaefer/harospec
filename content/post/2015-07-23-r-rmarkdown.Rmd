@@ -1,122 +1,80 @@
 ---
-title: "Hello R Markdown"
-author: "Frida Gomam"
-date: 2015-07-23T21:13:14-05:00
+title: "Backcountry Ski Tours"
+author: "Reid Haefer"
+date: 2019-07-23
 categories: ["R"]
 tags: ["R Markdown", "plot", "regression"]
 ---
 
-```{r}
+Information about snowpack and weather conditions is important for safe and enjoyable experiences skiing in the backcountry. I track my ski tours using GAIA GPS and record information on each tour, such as elevation gain, weather, and other observations. This rmarkdown webapp displays some of the backcountry ski tours I've taken over the last few years.
+
+```{r warning=F, message=F}
 library(pacman)
-pacman::p_load(raster,dplyr,gsheet, leaflet, shiny,knitr, rsconnect, rgdal, datasets, ggplot2, ggthemes, gtools, scales, DT, lubridate, gganimate)
+p_load(gsheet, knitr,raster,leaflet,rsconnect,datasets, tidyverse,  maptools, geojsonio, tidyverse, gganimate, rgdal, ggplot2, devtools, ggthemes, gtools, scales, DT, RColorBrewer, Rserve, leaflet.extras, sf, ggmap, ggspatial)
 
-bird <- data.frame(gsheet2tbl("https://docs.google.com/spreadsheets/d/1Lj1_ezsF_7_sfWFCYy0BCuic5iLayzpKsCGVyOE-5sQ/edit?usp=sharing")) %>%
-  mutate(Location=as.character(Location),
-    Common.Name=gsub("'","",Common.Name),
-    lat = jitter(Latitude, factor = .2),
-    lon = jitter(Longitude, factor = .2),
-    County=paste(County, "County"),
-    Area =paste(sep="",State.Province,"-", County),
-    url = paste0("https://www.allaboutbirds.org/guide/", gsub(" ","_",Common.Name), "/id"),
-    html = paste0("<a href=", "\"", url, "\"", "target=", "\"", "blank", "\"",  ">", "All About Birds", "</a>"),
-    id=paste(Common.Name, Date, sep =" -- "))
-table<-bird %>% dplyr::select(Common.Name, Count, Scientific.Name, Location, Area, Date)
-bird1<-bird
-lat_recent<-bird %>% filter (Date==max(Date)) %>% dplyr::select (lat)
-lat_recent<-lat_recent[1,]
-lat_recent <-lat_recent + .005
-lon_recent<-bird%>% filter (Date==max(Date)) %>% dplyr::select (lon)
-lon_recent<-lon_recent[1,]
-leaflet (width=900, height=700) %>%
-   addPopups(lng=lon_recent, lat = lat_recent, "recent observation", options = popupOptions(closeButton = FALSE)) %>%
-   addTiles() %>%
-    addMarkers(bird$lon, bird$lat, 
-               popup=paste(sep="","<b>", bird$Common.Name,"</b>",
-            "<br/>","<font size=2 color=#B40404>","Scientific Name: ","</font>" ,bird$Scientific.Name,
-            "<br/>","<font size=2 color=#B40404>", "Date: ", "</font>", bird$Date,
-            "<br/>","<font size=2 color=#B40404>","Number Observed: ","</font>", bird$Count,
-            "<br/>","<font size=2 color=#B40404>","Location: ","</font>", bird$Location,
-            "<br/>","<font size=2 color=#B40404>","Region: ","</font>", bird$Area,
-        "<br/>", "<font size=2 color=#B40404>", "More Info About This Bird @ ", "</font>",bird$html),
-               clusterOptions = markerClusterOptions())  %>%
-    addMiniMap(toggleDisplay = TRUE, tiles=providers$OpenStreetMap.BlackAndWhite) %>%
-   addEasyButton(easyButton(icon="fa-globe", title="Zoom to Level 1", onClick=JS("function(btn, map){ map.setZoom(3); }"))) %>%
-    addLegend("topright", title= "Recent Bird Observations", colors= "#3487db", labels= "birds observed")
-```
+all<-geojson_read("C:/Users/reidh/Documents/website/reid.haefer/content/project/ski/all_ski_tours.geojson", what="sp") %>% st_as_sf() 
+#load new tour geojson tracks
+#maggies<-geojson_read("ski_tours/track-31019-93430am.geojson", what="sp") %>% st_as_sf() %>%
+ #mutate(name= "maggies", id=53)
+#new <- rbind(maggies) %>%
+ #select(id, name)
+#combine the new tracks with the all the other
+#all <- rbind(all, new)
+#st_write(all, dsn="ski_tours/all_ski_tours.geojson", driver="GeoJSON", delete_dsn = T)
 
-```{r}
+data1 <- data.frame(gsheet2tbl("https://docs.google.com/spreadsheets/d/151RiUSQP0qMcUCGk9iO2zz7cdMbmOt64IiwzndeFWbI/edit?usp=sharing"))
+all1 <- all %>% left_join(data1,  by="id")
 
-bird <- data.frame(gsheet2tbl("https://docs.google.com/spreadsheets/d/1Lj1_ezsF_7_sfWFCYy0BCuic5iLayzpKsCGVyOE-5sQ/edit?usp=sharing")) %>%
-  mutate(Location=as.character(Location),
-    Common.Name=gsub("'","",Common.Name),
-    lat = jitter(Latitude, factor = .2),
-    lon = jitter(Longitude, factor = .2),
-    County=paste(County, "County"),
-    Area =paste(sep="",State.Province,"-", County),
-    url = paste0("https://www.allaboutbirds.org/guide/", gsub(" ","_",Common.Name), "/id"),
-    html = paste0("<a href=", "\"", url, "\"", "target=", "\"", "blank", "\"",  ">", "All About Birds", "</a>"),
-    id=paste(Common.Name, Date, sep =" -- "))
-
-table<-bird %>% dplyr::select(Common.Name, Count, Scientific.Name, Location, Area, Date)
-bird1<-bird
-lat_recent<-bird %>% filter (Date==max(Date)) %>% dplyr::select (lat)
-lat_recent<-lat_recent[1,]
-lat_recent <-lat_recent + .005
-lon_recent<-bird%>% filter (Date==max(Date)) %>% dplyr::select (lon)
-lon_recent<-lon_recent[1,]
+#custom topographic map created with Mapbox
+topo <- "https://api.mapbox.com/styles/v1/reidhaefer/cizzrfkq7007d2ss1ob7e2j43/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmVpZGhhZWZlciIsImEiOiJjaW80bW92cGowMW8zdjRrcWlsMzg5dGVjIn0.TxdQscN__5Nlu_jSYxZplA"
+mb_attribution <- "<a href='https://www.mapbox.com/map-feedback/'>Mapbox</a> <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
 
 #custom base map map created with Mapbox
-base_map <- "https://api.mapbox.com/styles/v1/reidhaefer/cipbjqldq0017cvnfmduk5unx/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmVpZGhhZWZlciIsImEiOiJjaW80bW92cGowMW8zdjRrcWlsMzg5dGVjIn0.TxdQscN__5Nlu_jSYxZplA"
+base_map <- "https://api.mapbox.com/styles/v1/reidhaefer/cj04a1fmm00332sroid5qzzwb/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmVpZGhhZWZlciIsImEiOiJjaW80bW92cGowMW8zdjRrcWlsMzg5dGVjIn0.TxdQscN__5Nlu_jSYxZplA"
 mb_attribution <- "<a href='https://www.mapbox.com/map-feedback/'>Mapbox</a> <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
 
-#custom inset map created with Mapbox
-inset_map <- "https://api.mapbox.com/styles/v1/reidhaefer/cj04a1fmm00332sroid5qzzwb/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmVpZGhhZWZlciIsImEiOiJjaW80bW92cGowMW8zdjRrcWlsMzg5dGVjIn0.TxdQscN__5Nlu_jSYxZplA"
-mb_attribution <- "<a href='https://www.mapbox.com/map-feedback/'>Mapbox</a> <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
-
-leaflet (width=900, height=700) %>%
- addPopups(lng=lon_recent, lat = lat_recent, "recent observation", options = popupOptions(closeButton = FALSE)) %>%
-   addProviderTiles(providers$OpenStreetMap.BlackAndWhite) %>%
-    addTiles(urlTemplate = base_map, attribution = mb_attribution)%>%
-    addMarkers(bird$lon, bird$lat, 
-               popup=paste(sep="","<b>", bird$Common.Name,"</b>",
-                           "<br/>","<font size=2 color=#B40404>","Scientific Name: ","</font>" ,bird$Scientific.Name,
-                           "<br/>","<font size=2 color=#B40404>", "Date: ", "</font>", bird$Date,
-                           "<br/>","<font size=2 color=#B40404>","Number Observed: ","</font>", bird$Count,
-                           "<br/>","<font size=2 color=#B40404>","Location: ","</font>", bird$Location,
-                           "<br/>","<font size=2 color=#B40404>","Region: ","</font>", bird$Area,
-                           "<br/>", "<font size=2 color=#B40404>", "More Info About This Bird @ ", "</font>",bird$html),
-               clusterOptions = markerClusterOptions())  %>%
-    addMiniMap(toggleDisplay = TRUE, tiles=providers$OpenStreetMap.BlackAndWhite) %>%
-   addEasyButton(easyButton(icon="fa-globe", title="Zoom to Level 1", onClick=JS("function(btn, map){ map.setZoom(3); }"))) %>%
-    addLegend("topright", title= "Recent Bird Observations", colors= "#3487db", labels= "birds observed")
-
+leaflet(width=900, height=700) %>%
+ # addMarkers(
+   # lng = -121.8144, lat = 48.7767,
+   # label = "Label w/o surrounding box",
+   # labelOptions = labelOptions(noHide = T, textOnly = TRUE)) %>%
+  addPopups(-120.098557, 38.946174, "recent trip", options = popupOptions(closeButton = FALSE)) %>%
+  addTiles() %>%
+ # addProviderTiles(providers$OpenStreetMap.BlackAndWhite) %>%
+ # addTiles(urlTemplate = base_map, attribution = mb_attribution, group="Base Map") %>%
+ # addTiles(urlTemplate = topo, attribution = mb_attribution, group="Topographic") %>%
+ # addProviderTiles("Esri.WorldImagery", group="Satellite") %>%
+  addPolylines(data=all1, weight=4, color="red", label=~paste(name,"-",general.area),
+               popup=paste(sep="<br/>",paste("<b>Tour Name:</b> ",all1$name),
+                           paste("<b>Date:</b> ",all1$date),
+                           paste("<b>Location:</b> ",all1$general.area),
+                           paste("<b>Distance:</b> ",all1$distance..mile., "miles"),
+                           paste("<b>Elevation Gained:</b> ",all1$elevation.gain..ft., "feet"),
+                           paste("<b>Weather:</b> ",all1$weather),
+                           paste("<b>Avalanche Forecast:</b> ",all1$nwac.avy.rating),
+                           paste0("<a href=", "\"", all1$photos, "\"", "target=", "\"","blank", "\"", ">","Photos" ,"</a>")),
+               highlightOptions = highlightOptions(color = "#02f9dd", weight = 2, bringToFront = TRUE)) %>%
+  addMiniMap(toggleDisplay = TRUE, tiles=providers$OpenStreetMap.BlackAndWhite) %>%
+  addEasyButton(easyButton(icon="fa-globe", title="Zoom to Level 1", onClick=JS("function(btn, map){ map.setZoom(6); }"))) %>%
+  addLegend("topright", title= "Backcountry Ski Tours", colors= "#c60905", labels= "ski tour") #%>%
+  #addLayersControl(baseGroups = c("Topographic","Base Map",  "Satellite"), options = layersControlOptions(collapsed = FALSE))
 ```
 
-## List of Observations
+```{r warning=F, message=F}
+data_table<-all1 %>% 
+  data.frame() %>% 
+  dplyr::select(date, general.area, tour.name, nwac.avy.rating, weather, duration, elevation.gain..ft., distance..mile., photos ) %>%
+  mutate(photos = paste0("<a href=", "\"", photos, "\"", "target=", "\"","blank", "\"", ">", tour.name, "</a>"),
+  distance..mile. = paste(distance..mile., "miles"),
+elevation.gain..ft.= paste(elevation.gain..ft., "ft"))
+colnames(data_table)<-c("Date", "Area", "Tour Name", "Avalanche Danger", "Weather", "Duration", "Elevation Gain", "Distance" ,"Photos")
+data_table <- data_table %>%
+  mutate(Date = as.Date(Date, "%m/%d/%Y"))
+data_table<-data_table[order(as.Date(data_table$Date, format="%m/%d/%Y"), decreasing = TRUE),]
+data_table$Date<-as.Date(data_table$Date, "%m/%d/%Y")
+data_table$Date<-format(data_table$Date, "%B %d, %Y")
+data_table <- data_table[complete.cases(data_table),]
 
-```{r}
-
-bird1$Date<-ymd(bird1$Date)
-
-bird_table<-bird1 %>% data.frame() %>%
-                         group_by(Common.Name, url) %>% 
-                         summarise(Count=sum(Count), 
-                                   Location=paste(unique(State.Province), collapse=" & "),mydates=format(max(Date), '%Y/%m/%d')) %>%
-  mutate(Location= case_when( Location=="US-WA" ~ "Washington State",
-                              Location=="US-OR"~"Oregon",
-                              Location=="US-MT"~"Montana",
-                              Location=="US-CA"~"California",
-                              Location=="MX-BCS"~"Baja, Mexico",
-                              Location=="CA-BC"~"British Columbia",
-                              TRUE~as.character(Location)),
-         url =paste0("<a href=", "\"", url, "\"","target=", "\"", "blank", "\"", ">", 
-                     Common.Name, " @ All About Birds","</a>")) %>%
-rename(`Common Name`=Common.Name, `Total Observed`=Count, Locations=Location, `More Information`=url, RecentObservation=mydates) %>% 
-      dplyr::select(`Common Name`, `Total Observed`, Locations, `More Information`, RecentObservation) %>%
-  mutate(RecentObservation=as.Date(RecentObservation, "%Y/%m/%d"))
-bird_table<-bird_table[order(bird_table$RecentObservation, decreasing = TRUE),]
-bird_table$RecentObservation<-format(bird_table$RecentObservation, "%B %d, %Y")
-bird_table<-bird_table %>% rename (`Recent Observation`=RecentObservation)
-
-DT::datatable(bird_table, rownames=FALSE, escape=FALSE, options=list(pageLength = 200, dom = 'ft'))
+DT::datatable(data_table, rownames=FALSE, escape=FALSE, options=list(pageLength = 100, dom = 'ft'))
 ```
+

@@ -5,10 +5,10 @@ image:
   caption: Photo by Reid Haefer
   focal_point: Smart
 links:
-summary: activity-based travel demand modeling
+summary: activity-based travel demand model
 tags:
 - Transportation
-title: Transport Modeling
+title: Modeling
 url_code: ""
 url_pdf: ""
 url_slides: ""
