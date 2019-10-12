@@ -6,7 +6,7 @@
 widget = "blank"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 10  # Order that this section will appear.
+weight = 1  # Order that this section will appear.
 
 title = "Harospec Data"
 subtitle = "*hare-o-spec*"
@@ -50,6 +50,6 @@ subtitle = "*hare-o-spec*"
  css_class = ""
 +++
 
-We transform **data** into meaningful **information** using innovative, cost-effective tools. Our [services] include GIS, data visualization, reporting, & analysis. The fields we [work] within vary but include urban planning, mobility, & sustainability. [Contact] us for more information and to solicit work.
+We transform **data** into meaningful **information** using innovative, cost-effective tools. Our [services](http://reidhaefer.rbind.io/#services) include GIS, data visualization, reporting, & analysis. The fields we [work](http://reidhaefer.rbind.io/#work) within vary but often include urban planning and the environment.
 
-Placeholder for more text.
+[Contact](http://reidhaefer.rbind.io/#contact) us for more information and to solicit work.
