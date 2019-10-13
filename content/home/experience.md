@@ -62,7 +62,7 @@ date_format = "Jan 2006"
   location = "Carbondale, Colorado"
   date_start = "2011-01-01"
   date_end = "2011-03-01"
-  description = "Renewable energy education research and program support."
+  description = " Assistant to the Executive Director at SEI. Work included renewable energy education and program support."
   
 [[experience]]
   title = "Communication Specialist"
@@ -71,7 +71,7 @@ date_format = "Jan 2006"
   location = "Seattle, Washington"
   date_start = "2012-09-01"
   date_end = "2013-06-15"
-  description = "Graphic design and program support for the Graduate and Professional Student Senate (GPSS)."
+  description = "Graphic design, communication, and program support for the Graduate and Professional Student Senate (GPSS)."
 
 [[experience]]
   title = "Assistant"
@@ -80,6 +80,6 @@ date_format = "Jan 2006"
   location = "Seattle, Washington"
   date_start = "2011-08-01"
   date_end = "2012-08-15"
-  description = "Client and public defender support."
+  description = "Client and lawyer support at a public defense firm."
 
 +++

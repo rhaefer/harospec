@@ -13,7 +13,7 @@ email: ""
 interests:
 - Data Science
 - Big Data
-- Transportation Modeling
+- Transportation
 - Urban Planning
 name: Reid Haefer
 organizations:
