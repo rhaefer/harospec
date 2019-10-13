@@ -5,7 +5,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 70  # Order that this section will appear.
 
-title = "Volunteer"
+title = "Other Experience"
 subtitle = ""
 
 # Date format
@@ -53,5 +53,32 @@ date_format = "Jan 2006"
   date_start = "2015-06-01"
   date_end = "2016-06-01"
   description = "Reviewed and discussed infrastructure, urban planning, and community projects and made recommendations to the City of Seattle."
+
+[[item]]
+  organization = "Air & Waste Management Association (AWMA)"
+  organization_url = "https://www.awma.org/"
+  title = "1st Place Winner: PNWIS/AWMA Environmental Challenge"
+  url = ""
+  date_start = "2009-11-01"
+  date_end = ""
+  description = ""
   
+[[item]]
+  organization = "Air & Waste Management Association (AWMA)"
+  organization_url = "https://www.awma.org/eci"
+  title = "1st Place Winner: Environmental Challenge International (ECi) Competition"
+  url = ""
+  date_start = "2010-06-01"
+  date_end = ""
+  description = ""
+  
+[[item]]
+  organization = "Solar Energy International"
+  organization_url = "https://www.solarenergy.org/"
+  title = "Records of Completion: Solar Energy Installation, Design, & Business"
+  url = ""
+  date_start = "2011-01-01"
+  date_end = ""
+  description = ""
+
 +++
