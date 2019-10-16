@@ -1,0 +1,116 @@
+---
+title: "Traffic Count Analysis to Inform Model Validation"
+author: "Reid Haefer"
+date:
+output:
+  html_document:
+    code_folding: hide
+    highlight: tango
+    number_sections: no
+    theme: yeti
+---
+
+```{css, echo=FALSE}
+div.sourceCode {
+    overflow: hidden;
+}
+```
+
+
+```{r include=FALSE, warning=F, message=F}
+knitr::opts_chunk$set(comment = NA)
+```
+
+```{r, warning=F, message=F, include=F}
+library(pacman)
+p_load(tidyverse, readxl, lubridate, purrr, janitor, scales, plotly, tmap, leaflet, DT,lubridate,sf,xfun, ggridges, ggmap)
+```
+
+```{r message=FALSE, warning=FALSE, echo=F}
+continuous<-read_csv("C:/Users/reidh/Documents/R/scratch/validation_traffic_counts/analysis_methodology/continuous.csv") %>%
+  mutate(weekday=wday(Date, label=TRUE), month=month(Date, label=TRUE), Day1=as.character(Day))
+```
+
+
+## Daily Count Distribution by Month of Year
+
+```{r warning=F, message=F, out.width="130%"}
+options(scipen=999)
+
+continuous %>%
+  group_by(Day, month) %>%
+  summarise(Count=sum(Count,na.rm=T)) %>%
+  ggplot(aes(x = Count, y = factor(month), fill=month)) +
+  ggridges::geom_density_ridges(stat = "density", aes(height = stat(density))) +
+  theme_minimal() + scale_fill_discrete() + 
+  theme(axis.title.y = element_blank(), legend.position="none", axis.text.y=element_text(size=14), axis.text.x=element_text(size=14), axis.title.x=element_blank())
+
+ggsave("C:/Users/reidh/Documents/website/reid.haefer/content/home/gallery/gallery/theme_featured.jpg")
+```
+
+```{r}
+## Count Station Map
+
+register_google(key="AIzaSyA3lBYiTffOPFATH9Brv0eJ0IR6DgXK5tY")
+
+map<-continuous %>% distinct(lat,lon, station) %>%
+  st_as_sf(coords=c("lon", "lat"), crs=4326)
+
+tahoe_map <- get_map(location = "Lake Tahoe, CA", zoom = 10)
+
+ggmap(tahoe_map) + geom_sf(data=map, aes(fill=station), color="red", size=2.6, inherit.aes = FALSE) +
+  theme(axis.text.x=element_blank(),axis.text.y=element_blank(),axis.title.x=element_blank(),axis.title.y=element_blank(),axis.ticks.x=element_blank(),axis.ticks.y=element_blank(), legend.position = "none")
+
+ggsave("C:/Users/reidh/Documents/website/reid.haefer/content/home/gallery/gallery/theme_map.jpg", height=5, width=4)
+```
+
+```{r}
+continuous %>% 
+  group_by(Day,weekday, month) %>% 
+  summarise(Count=sum(Count, na.rm=T)) %>%
+  ungroup() %>%
+  mutate(annual_median=median(c(Count))) %>%
+  group_by(weekday, month, annual_median) %>% 
+  summarise(day_month_median=median(Count)) %>%
+  ggplot(aes(month, day_month_median, group=weekday, fill=weekday)) + geom_bar(position="dodge", stat="identity") + 
+  scale_fill_manual(values=c("#08D6DA", "#06378D", "#BE0B05", "#F7A537", "#E2D103", "#35AA27", "#940CD8")) + 
+  geom_hline(aes(yintercept=annual_median),color="black",size=1,linetype="dashed") + theme_minimal() +
+  theme(axis.title.y=element_blank(),axis.title.x=element_blank(), legend.position="bottom", legend.title = element_blank()) +
+  ggtitle("Median Daily Total Counts by Day of Week and Month") +
+  geom_text(aes(2.8,annual_median,label = paste0("Annual Median: ",format(annual_median,big.mark=",")), vjust = -1.8)) +
+  scale_y_continuous(labels = scales::comma)
+
+ggsave("C:/Users/reidh/Documents/website/reid.haefer/content/home/gallery/gallery/theme_plot1.jpg")
+```
+
+```{r}
+## Modeled Days - Count Totals throughout the Summer
+
+all<-continuous %>% 
+  mutate(Day1=as.character(Day)) %>%
+  filter(month %in% c("Jun","Jul","Aug","Sep")) %>%
+  group_by(Day1) %>% 
+  summarise(Count=sum(Count, na.rm=T)) %>%
+  mutate(median=median(Count), 
+         color=case_when(Day1 %in% c("2018-06-04","2018-06-05","2018-06-06","2018-06-07",
+                                     "2018-06-11","2018-06-12","2018-06-13","2018-06-14",
+                                     "2018-08-30","2018-08-29","2018-08-28","2018-08-27",
+                                     "2018-09-10","2018-09-11", "2018-09-12","2018-09-13",
+                                     "2018-09-17","2018-09-18","2018-09-19","2018-09-20") ~ "color",
+                         TRUE ~ as.character("no_color")))
+
+all %>% ggplot(aes(Day1, Count, fill=color)) + 
+  geom_col() + 
+  geom_hline(aes(yintercept=median),color="red",size=1,linetype="dashed") +
+  geom_text(aes(30,median,label = paste0("summer daily total median: ",format(median,big.mark=",")), vjust = -1)) +
+  theme_minimal() + 
+  theme(axis.text.x=element_text(angle=45, hjust=1), axis.title.y=element_blank(), axis.title.x=element_blank(), legend.position = "none") +
+  ggtitle("Modeled Days - Count Totals throughout the Summer") +
+  scale_fill_manual(values=c("#08A498","#ABB0AF")) +
+  scale_x_discrete(breaks= c("2018-06-04", "2018-06-11","2018-08-27","2018-09-10","2018-09-17","2018-07-01","2018-07-15","2018-08-01","2018-08-15"),
+                   labels= c("2018-06-04", "2018-06-11","2018-08-27","2018-09-10","2018-09-17","2018-07-01","2018-07-15","2018-08-01","2018-08-15")) +
+  scale_y_continuous(label=scales::comma)
+
+ggsave("C:/Users/reidh/Documents/website/reid.haefer/content/home/gallery/gallery/theme_plot2.jpg", width=8, height=5)
+```
+
