@@ -3,16 +3,16 @@ title: "Backcountry Ski Tours"
 author: "Reid Haefer"
 date: 2019-07-23
 categories: ["R"]
-tags: ["R Markdown", "plot", "regression"]
+tags: ["R Markdown", "mapping", "regression"]
 ---
 
 Information about snowpack and weather conditions is important for safe and enjoyable experiences skiing in the backcountry. I track my ski tours using GAIA GPS and record information on each tour, such as elevation gain, weather, and other observations. This rmarkdown webapp displays some of the backcountry ski tours I've taken over the last few years.
 
-```{r warning=F, message=F}
+```{r warning=F, message=F, echo=F}
 library(pacman)
 p_load(gsheet, knitr,raster,leaflet,rsconnect,datasets, tidyverse,  maptools, geojsonio, tidyverse, gganimate, rgdal, ggplot2, devtools, ggthemes, gtools, scales, DT, RColorBrewer, Rserve, leaflet.extras, sf, ggmap, ggspatial)
 
-all<-geojson_read("C:/Users/reidh/Documents/website/reid.haefer/content/project/ski/all_ski_tours.geojson", what="sp") %>% st_as_sf() 
+all<-geojson_read("static/post/2015-07-23-r-rmarkdown_files/all_ski_tours.geojson", what="sp") %>% st_as_sf() 
 #load new tour geojson tracks
 #maggies<-geojson_read("ski_tours/track-31019-93430am.geojson", what="sp") %>% st_as_sf() %>%
  #mutate(name= "maggies", id=53)
@@ -60,7 +60,7 @@ leaflet(width=900, height=700) %>%
   #addLayersControl(baseGroups = c("Topographic","Base Map",  "Satellite"), options = layersControlOptions(collapsed = FALSE))
 ```
 
-```{r warning=F, message=F}
+```{r warning=F, message=F, echo=F}
 data_table<-all1 %>% 
   data.frame() %>% 
   dplyr::select(date, general.area, tour.name, nwac.avy.rating, weather, duration, elevation.gain..ft., distance..mile., photos ) %>%

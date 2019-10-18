@@ -1017,8 +1017,8 @@
 <div class="row">
   
     <div class="col-12 col-lg-4 section-heading">
-      <h1>Gallery</h1>
-      
+      <h1>Data Viz Gallery</h1>
+      <p>All visualizations were produced using cost-effective, open-sourced libraries such as ggplot2 and tmap.</p>
     </div>
     <div class="col-12 col-lg-8">
       
@@ -1045,7 +1045,7 @@
     
     
   <a data-fancybox="gallery-gallery" href="/home/gallery/gallery/theme_featured.jpg" >
-  <img src="/home/gallery/gallery/theme_featured_hu4366ddc2a87401617a2d8434571ab4fc_220423_0x190_resize_q90_lanczos.jpg" alt="">
+  <img src="/home/gallery/gallery/theme_featured_hu7c18199f144dc0979c509f0746112b73_216841_0x190_resize_q90_lanczos.jpg" alt="">
   </a>
   
     
@@ -1062,17 +1062,8 @@
     
     
     
-  <a data-fancybox="gallery-gallery" href="/home/gallery/gallery/theme_plot1.jpg" >
-  <img src="/home/gallery/gallery/theme_plot1_hu659cb325357acfa612ddecca99a9aeb6_260794_0x190_resize_q90_lanczos.jpg" alt="">
-  </a>
-  
-    
-    
-    
-    
-    
   <a data-fancybox="gallery-gallery" href="/home/gallery/gallery/theme_plot2.jpg" >
-  <img src="/home/gallery/gallery/theme_plot2_hudf25ecf9c547555f11128588d9493736_310468_0x190_resize_q90_lanczos.jpg" alt="">
+  <img src="/home/gallery/gallery/theme_plot2_hu299f3f19ea3077cd5c984ec572e2bbca_262557_0x190_resize_q90_lanczos.jpg" alt="">
   </a>
   
     
@@ -1081,7 +1072,7 @@
     
     
   <a data-fancybox="gallery-gallery" href="/home/gallery/gallery/theme_stats.jpg" >
-  <img src="/home/gallery/gallery/theme_stats_hu1238c05891f25685a1a78c4dbc18c2fc_173687_0x190_resize_q90_lanczos.jpg" alt="">
+  <img src="/home/gallery/gallery/theme_stats_hu2fbbe738028896b3b23bee3486c91743_113382_0x190_resize_q90_lanczos.jpg" alt="">
   </a>
   
 
@@ -2664,139 +2655,6 @@
     
 
   </div>
-</div>
-
-    </div>
-  </section>
-
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-  <section id="static_viz_portfolio" class="home-section wg-blank   "  >
-    <div class="container">
-      
-
-
-<div class="row">
-  
-    <div class="col-12 col-lg-4 section-heading">
-      <h1>Traffic Count Analysis to Inform Model Validation</h1>
-      
-    </div>
-    <div class="col-12 col-lg-8">
-      
-
-
-<style type="text/css">
-div.sourceCode {
-    overflow: hidden;
-}
-</style>
-<div id="daily-count-distribution-by-month-of-year" class="section level2">
-<h2>Daily Count Distribution by Month of Year</h2>
-<pre class="r"><code>options(scipen=999)
-
-continuous %&gt;%
-  group_by(Day, month) %&gt;%
-  summarise(Count=sum(Count,na.rm=T)) %&gt;%
-  ggplot(aes(x = Count, y = factor(month), fill=month)) +
-  ggridges::geom_density_ridges(stat = &quot;density&quot;, aes(height = stat(density))) +
-  theme_minimal() + scale_fill_discrete() + 
-  theme(axis.title.y = element_blank(), legend.position=&quot;none&quot;, axis.text.y=element_text(size=14), axis.text.x=element_text(size=14), axis.title.x=element_blank())</code></pre>
-<p><img src="/home/gallery/static_viz_portfolio_files/figure-html/unnamed-chunk-5-1.png" width="130%" /></p>
-<pre class="r"><code>ggsave(&quot;C:/Users/reidh/Documents/website/reid.haefer/content/home/gallery/gallery/theme_featured.jpg&quot;)</code></pre>
-<pre class="r"><code>## Count Station Map
-
-register_google(key=&quot;AIzaSyA3lBYiTffOPFATH9Brv0eJ0IR6DgXK5tY&quot;)
-
-map&lt;-continuous %&gt;% distinct(lat,lon, station) %&gt;%
-  st_as_sf(coords=c(&quot;lon&quot;, &quot;lat&quot;), crs=4326)
-
-tahoe_map &lt;- get_map(location = &quot;Lake Tahoe, CA&quot;, zoom = 10)</code></pre>
-<pre><code>Source : https://maps.googleapis.com/maps/api/staticmap?center=Lake%20Tahoe,%20CA&amp;zoom=10&amp;size=640x640&amp;scale=2&amp;maptype=terrain&amp;language=en-EN&amp;key=xxx</code></pre>
-<pre><code>Source : https://maps.googleapis.com/maps/api/geocode/json?address=Lake+Tahoe,+CA&amp;key=xxx</code></pre>
-<pre class="r"><code>ggmap(tahoe_map) + geom_sf(data=map, aes(fill=station), color=&quot;red&quot;, size=2.6, inherit.aes = FALSE) +
-  theme(axis.text.x=element_blank(),axis.text.y=element_blank(),axis.title.x=element_blank(),axis.title.y=element_blank(),axis.ticks.x=element_blank(),axis.ticks.y=element_blank(), legend.position = &quot;none&quot;)</code></pre>
-<pre><code>Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
-<p><img src="/home/gallery/static_viz_portfolio_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<pre class="r"><code>ggsave(&quot;C:/Users/reidh/Documents/website/reid.haefer/content/home/gallery/gallery/theme_map.jpg&quot;, height=5, width=4)</code></pre>
-<pre class="r"><code>continuous %&gt;% 
-  group_by(Day,weekday, month) %&gt;% 
-  summarise(Count=sum(Count, na.rm=T)) %&gt;%
-  ungroup() %&gt;%
-  mutate(annual_median=median(c(Count))) %&gt;%
-  group_by(weekday, month, annual_median) %&gt;% 
-  summarise(day_month_median=median(Count)) %&gt;%
-  ggplot(aes(month, day_month_median, group=weekday, fill=weekday)) + geom_bar(position=&quot;dodge&quot;, stat=&quot;identity&quot;) + 
-  scale_fill_manual(values=c(&quot;#08D6DA&quot;, &quot;#06378D&quot;, &quot;#BE0B05&quot;, &quot;#F7A537&quot;, &quot;#E2D103&quot;, &quot;#35AA27&quot;, &quot;#940CD8&quot;)) + 
-  geom_hline(aes(yintercept=annual_median),color=&quot;black&quot;,size=1,linetype=&quot;dashed&quot;) + theme_minimal() +
-  theme(axis.title.y=element_blank(),axis.title.x=element_blank(), legend.position=&quot;bottom&quot;, legend.title = element_blank()) +
-  ggtitle(&quot;Median Daily Total Counts by Day of Week and Month&quot;) +
-  geom_text(aes(2.8,annual_median,label = paste0(&quot;Annual Median: &quot;,format(annual_median,big.mark=&quot;,&quot;)), vjust = -1.8)) +
-  scale_y_continuous(labels = scales::comma)</code></pre>
-<p><img src="/home/gallery/static_viz_portfolio_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<pre class="r"><code>ggsave(&quot;C:/Users/reidh/Documents/website/reid.haefer/content/home/gallery/gallery/theme_plot1.jpg&quot;)</code></pre>
-<pre><code>Saving 7 x 5 in image</code></pre>
-<pre class="r"><code>## Modeled Days - Count Totals throughout the Summer
-
-all&lt;-continuous %&gt;% 
-  mutate(Day1=as.character(Day)) %&gt;%
-  filter(month %in% c(&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;)) %&gt;%
-  group_by(Day1) %&gt;% 
-  summarise(Count=sum(Count, na.rm=T)) %&gt;%
-  mutate(median=median(Count), 
-         color=case_when(Day1 %in% c(&quot;2018-06-04&quot;,&quot;2018-06-05&quot;,&quot;2018-06-06&quot;,&quot;2018-06-07&quot;,
-                                     &quot;2018-06-11&quot;,&quot;2018-06-12&quot;,&quot;2018-06-13&quot;,&quot;2018-06-14&quot;,
-                                     &quot;2018-08-30&quot;,&quot;2018-08-29&quot;,&quot;2018-08-28&quot;,&quot;2018-08-27&quot;,
-                                     &quot;2018-09-10&quot;,&quot;2018-09-11&quot;, &quot;2018-09-12&quot;,&quot;2018-09-13&quot;,
-                                     &quot;2018-09-17&quot;,&quot;2018-09-18&quot;,&quot;2018-09-19&quot;,&quot;2018-09-20&quot;) ~ &quot;color&quot;,
-                         TRUE ~ as.character(&quot;no_color&quot;)))
-
-all %&gt;% ggplot(aes(Day1, Count, fill=color)) + 
-  geom_col() + 
-  geom_hline(aes(yintercept=median),color=&quot;red&quot;,size=1,linetype=&quot;dashed&quot;) +
-  geom_text(aes(30,median,label = paste0(&quot;summer daily total median: &quot;,format(median,big.mark=&quot;,&quot;)), vjust = -1)) +
-  theme_minimal() + 
-  theme(axis.text.x=element_text(angle=45, hjust=1), axis.title.y=element_blank(), axis.title.x=element_blank(), legend.position = &quot;none&quot;) +
-  ggtitle(&quot;Modeled Days - Count Totals throughout the Summer&quot;) +
-  scale_fill_manual(values=c(&quot;#08A498&quot;,&quot;#ABB0AF&quot;)) +
-  scale_x_discrete(breaks= c(&quot;2018-06-04&quot;, &quot;2018-06-11&quot;,&quot;2018-08-27&quot;,&quot;2018-09-10&quot;,&quot;2018-09-17&quot;,&quot;2018-07-01&quot;,&quot;2018-07-15&quot;,&quot;2018-08-01&quot;,&quot;2018-08-15&quot;),
-                   labels= c(&quot;2018-06-04&quot;, &quot;2018-06-11&quot;,&quot;2018-08-27&quot;,&quot;2018-09-10&quot;,&quot;2018-09-17&quot;,&quot;2018-07-01&quot;,&quot;2018-07-15&quot;,&quot;2018-08-01&quot;,&quot;2018-08-15&quot;)) +
-  scale_y_continuous(label=scales::comma)</code></pre>
-<p><img src="/home/gallery/static_viz_portfolio_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<pre class="r"><code>ggsave(&quot;C:/Users/reidh/Documents/website/reid.haefer/content/home/gallery/gallery/theme_plot2.jpg&quot;)</code></pre>
-<pre><code>Saving 7 x 5 in image</code></pre>
-</div>
-
-    </div>
-  
 </div>
 
     </div>
