@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 20  # Order that this section will appear.
 
 title = "Work"
-subtitle = ""
+subtitle = "A few project examples, which highlight our emphasis on web-based data visualiation and automated analysis."
 
 [content]
   # Page type to display. E.g. project.

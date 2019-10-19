@@ -73,13 +73,4 @@ date_format = "Jan 2006"
   date_end = "2013-06-15"
   description = "Graphic design, communication, and program support for the Graduate and Professional Student Senate (GPSS)."
 
-[[experience]]
-  title = "Assistant"
-  company = "The Defenders Association"
-  company_url = "http://defender.org/"
-  location = "Seattle, Washington"
-  date_start = "2011-08-01"
-  date_end = "2012-08-15"
-  description = "Client and lawyer support at a public defense firm."
-
 +++
