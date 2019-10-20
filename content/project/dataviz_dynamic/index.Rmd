@@ -5,7 +5,7 @@ image:
   caption: 
   focal_point: Smart
 links:
-summary: dynamic data visualization
+summary: web-based visualization
 tags:
 - GIS
 - Urban Planning
@@ -28,7 +28,7 @@ knitr::opts_chunk$set(comment = NA)
 
 ```{r, warning=F, message=F, include=F}
 library(pacman)
-p_load(tidyverse, readxl, lubridate, purrr, janitor, scales, plotly, tmap, leaflet, DT,lubridate,sf,xfun, ggridges, ggmap)
+p_load(tidyverse, readxl, lubridate, purrr, janitor, scales, plotly, tmap, leaflet, DT,lubridate,sf,xfun, ggridges, ggmap,tidycensus, tidyverse,leaflet, geojsonio, sf, tmap, tmaptools, DT, xfun,ceramic)
 ```
 
 ```{r message=FALSE, warning=FALSE, echo=F}
@@ -69,6 +69,75 @@ ggplot(aes(x = weekday, y = Count, color = weekday)) +
   scale_color_manual(values=c("#08D6DA", "#06378D", "#BE0B05", "#F7A537", "#DEF006", "#35AA27", "#940CD8")), height=800) %>%
   layout(legend = list(orientation = "h", x = 0.0, y = -0.2)) %>%
   style(legendgroup = NULL)
+```
+
+## Interactive Maps
+```{r, warning=F, message=F, echo=F, out.width="130%"}
+census_api_key("680398dff0a2f4c566f10c95888da7f25e55147b")
+options(tigris_use_cache = TRUE)
+
+income <- c(`Less than $10,000`= "B19001_002",
+                    `$10,000 to $14,999`= "B19001_003",
+                    `$15,000 to $19,999` = "B19001_004",
+                    `$20,000 to $24,999` = "B19001_005",
+                    `$25,000 to $29,999` = "B19001_006",
+                    `$30,000 to $34,999` = "B19001_007",
+                    `$35,000 to $39,999` = "B19001_008", 
+                    `$40,000 to $44,999` = "B19001_009",
+                    `$45,000 to $49,999` = "B19001_010",
+                    `$50,000 to $59,999` = "B19001_011", 
+                    `$60,000 to $74,999` = "B19001_012",
+                    `$75,000 to $99,999` = "B19001_013",
+                    `$100,000 to $124,999` = "B19001_014", 
+                    `$125,000 to $149,999` = "B19001_015",
+                    `$150,000 to $199,999` = "B19001_016", 
+                    `$200,000 or more` = "B19001_017")
+  dg_acs <- get_acs(geography = "tract", year=2016, 
+                variables =  income, geometry=T,
+                state = "NV", county="Douglas", summary_var = "B19001_001") %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate", county="Douglas County")
+  wa_acs <- get_acs(geography = "tract", year=2016, 
+                variables =  income, geometry=T,
+                state = "NV", county="Washoe", summary_var = "B19001_001") %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate", county="Washoe County")
+ed_acs <- get_acs(geography = "tract", year=2016, 
+                variables =  income, geometry = T,
+                state = "CA",county="El Dorado", summary_var = "B19001_001") %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate", county="El Dorado County") 
+pla_acs <- get_acs(geography = "tract", year=2016, 
+                variables =  income, geometry = T,
+                state = "CA",county="Placer", summary_var = "B19001_001") %>%
+  mutate(data_source="2016 ACS 2016 5-year Estimate", county="Placer County") 
+
+income1<-rownames_to_column(data.frame(income), "name") %>% dplyr::select(name) %>% pull()
+
+all<- bind_rows( pla_acs,ed_acs,dg_acs ,wa_acs) %>%
+  mutate(income2=case_when(variable=='Less than $10,000' ~10000,
+                   variable== '$10,000 to $14,999'~ 12500,
+                    variable=='$15,000 to $19,999' ~ 17500,
+                    variable=='$20,000 to $24,999' ~ 22500,
+                    variable=='$25,000 to $29,999' ~ 27500,
+                    variable=='$30,000 to $34,999' ~ 32500,
+                    variable=='$35,000 to $39,999' ~ 37500,
+                    variable=='$40,000 to $44,999' ~ 42500,
+                    variable=='$45,000 to $49,999' ~ 47500,
+                    variable=='$50,000 to $59,999' ~ 55000, 
+                    variable=='$60,000 to $74,999' ~ 67500,
+                    variable=='$75,000 to $99,999' ~ 87500,
+                    variable=='$100,000 to $124,999' ~ 112500, 
+                    variable=='$125,000 to $149,999' ~ 137500,
+                    variable=='$150,000 to $199,999' ~ 175000,
+                    variable=='$200,000 or more'  ~ 200000),
+           total=estimate*income2) %>%
+  filter(total !=0) %>%
+  group_by(GEOID,county) %>%
+  summarise(total=sum(total), estimate=sum(estimate), average=total/estimate) %>%
+   filter(!GEOID %in% c("32031940200","32031003501"))
+tmap_mode("view")
+tm_shape(all) +
+    tm_polygons("average", palette = "RdYlBu",title="Average Household Income") +
+    tm_facets(by = "county") +
+  tm_layout(legend.show=FALSE)
 ```
 
 ## Raw Observations Grouped

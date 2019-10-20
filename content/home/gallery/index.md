@@ -6,7 +6,7 @@ active = true  # Activate this widget? true/false
 weight = 25  # Order that this section will appear.
 
 title = "Data Viz Gallery"
-subtitle = "All visualizations were produced using cost-effective, open-sourced libraries such as ggplot2."
+subtitle = "Our visualizations are produced using cost-effective, open-sourced libraries such as ggplot2 which are reproducible and transparent."
 +++
 
 {{< gallery >}}
