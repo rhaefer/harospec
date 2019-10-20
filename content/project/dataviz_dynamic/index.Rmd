@@ -55,20 +55,21 @@ continuous %>%
 
 ## Box & Whisker Plots
 
-```{r warning=F, message=F, echo=F, out.width="150%", out.height="100%"}
+```{r warning=F, message=F, echo=F, out.width="150%"}
 options(scipen=999)
 
 ggplotly(
 continuous %>%
   group_by(Day,month, weekday) %>%
   summarise(Count=sum(Count,na.rm=T)) %>%
-ggplot(aes(x = weekday, y = Count, color = weekday)) +
+ggplot(aes(x = weekday, y = Count, color = weekday)) + 
+  theme_dark() +
   theme(axis.text.x=element_blank(), axis.title.x=element_blank(), axis.title.y=element_blank(), axis.ticks.x=element_blank()) +
   geom_boxplot(outlier.shape = NA) +
+  scale_y_continuous(labels=scales::comma)+
   facet_grid(~month) + theme(legend.position="bottom") +
-  scale_color_manual(values=c("#08D6DA", "#06378D", "#BE0B05", "#F7A537", "#DEF006", "#35AA27", "#940CD8")), height=800) %>%
-  layout(legend = list(orientation = "h", x = 0.0, y = -0.2)) %>%
-  style(legendgroup = NULL)
+  scale_color_manual(values=c("#08D6DA", "#06378D", "#BE0B05", "#F7A537", "#DEF006", "#35AA27", "#940CD8")), height=600) %>%
+  layout(legend = list(orientation = "h", x = 0.0, y = -0.2)) 
 ```
 
 ## Interactive Maps
@@ -146,7 +147,7 @@ tm_shape(all) +
 ggplotly(
   continuous %>% group_by(Day, station) %>% 
     summarise(Count=sum(Count)) %>% ggplot(aes(Day, Count, group=station, fill=station)) + 
-    geom_col()+theme_minimal() + theme(axis.title.x=element_blank(), legend.position = "none", axis.title.y=element_blank()) + scale_x_date() 
+    geom_col()+theme_minimal() + theme(axis.title.x=element_blank(), legend.position = "none", axis.title.y=element_blank()) + scale_y_continuous(labels=scales::comma) + scale_x_date() 
   )
 ```
 
@@ -159,7 +160,7 @@ all_days<- continuous %>%
   ungroup()
 
 ggplotly(
-  ggplot(all_days, aes(Day,Count, group=weekday, color=weekday)) + geom_line() + theme_minimal() + theme(axis.title.y = element_blank())) %>%
+  ggplot(all_days, aes(Day,Count, group=weekday, color=weekday)) + geom_line() + theme_minimal() + theme(axis.title.y = element_blank())+scale_y_continuous(labels=scales::comma)) %>%
   layout(legend = list(orientation = "h", x = 0.0, y = -0.3)) 
 
 ```
@@ -187,19 +188,19 @@ ggplotly(
 continuous %>% 
   group_by(wday_wknd, ext_int,Day) %>% 
   summarise(Count=sum(Count, na.rm=T)) %>%
-  ggplot(aes(Day,Count)) + geom_line(size=1) +
+  ggplot(aes(Day,Count)) + geom_line(size=.7, color="white") +
   facet_grid(wday_wknd ~ ext_int ) +
+  theme_dark() +
   theme(legend.position="bottom", legend.title = element_blank(), axis.title.x=element_blank(), axis.title.y=element_blank(),
         axis.text.x=element_text(angle=34, hjust=1)) +
-  scale_y_continuous(labels=scales::comma)
-)
+  scale_y_continuous(labels=scales::comma) )
 ```
 
 ## Tile Grids
 
 ```{r warning=F, message=F, echo=F, out.width="140%"}
-ggplotly(
-continuous %>%
+
+test<-continuous %>%
   group_by(Day, weekday, month, station, ext_int) %>%
   summarise(Count=sum(Count)) %>%
   mutate(dummy="") %>%
@@ -207,7 +208,10 @@ ggplot(aes(dummy,station,  fill = Count)) +
   geom_tile(colour = "white") + 
   facet_grid(weekday~month) + 
   scale_fill_gradient(low="red", high="green") +
-  theme(axis.ticks.x=element_blank(), axis.title.x=element_blank(), axis.title.y=element_blank(), axis.text.y=element_text(size=7), axis.text.x=element_blank()), height = 950)
+  theme_dark() +
+  theme(axis.ticks.x=element_blank(), axis.title.x=element_blank(), axis.title.y=element_blank(), axis.text.y=element_text(size=7), axis.text.x=element_blank(),legend.position = "none")
+ggplotly(test, height = 950) %>%
+  layout(legend = list(orientation = "h", x = 0.4, y = -0.2))
 ```
 
 
