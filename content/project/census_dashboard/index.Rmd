@@ -39,8 +39,6 @@ block<-geojson_read("https://opendata.arcgis.com/datasets/85a2e8e4bf994742a5855c
 
 ### Summary of Tahoe-Area Census Data
 
-________________________________________________________________________
-
 #### Population
 ```{r, message=F, warning =F, echo=F}
   nv_acs <- get_acs(geography = "tract", year=2016, 
@@ -74,7 +72,6 @@ rownames=F,options=list(dom='t',
 colnames = c('Category', 'Code', 'Total', 'Margin of Error','Source'))
 ```
 
-________________________________________________________________________
 
 #### Households
 ```{r, message=F, warning =F, echo=F}
@@ -108,7 +105,6 @@ rownames=F,options=list(dom='t',
 colnames = c('Category', 'Code', 'Total', 'Margin of Error','Source'))
 ```
 
-________________________________________________________________________
 
 #### Housing 
 ```{r, message=F, warning=F, echo=F}
@@ -149,7 +145,6 @@ rownames=F,options=list(dom = 'Bfrtip',buttons = c('csv','pdf'),
 colnames = c('Category', 'Code', 'Total', 'Margin of Error','Source'))
 ```
 
-________________________________________________________________________
 
 #### Income
 ```{r, message=F, warning=F, echo=F}
@@ -195,7 +190,6 @@ rownames=F,options=list(pageLength = 8, dom = 'Bfrtip',buttons = c('csv','pdf'),
 colnames = c('Category', 'Variable', 'Number of Households', 'Margin of Error','Total Households' ,'Source'))
 ```
 
-________________________________________________________________________
 
 #### School Enrollment
 ```{r, message=F, warning =F, echo=F}
@@ -222,7 +216,6 @@ rownames=F,options=list(dom='t',
 colnames = c('Category', 'Code', 'Total', 'Margin of Error','Source'))
 ```
 
-________________________________________________________________________
 
 #### Median Gross Rental Costs
 ```{r, message=F, warning=F , echo=F}
@@ -278,7 +271,6 @@ rownames=F,options=list(pageLength = 8, dom = 'Bfrtip',buttons = c('csv','pdf'),
 colnames= c ('Category','Variable', 'Estimate', 'Margin of Error', 'Total Estimate', 'Source'))
 ```
 
-________________________________________________________________________
 
 #### Rent as Percent of Household Income
 ```{r, message=F, warning=F, echo=F }
@@ -316,7 +308,6 @@ rownames=F,options=list(pageLength = 10, dom = 'Bfrtip',buttons = c('csv','pdf')
 colnames= c ('Category','Number of Households', 'Estimate', 'Margin of Error', 'Total Househholds', 'Source'))
 ```
 
-________________________________________________________________________
 
 #### Household Size
 
@@ -350,7 +341,6 @@ rownames=F,options=list(dom = 'Bfrtip',buttons = c('csv','pdf'), searching = FAL
   class = 'cell-border stripe', colnames = c('Variable Name', 'Number of Households', 'Total Regional Households','Source'))
 ```
 
-________________________________________________________________________
 
 #### Demographics: Race
 
@@ -380,7 +370,6 @@ rownames=F,options=list(dom = 'Bfrtip',buttons = c('csv','pdf'), searching = FAL
   class = 'cell-border stripe', colnames = c('Variable Name', 'Population Count', 'Regional Population','Source'))
 ```
 
-________________________________________________________________________
 
 #### Travel Mode to Work
 ```{r, message=F, warning=F, echo=F }
