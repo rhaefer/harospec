@@ -42,43 +42,19 @@
   </url>
   
   <url>
-    <loc>/post/2015-07-23-r-rmarkdown/</loc>
-    <lastmod>2019-07-23T00:00:00+00:00</lastmod>
+    <loc>/post/bird/</loc>
+    <lastmod>2019-06-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
-    <lastmod>2019-07-23T00:00:00+00:00</lastmod>
+    <loc>/tags/personal/</loc>
+    <lastmod>2019-06-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-07-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <lastmod>2019-07-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/r-markdown/</loc>
-    <lastmod>2019-07-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/mapping/</loc>
-    <lastmod>2019-07-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/regression/</loc>
-    <lastmod>2019-07-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-06-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -140,14 +116,8 @@
   </url>
   
   <url>
-    <loc>/post/bird/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/personal/</loc>
-    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>/post/ski/</loc>
+    <lastmod>2016-01-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -185,6 +155,11 @@
   <url>
     <loc>/tags/source-themes/</loc>
     <lastmod>2014-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
     <priority>0</priority>
   </url>
   

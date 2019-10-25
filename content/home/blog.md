@@ -7,8 +7,8 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 25  # Order that this section will appear.
 
-title = "Recent Posts"
-subtitle = ""
+title = "Posts"
+subtitle = "Examples of applying data science to manage and visualize recreational projects."
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
