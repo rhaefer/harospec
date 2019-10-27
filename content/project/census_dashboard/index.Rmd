@@ -14,10 +14,10 @@ url_pdf: ""
 url_video: ""
 ---
 
-The U.S. Census is a primary source of the socioeconomic data used for urban planning and demographic anlaysis. But the data is often difficult to acquire and display from the census database. This tool is an example of acquirng the data from the census api using the tidycensus R library and displaying the information using rmarkdown.
+The U.S. Census is a primary source of the socioeconomic data used for urban planning and demographic anlaysis. But the data is often difficult to acquire, manage, and interpret. This tool is an example of acquirng the data from the census api using the tidycensus R library and displaying the information using rmarkdown.
 
 
-```{r, out.width="950px", echo=FALSE, warning=FALSE, error=FALSE}
+```{r, out.width="1000px", echo=FALSE, warning=FALSE, error=FALSE}
 library(knitr)
 knitr::include_url("https://rhaefer.github.io/census_101.html", height = "800px")
 ```

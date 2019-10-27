@@ -5,7 +5,7 @@
     <link>/authors/</link>
       <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 01 Jun 2014 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
     <image>
       <url>/img/icon-192.png</url>
       <title>Authors</title>
@@ -14,16 +14,8 @@
     
     <item>
       <title></title>
-      <link>/authors/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
-      <guid>/authors/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>/authors/admin/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/authors/admin/</guid>
       <description>&lt;p&gt;Reid Haefer is an urban planner that specializes in using data science to support decision-making for transportation and land use planning. He has over 6-years experience working for large and small public agencies on projects that include travel demand modeling, regional transportation planning, forecasting, project analysis, and land use planning. His technnical interests include GIS, data visualization, and open-source computer programming. Reid has a bachelor&amp;rsquo;s degree from Western Washington University and a master&amp;rsquo;s degree from the University of Washington. He currently works for the Tahoe Regional Planning Agency.&lt;/p&gt;
 </description>

@@ -1,9 +1,8 @@
 ---
-date: "2016-04-27T00:00:00Z"
+date: "2019-01-01T00:00:00Z"
 external_link: ""
 image:
   caption: 
-  focal_point: Smart
 links:
 summary: web-based visualization
 tags:
