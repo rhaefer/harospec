@@ -1,5 +1,4 @@
 ---
-date: "2019-01-01T00:00:00Z"
 external_link: ""
 image:
   caption: 
@@ -28,7 +27,7 @@ knitr::opts_chunk$set(comment = NA)
 
 ```{r, warning=F, message=F, include=F}
 library(pacman)
-p_load(tidyverse, readxl, lubridate, purrr, janitor, scales, plotly, tmap, leaflet, DT,lubridate,sf,xfun, ggridges, ggmap,tidycensus, tidyverse,leaflet, geojsonio, sf, tmap, tmaptools, DT, xfun,ceramic)
+p_load(tidyverse, readxl, lubridate, purrr, janitor, scales, plotly, tmap, leaflet, DT,lubridate,sf,xfun, ggridges, ggmap,tidycensus, tidyverse,leaflet, geojsonio, sf, tmap, tmaptools, DT, xfun,ceramic, gganimate, tidyverse, geojsonio,  gifski, transformr, ggspatial)
 ```
 
 ```{r message=FALSE, warning=FALSE, echo=F}
@@ -145,6 +144,21 @@ continuous %>%
         axis.text.x=element_text(size=12), legend.position = "none") 
 )
 ```
+
+```{r, warning=F, message=F, echo=F, out.width="170%"}
+crash <- geojson_read("https://opendata.arcgis.com/datasets/8753e4259d7b464ead6a4b5be99f2346_16.geojson", what="sp") %>%
+  st_as_sf() %>%
+  mutate(date=as.Date(date))
+
+ggplot(crash)+ annotation_map_tile(zoom = 12) +geom_sf() + 
+  theme(axis.text = element_blank(), axis.ticks = element_blank()) +
+ transition_time(date) + ease_aes('linear') +
+  labs(title = 'Date: {frame_time}') +
+  shadow_mark(alpha=0.3, size=0.5, colour="blue") +
+  ggtitle ("Tahoe Vehicle Crashes - 2013-2017")
+```
+
+
 
 ## Interactive Maps
 ```{r, warning=F, message=F, echo=F, out.width="130%"}
