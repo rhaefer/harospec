@@ -13,6 +13,14 @@
     </image>
     
     <item>
+      <title>Modeling</title>
+      <link>/tags/modeling/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/modeling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Transportation</title>
       <link>/tags/transportation/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
@@ -21,34 +29,98 @@
     </item>
     
     <item>
-      <title>Personal</title>
-      <link>/tags/personal/</link>
+      <title>Data Collection</title>
+      <link>/tags/data-collection/</link>
       <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/personal/</guid>
+      <guid>/tags/data-collection/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Urban Planning</title>
-      <link>/tags/urban-planning/</link>
-      <pubDate>Sat, 27 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/urban-planning/</guid>
+      <title>Data Viz</title>
+      <link>/tags/data-viz/</link>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/data-viz/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GIS</title>
       <link>/tags/gis/</link>
-      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 22 Jun 2019 00:00:00 +0000</pubDate>
       <guid>/tags/gis/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Source Themes</title>
-      <link>/tags/source-themes/</link>
+      <title>Data Munging</title>
+      <link>/tags/data-munging/</link>
+      <pubDate>Sat, 27 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/data-munging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Science</title>
+      <link>/tags/data-science/</link>
+      <pubDate>Sat, 27 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/data-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Statistics</title>
+      <link>/tags/statistics/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reporting</title>
+      <link>/tags/reporting/</link>
+      <pubDate>Wed, 01 Aug 2018 00:00:00 +0000</pubDate>
+      <guid>/tags/reporting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Socioeconomics</title>
+      <link>/tags/socioeconomics/</link>
+      <pubDate>Sat, 27 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>/tags/socioeconomics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Urban Planning</title>
+      <link>/tags/urban-planning/</link>
+      <pubDate>Sat, 27 Jan 2018 00:00:00 +0000</pubDate>
+      <guid>/tags/urban-planning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dashboards</title>
+      <link>/tags/dashboards/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>/tags/dashboards/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Analysis</title>
+      <link>/tags/analysis/</link>
       <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
-      <guid>/tags/source-themes/</guid>
+      <guid>/tags/analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Research</title>
+      <link>/tags/research/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
+      <guid>/tags/research/</guid>
       <description></description>
     </item>
     

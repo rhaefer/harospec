@@ -7,6 +7,8 @@ links:
 summary: travel survey
 tags:
 - Transportation
+- Reporting
+- Data Collection
 title: Reporting
 url_code: ""
 url_pdf: ""

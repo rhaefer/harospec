@@ -14,7 +14,8 @@ publication_types:
 publishDate: "2014-06-01T00:00:00Z"
 summary: Research for the City of Seattle published by the U.S. Department of Energy, 2014
 tags:
-- Source Themes
+- Research
+- Analysis
 title: Energy Efficient Public Street Lighting
 url_code: ""
 url_dataset: ""

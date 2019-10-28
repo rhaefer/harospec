@@ -19,6 +19,12 @@
   </url>
   
   <url>
+    <loc>/tags/modeling/</loc>
+    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/project/travel_demand_modeling/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
   </url>
@@ -42,14 +48,26 @@
   </url>
   
   <url>
-    <loc>/post/bird/</loc>
+    <loc>/tags/data-collection/</loc>
     <lastmod>2019-06-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/personal/</loc>
+    <loc>/tags/data-viz/</loc>
     <lastmod>2019-06-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/gis/</loc>
+    <lastmod>2019-06-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/bird/</loc>
+    <lastmod>2019-06-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -58,14 +76,20 @@
   </url>
   
   <url>
-    <loc>/project/munging/</loc>
+    <loc>/tags/data-munging/</loc>
     <lastmod>2019-04-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/urban-planning/</loc>
+    <loc>/tags/data-science/</loc>
     <lastmod>2019-04-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/project/munging/</loc>
+    <lastmod>2019-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -85,8 +109,14 @@
   </url>
   
   <url>
-    <loc>/tags/gis/</loc>
+    <loc>/tags/statistics/</loc>
     <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/reporting/</loc>
+    <lastmod>2018-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -111,6 +141,24 @@
   </url>
   
   <url>
+    <loc>/tags/socioeconomics/</loc>
+    <lastmod>2018-01-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/urban-planning/</loc>
+    <lastmod>2018-01-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/dashboards/</loc>
+    <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/project/zoning/</loc>
     <lastmod>2016-04-27T00:00:00+00:00</lastmod>
   </url>
@@ -118,6 +166,12 @@
   <url>
     <loc>/post/ski/</loc>
     <lastmod>2016-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/analysis/</loc>
+    <lastmod>2014-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -136,7 +190,7 @@
   </url>
   
   <url>
-    <loc>/tags/source-themes/</loc>
+    <loc>/tags/research/</loc>
     <lastmod>2014-06-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

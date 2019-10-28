@@ -14,7 +14,9 @@ publication_types:
 publishDate: "2014-06-01T00:00:00Z"
 summary: Master's Thesis from the University of Washington, 2014
 tags:
-- Source Themes
+- Research
+- Analysis
+- Statistics
 title: City Growth & Electricity Consumption
 url_code: ""
 url_dataset: ""

@@ -7,7 +7,8 @@ links:
 summary: web-based visualization
 tags:
 - GIS
-- Urban Planning
+- Data Viz
+- Statistics
 title: Data Viz
 url_code: ""
 url_pdf: ""
