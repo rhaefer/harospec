@@ -5,12 +5,26 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 22 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 29 Oct 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-192.png</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>NYC Squirrels</title>
+      <link>/post/tidytuesday/</link>
+      <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>/post/tidytuesday/</guid>
+      <description>
+
+
+&lt;p&gt;Information about snowpack and weather conditions is important for safe and enjoyable experiences skiing in the backcountry. I track my ski tours using GAIA GPS and record information on each tour, such as elevation gain, weather, and other observations. This rmarkdown webapp displays some of the backcountry ski tours I’ve taken over the last few years.&lt;/p&gt;
+&lt;iframe src=&#34;https://rhaefer.github.io/ski_tours.html&#34; width=&#34;950px&#34; height=&#34;1000px&#34;&gt;
+&lt;/iframe&gt;
+</description>
+    </item>
     
     <item>
       <title>Ornithology</title>
