@@ -74,6 +74,35 @@
   </url>
   
   <url>
+    <loc>/tags/dashboards/</loc>
+    <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/project/zoning/</loc>
+    <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/</loc>
+    <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/reporting/</loc>
+    <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/urban-planning/</loc>
+    <lastmod>2018-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/post/ski/</loc>
     <lastmod>2016-01-27T00:00:00+00:00</lastmod>
   </url>
@@ -126,15 +155,6 @@
   </url>
   
   <url>
-    <loc>/tags/dashboards/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/project/zoning/</loc>
-  </url>
-  
-  <url>
     <loc>/project/census_dashboard/</loc>
   </url>
   
@@ -176,22 +196,12 @@
   </url>
   
   <url>
-    <loc>/project/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/publication_types/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/authors/reid-haefer/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/reporting/</loc>
     <priority>0</priority>
   </url>
   
@@ -211,11 +221,6 @@
   
   <url>
     <loc>/true/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/urban-planning/</loc>
     <priority>0</priority>
   </url>
   
