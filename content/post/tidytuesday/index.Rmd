@@ -16,8 +16,40 @@ url_slides: ""
 url_video: ""
 ---
 
-Information about snowpack and weather conditions is important for safe and enjoyable experiences skiing in the backcountry. I track my ski tours using GAIA GPS and record information on each tour, such as elevation gain, weather, and other observations. This rmarkdown webapp displays some of the backcountry ski tours I've taken over the last few years.
 
-```{r, out.width="950px", echo=FALSE, warning=FALSE, error=FALSE}
-knitr::include_url("https://rhaefer.github.io/ski_tours.html", height="1000px")
+```{r warning=F, message=F, echo=F, out.width="130%"}
+library(pacman)
+p_load(sf, tidyverse,mapview, tmap,ggmap,ggspatial, gganimate)
+
+
+## What causes squirrels to act the way they do?
+# AM vs PM and day of week
+# Location
+# Age
+# fur color
+# on ground/above ground/ distance above ground
+
+nyc <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-29/nyc_squirrels.csv") %>%
+  st_as_sf(coords=c("long","lat"), crs=4326) %>%
+  mutate(date=as.Date(as.character(date), "%m%d%Y"),
+         above_ground_sighter_measurement=as.numeric(na_if(above_ground_sighter_measurement,FALSE)),
+         tree_ground=case_when(location== "Above Ground" ~ "Squirrel in Tree",
+                               location== "Ground Plane" ~ "Squirrel on Ground"))
+
+nyc %>% filter(!is.na(location)) %>%
+  ggplot()  +
+  annotation_map_tile(type = "osm", zoomin=-1) + 
+  geom_sf(aes(fill=primary_fur_color), show.legend = FALSE,colour="white",pch=21, size=5,alpha=.8) +
+  facet_grid(shift ~ tree_ground) +
+  scale_fill_manual(values=c("#A6A5A4","black","#8D4F0D")) +
+  theme_dark() +
+  theme(axis.text=element_blank(), axis.ticks = element_blank())+
+  transition_time(date) +
+  shadow_wake(wake_length = 0.1, alpha=F) +
+  labs(title = "Day of observed NYC Squirrel: {frame_time}")
 ```
+
+
+
+
+

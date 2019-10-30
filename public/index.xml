@@ -43,9 +43,7 @@
       <description>
 
 
-&lt;p&gt;Information about snowpack and weather conditions is important for safe and enjoyable experiences skiing in the backcountry. I track my ski tours using GAIA GPS and record information on each tour, such as elevation gain, weather, and other observations. This rmarkdown webapp displays some of the backcountry ski tours I’ve taken over the last few years.&lt;/p&gt;
-&lt;iframe src=&#34;https://rhaefer.github.io/ski_tours.html&#34; width=&#34;950px&#34; height=&#34;1000px&#34;&gt;
-&lt;/iframe&gt;
+&lt;p&gt;&lt;img src=&#34;/post/tidytuesday/index_files/figure-html/unnamed-chunk-1-1.gif&#34; width=&#34;130%&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -271,10 +269,10 @@ $$&lt;/p&gt;
 
 
 &lt;p&gt;Dashboards are great for reporting…&lt;/p&gt;
-&lt;iframe src=&#34;https://reidhaefer.shinyapps.io/reporting_dashboard/&#34; width=&#34;1000px&#34; height=&#34;800px&#34;&gt;
+&lt;iframe src=&#34;https://reidhaefer.shinyapps.io/reporting_dashboard/&#34; width=&#34;180%&#34; height=&#34;800px&#34;&gt;
 &lt;/iframe&gt;
 &lt;p&gt;The Tahoe Regional Planning Agency plays a role in regulation land use in the Tahoe region to protect environmental quality in Lake Tahoe. The permissible use dashboard is an analytical tool that allows analysts, planners, and members of the public to analyze the ‘uses’ are permitted at various scales such as regional, sub-regional, and parcel. The tool was created within the R-Shiny framework and utilizes other R packages including tidyverse, sf, and leaflet. The full aplication and code can be found at &lt;a href=&#34;https://reidhaefer.shinyapps.io/use_dashboard/&#34;&gt;shinyapps.io&lt;/a&gt;&lt;/p&gt;
-&lt;iframe src=&#34;https://reidhaefer.shinyapps.io/use_dashboard/&#34; width=&#34;1000px&#34; height=&#34;800px&#34;&gt;
+&lt;iframe src=&#34;https://reidhaefer.shinyapps.io/use_dashboard/&#34; width=&#34;180%&#34; height=&#34;800px&#34;&gt;
 &lt;/iframe&gt;
 </description>
     </item>
@@ -436,7 +434,7 @@ var leaf_widgets = {};
 
 
 &lt;p&gt;Activity-based travel models (ABMs) are useful tools for estimating and forecasting transportation conditions by microsimulating the behavior of all parties and individuals that travel within a region. The Tahoe Regional Planning Agency was one of the original adopters of the CT-RAMP framework for ABMs and maintains the model in order to understand both resident and visitor travel in the Tahoe region of California and Nevada. As part of my role as managing the Tahoe model, I created an R-Shiny based tool for daylighting the model using graphs, maps, and explainatory text features. The tool allows the user to view raw data inputs, summary charts, maps, and also provide feedback.&lt;/p&gt;
-&lt;iframe src=&#34;https://reidhaefer.shinyapps.io/model_dashboard/&#34; width=&#34;1000px&#34; height=&#34;800px&#34;&gt;
+&lt;iframe src=&#34;https://reidhaefer.shinyapps.io/model_dashboard/&#34; width=&#34;180%&#34; height=&#34;800px&#34;&gt;
 &lt;/iframe&gt;
 </description>
     </item>
