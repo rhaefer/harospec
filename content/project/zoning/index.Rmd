@@ -17,7 +17,7 @@ url_pdf: ""
 url_video: ""
 ---
 
-Dashboards are great for reporting...
+Dashboards are great for reporting.
 
 ```{r, out.width="180%", echo=FALSE, warning=FALSE, error=FALSE}
 knitr::include_url("https://reidhaefer.shinyapps.io/reporting_dashboard/", height="800px")
