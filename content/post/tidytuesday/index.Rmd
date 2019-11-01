@@ -53,17 +53,17 @@ nyc %>% filter(!is.na(location)) %>%
 ```
 ```{r warning=F, message=F, echo=F, out.width="130%"}
 
-nyc %>% filter(!is.na(location)) %>%
-  ggplot()  +
-  annotation_map_tile(type = "stamenbw", zoomin=1) + 
-  geom_sf(aes(fill=primary_fur_color), show.legend = FALSE,colour="white",pch=21, size=1,alpha=.8) +
-  facet_grid(shift ~ tree_ground) +
-  scale_fill_manual(values=c("#A6A5A4","black","#8D4F0D")) +
-  theme_dark() +
-  theme(axis.text=element_blank(), axis.ticks = element_blank()) +
-  transition_time(date) +
-  shadow_wake(wake_length = 0.1, alpha=F) +
-  labs(title = "Day of observed NYC Squirrel: {frame_time}")
+#nyc %>% filter(!is.na(location)) %>%
+  #ggplot()  +
+  #annotation_map_tile(type = "stamenbw", zoomin=1) + 
+  #geom_sf(aes(fill=primary_fur_color), show.legend = FALSE,colour="white",pch=21, size=1,alpha=.8) +
+  #facet_grid(shift ~ tree_ground) +
+  #scale_fill_manual(values=c("#A6A5A4","black","#8D4F0D")) +
+  #theme_dark() +
+  #theme(axis.text=element_blank(), axis.ticks = element_blank()) +
+  #transition_time(date) +
+  #shadow_wake(wake_length = 0.1, alpha=F) +
+  #labs(title = "Day of observed NYC Squirrel: {frame_time}")
 
 ```
 
