@@ -16,11 +16,12 @@ url_slides: ""
 url_video: ""
 ---
 
+As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I analyzed data from the first annual [Central Park Squirrel Census](https://www.thesquirrelcensus.com/). The 2018 [survey](https://www.citylab.com/life/2019/06/squirrel-census-results-population-central-park-nyc/592162/) identified over 2,000 individual squirrels in New York City's Central Park and documented detailed individual characteristics such as location, age, color and behavior. 
+
 
 ```{r warning=F, message=F, echo=F, out.width="130%"}
 library(pacman)
 p_load(sf, tidyverse,mapview, tmap,ggmap,ggspatial, gganimate)
-
 
 ## What causes squirrels to act the way they do?
 # AM vs PM and day of week
@@ -36,17 +37,34 @@ nyc <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytu
          tree_ground=case_when(location== "Above Ground" ~ "Squirrel in Tree",
                                location== "Ground Plane" ~ "Squirrel on Ground"))
 
+```
+
+```{r warning=F, message=F, echo=F, out.width="130%"}
+
 nyc %>% filter(!is.na(location)) %>%
   ggplot()  +
-  annotation_map_tile(type = "osm", zoomin=-1) + 
-  geom_sf(aes(fill=primary_fur_color), show.legend = FALSE,colour="white",pch=21, size=5,alpha=.8) +
+  annotation_map_tile(type = "stamenbw", zoomin=1) + 
+  geom_sf(aes(fill=primary_fur_color), show.legend = FALSE,colour="white",pch=21, size=1,alpha=.8) +
   facet_grid(shift ~ tree_ground) +
   scale_fill_manual(values=c("#A6A5A4","black","#8D4F0D")) +
   theme_dark() +
-  theme(axis.text=element_blank(), axis.ticks = element_blank())+
+  theme(axis.text=element_blank(), axis.ticks = element_blank())
+
+```
+```{r warning=F, message=F, echo=F, out.width="130%"}
+
+nyc %>% filter(!is.na(location)) %>%
+  ggplot()  +
+  annotation_map_tile(type = "stamenbw", zoomin=1) + 
+  geom_sf(aes(fill=primary_fur_color), show.legend = FALSE,colour="white",pch=21, size=1,alpha=.8) +
+  facet_grid(shift ~ tree_ground) +
+  scale_fill_manual(values=c("#A6A5A4","black","#8D4F0D")) +
+  theme_dark() +
+  theme(axis.text=element_blank(), axis.ticks = element_blank()) +
   transition_time(date) +
   shadow_wake(wake_length = 0.1, alpha=F) +
   labs(title = "Day of observed NYC Squirrel: {frame_time}")
+
 ```
 
 
