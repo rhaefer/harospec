@@ -21,7 +21,9 @@ As part of the [R For Data Science TidyTuesday series](https://github.com/rforda
 
 ```{r warning=F, message=F, echo=F, out.width="130%"}
 library(pacman)
-p_load(sf, tidyverse,mapview, tmap,ggmap,ggspatial, gganimate)
+p_load(sf, tidyverse,mapview, tmap,ggmap, ggspatial, mapdata, viridis)
+
+register_google(key = "AIzaSyBBVBD3Y_tifwVFsC0sWq6vlK44RXlM-i8")
 
 ## What causes squirrels to act the way they do?
 # AM vs PM and day of week
@@ -31,43 +33,43 @@ p_load(sf, tidyverse,mapview, tmap,ggmap,ggspatial, gganimate)
 # on ground/above ground/ distance above ground
 
 nyc <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-29/nyc_squirrels.csv") %>%
-  st_as_sf(coords=c("long","lat"), crs=4326) %>%
   mutate(date=as.Date(as.character(date), "%m%d%Y"),
          above_ground_sighter_measurement=as.numeric(na_if(above_ground_sighter_measurement,FALSE)),
-         tree_ground=case_when(location== "Above Ground" ~ "Squirrel in Tree",
-                               location== "Ground Plane" ~ "Squirrel on Ground"))
-
+         tree_ground=case_when(location== "Above Ground" ~ "Tree-Dwelling Squirrel",
+                               location== "Ground Plane" ~ "Ground-Dwelling Squirell"))
 ```
 
-```{r warning=F, message=F, echo=F, out.width="130%"}
 
-nyc %>% filter(!is.na(location)) %>%
-  ggplot()  +
-  annotation_map_tile(type = "stamenbw", zoomin=1) + 
-  geom_sf(aes(fill=primary_fur_color), show.legend = FALSE,colour="white",pch=21, size=1,alpha=.8) +
+## Where are the most squirrels in Central Park?
+
+```{r warning=F, message=F, echo=F, out.width="130%"}
+nyc_s <- nyc %>% filter(!is.na(location))
+p<-ggmap(get_map(location = c(lon = -73.968285, lat =40.785091 ),
+                    zoom = 14, scale = 2,"satellite"))
+
+p +
+  coord_cartesian() +
+  geom_hex( data = nyc_s, aes(x=long, y=lat),bins = 40, alpha=.7, color="white") +
+  scale_fill_viridis(option="A") +
+  theme_bw() +
+  theme(axis.text=element_blank(), axis.title = element_blank(), axis.ticks = element_blank()) +
+  ggtitle("2018 Central Park Squirrel Census - Count Density") +
+  labs(fill = '# of Squirrels')
+```
+
+
+## What are other characteristics of Central Park squirrels?
+
+```{r warning=F, message=F, echo=F, out.width="130%"}
+nyc_s <- nyc %>% filter(!is.na(location)) %>% filter(!is.na(primary_fur_color))
+g<-ggmap(get_map(location = c(lon = -73.968285, lat =40.785091 ),
+                 zoom = 14, scale = 2,"toner-lite"))
+
+g +
+  geom_point(data=nyc_s,aes(x=long,y=lat,fill=primary_fur_color), show.legend = T,colour="white",pch=21, size=2) +
   facet_grid(shift ~ tree_ground) +
-  scale_fill_manual(values=c("#A6A5A4","black","#8D4F0D")) +
+  scale_fill_manual(values=c("black","#8D4F0D","#A6A5A4")) +
   theme_dark() +
-  theme(axis.text=element_blank(), axis.ticks = element_blank())
-
+  theme(axis.text=element_blank(),axis.title=element_blank() ,axis.ticks = element_blank())  +
+  labs(fill = 'Squirrel Color')
 ```
-```{r warning=F, message=F, echo=F, out.width="130%"}
-
-#nyc %>% filter(!is.na(location)) %>%
-  #ggplot()  +
-  #annotation_map_tile(type = "stamenbw", zoomin=1) + 
-  #geom_sf(aes(fill=primary_fur_color), show.legend = FALSE,colour="white",pch=21, size=1,alpha=.8) +
-  #facet_grid(shift ~ tree_ground) +
-  #scale_fill_manual(values=c("#A6A5A4","black","#8D4F0D")) +
-  #theme_dark() +
-  #theme(axis.text=element_blank(), axis.ticks = element_blank()) +
-  #transition_time(date) +
-  #shadow_wake(wake_length = 0.1, alpha=F) +
-  #labs(title = "Day of observed NYC Squirrel: {frame_time}")
-
-```
-
-
-
-
-
