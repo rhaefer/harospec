@@ -19,19 +19,42 @@
   </url>
   
   <url>
-    <loc>/tags/data-collection/</loc>
-    <lastmod>2019-10-29T00:00:00+00:00</lastmod>
+    <loc>/tags/data-viz/</loc>
+    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/data-viz/</loc>
-    <lastmod>2019-10-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>/project/dataviz_dynamic/</loc>
+    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/gis/</loc>
+    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/project/</loc>
+    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/statistics/</loc>
+    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/data-collection/</loc>
     <lastmod>2019-10-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -47,14 +70,31 @@
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2019-10-29T00:00:00+00:00</lastmod>
+    <loc>/post/bird/</loc>
+    <lastmod>2019-06-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/project/census_dashboard/</loc>
+    <lastmod>2019-03-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/data-science/</loc>
+    <lastmod>2019-03-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/bird/</loc>
-    <lastmod>2019-06-22T00:00:00+00:00</lastmod>
+    <loc>/tags/socioeconomics/</loc>
+    <lastmod>2019-03-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/urban-planning/</loc>
+    <lastmod>2019-03-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -90,19 +130,7 @@
   </url>
   
   <url>
-    <loc>/project/</loc>
-    <lastmod>2018-06-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/tags/reporting/</loc>
-    <lastmod>2018-06-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/urban-planning/</loc>
     <lastmod>2018-06-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -140,12 +168,6 @@
   </url>
   
   <url>
-    <loc>/tags/statistics/</loc>
-    <lastmod>2014-06-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/authors/admin/</loc>
   </url>
   
@@ -160,21 +182,8 @@
   </url>
   
   <url>
-    <loc>/project/census_dashboard/</loc>
-  </url>
-  
-  <url>
     <loc>/tags/data-munging/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/data-science/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/project/dataviz_dynamic/</loc>
   </url>
   
   <url>
@@ -212,11 +221,6 @@
   
   <url>
     <loc>/project/travel_survey/</loc>
-  </url>
-  
-  <url>
-    <loc>/tags/socioeconomics/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
