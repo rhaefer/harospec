@@ -15,17 +15,6 @@ url_pdf: ""
 url_video: ""
 ---
 
-```{css, echo=FALSE}
-div.sourceCode {
-    overflow: hidden;
-}
-```
-
-
-```{r include=FALSE, warning=F, message=F}
-knitr::opts_chunk$set(comment = NA)
-```
-
 ```{r, warning=F, message=F, include=F}
 library(pacman)
 p_load(tidyverse, readxl, lubridate, purrr, janitor, scales, plotly, tmap, leaflet, DT,lubridate,sf,xfun, ggridges, ggmap,tidycensus, tidyverse,leaflet, geojsonio, sf, tmap, tmaptools, DT, xfun,ceramic, gganimate, tidyverse, geojsonio,  gifski, transformr, ggspatial)
@@ -168,7 +157,7 @@ animate(p, fps=5)
 ```
 
 ## Interactive Maps
-```{r, warning=F, message=F, echo=F, out.width="130%"}
+```{r warning=F, message=F, echo=F, out.width="130%"}
 census_api_key("680398dff0a2f4c566f10c95888da7f25e55147b")
 options(tigris_use_cache = TRUE)
 
@@ -230,8 +219,9 @@ all<- bind_rows( pla_acs,ed_acs,dg_acs ,wa_acs) %>%
   summarise(total=sum(total), estimate=sum(estimate), average=total/estimate) %>%
    filter(!GEOID %in% c("32031940200","32031003501"))
 tmap_mode("view")
-tm_shape(all) +
+tmap_leaflet(tm_shape(all) +
     tm_polygons("average", palette = "RdYlBu",title="Average Household Income") +
-    #tm_facets(by = "county") +
-  tm_layout(legend.show=FALSE)
+    tm_facets(by = "county") +
+  tm_layout(legend.show=FALSE))
 ```
+
