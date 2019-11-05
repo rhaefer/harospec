@@ -36,7 +36,7 @@ nyc <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytu
   mutate(date=as.Date(as.character(date), "%m%d%Y"),
          above_ground_sighter_measurement=as.numeric(na_if(above_ground_sighter_measurement,FALSE)),
          tree_ground=case_when(location== "Above Ground" ~ "Tree-Dwelling Squirrel",
-                               location== "Ground Plane" ~ "Ground-Dwelling Squirell"))
+                               location== "Ground Plane" ~ "Ground-Dwelling Squirrel"))
 ```
 
 

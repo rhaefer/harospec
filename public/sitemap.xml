@@ -136,6 +136,23 @@
   </url>
   
   <url>
+    <loc>/project/travel_demand_modeling/</loc>
+    <lastmod>2017-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/modeling/</loc>
+    <lastmod>2017-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/transportation/</loc>
+    <lastmod>2017-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/post/ski/</loc>
     <lastmod>2016-01-27T00:00:00+00:00</lastmod>
   </url>
@@ -197,15 +214,6 @@
   </url>
   
   <url>
-    <loc>/tags/modeling/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/project/travel_demand_modeling/</loc>
-  </url>
-  
-  <url>
     <loc>/project/munging/</loc>
   </url>
   
@@ -221,11 +229,6 @@
   
   <url>
     <loc>/project/travel_survey/</loc>
-  </url>
-  
-  <url>
-    <loc>/tags/transportation/</loc>
-    <priority>0</priority>
   </url>
   
   <url>

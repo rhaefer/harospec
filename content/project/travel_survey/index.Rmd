@@ -3,7 +3,7 @@ external_link: ""
 image:
   caption: Photo by Reid Haefer
 links:
-summary: travel survey
+summary: interactive documents
 tags:
 - Transportation
 - Reporting
@@ -14,8 +14,10 @@ url_pdf: ""
 url_video: ""
 ---
 
-Travel Surveys are an important input of travel models and help researchers understand regional travel behavior. I managed the 2018 TRPA Summer Travel Survey, which consisted of a field-based intercept travel survey. This report summarizes the survey methodology and results in an interactive web-based format. The report was created entirely in R using Rmarkdown. All development [code can be found here.](https://github.com/trpa-reid/travel_survey/blob/master/travel_survey_report.Rmd)
+Reports are increasingly accessed via web and mobile technologies that enable the user quick and interactive access to report content. Web-based reports have several advantages over traditional static documents including interactive webmaps and charts, dynamic table of contents, and downloadable content.
+
+This report summarizes the methodology and results of the 2018 TRPA Summer Travel using [Rmarkdown](https://rmarkdown.rstudio.com/). All development [code can be found on gituhub here](https://github.com/trpa-reid/travel_survey/blob/master/travel_survey_report.Rmd)
 
 ```{r, out.width="1000px", echo=FALSE, warning=FALSE, error=FALSE}
-knitr::include_url("https://rhaefer.github.io/travel_survey_report.html", height="800px")
+knitr::include_url("https://rhaefer.github.io/travel_survey_report.html", height="1000px")
 ```
