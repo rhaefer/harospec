@@ -225,3 +225,7 @@ tmap_leaflet(tm_shape(all) +
   tm_layout(legend.show=FALSE))
 ```
 
+```{r}
+tm_shape(all) + tm_polygons()
+```
+
