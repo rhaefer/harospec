@@ -17,7 +17,7 @@ url_video: ""
 
 ```{r, warning=F, message=F, include=F}
 library(pacman)
-p_load(tidyverse, readxl, lubridate, purrr, janitor, scales, plotly, tmap, leaflet, DT,lubridate,sf,xfun, ggridges, ggmap,tidycensus, tidyverse,leaflet, geojsonio, sf, tmap, tmaptools, DT, xfun,ceramic, gganimate, tidyverse, geojsonio,  gifski, transformr, ggspatial)
+p_load(tidyverse, readr, readxl, lubridate, purrr, janitor, scales, plotly, tmap, leaflet, DT,lubridate,sf,xfun, ggridges, ggmap,tidycensus, leaflet, geojsonio, sf, tmap, tmaptools, DT, xfun,ceramic, gganimate, geojsonio,  gifski, transformr, ggspatial)
 ```
 
 ```{r message=FALSE, warning=FALSE, echo=F}
@@ -131,29 +131,6 @@ continuous %>%
    theme(legend.title = element_blank(), axis.title.x=element_blank(),axis.title.y=element_blank(), axis.text.y=element_blank(),
         axis.text.x=element_text(size=12), legend.position = "none") 
 )
-```
-
-## Animations
-
-```{r, warning=F, message=F, echo=F, out.width="170%"}
-register_google(key = "AIzaSyBBVBD3Y_tifwVFsC0sWq6vlK44RXlM-i8")
-
-crash <- geojson_read("https://opendata.arcgis.com/datasets/8753e4259d7b464ead6a4b5be99f2346_16.geojson", what="sp") %>%
-  st_as_sf() %>%
-  mutate(date=as.Date(date))
-
-crash1 <- bind_cols(crash, data.frame(st_coordinates(crash)))
-
-a<-ggmap(get_map(location = c(lon = -120.0324, lat =39.0968 ),
-                 zoom = 11, scale = 2,"satellite"))
-
-p<-a +
-  geom_point(data=crash1, aes(x=X,y=Y),shape = 21, colour = "white", fill = "red", size = 3, stroke = 1 ,show.legend = FALSE) +
-  theme(axis.text = element_blank(), axis.ticks = element_blank(), axis.title=element_blank()) +
-  transition_time(date) + ease_aes('linear') +
-  labs(title = 'Tahoe Vehicle Crashes Over Time: {frame_time}') +
-  shadow_mark(alpha=0.2, size=3, colour="white", fill="white")
-animate(p, fps=5)
 ```
 
 ## Interactive Maps

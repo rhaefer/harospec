@@ -1,0 +1,24 @@
+---
+external_link: ""
+date: "2018-06-01"
+image:
+  caption: 
+links:
+summary: reporting dashboard
+tags:
+- Dashboards
+- Data Viz
+- Reporting
+title: Data Reporting 
+url_code: ""
+url_pdf: ""
+url_video: ""
+---
+
+Our dashboards are data exploration tools that allow users to customize their analyses and better understand information through interactivity. These tools include the ability for users to define customized queries and filters, summarize large datasets based upon unique conditions, and perform on-the-fly geospatial analysis. We utilize open-source tools such as [Shiny](https://shiny.rstudio.com/), that are cost-effective and modular.
+
+## Reporting Dashboard
+
+```{r, out.width="180%", echo=FALSE, warning=FALSE, error=FALSE}
+knitr::include_url("https://reidhaefer.shinyapps.io/reporting_dashboard/", height="800px")
+```

@@ -24,8 +24,17 @@ date_format = "Jan 2006"
   company_url = "http://www.trpa.org/"
   location = "Stateline, Nevada"
   date_start = "2017-07-01"
+  date_end = "2019-09-01"
+  description = "Performed a variety of data analysis and modeling tasks to support regional transportation and land use planning. Examples include updating and running the activity-based Tahoe travel demand model, developing web-based analytical tools using R-Shiny; organizing data collection efforts such as the regional travel survey; curating a respository of regional Census data; managing state of California air quality reporting requirements; regional transportation plan forecasting; project analysis"
+  
+[[experience]]
+  title = "Modeling Program Coordinator"
+  company = "Tahoe Regional Planning Agency (TRPA)"
+  company_url = "http://www.trpa.org/"
+  location = "Stateline, Nevada"
+  date_start = "2019-10-01"
   date_end = ""
-  description = "Support regional land use and transportation planning through a variety of analytical responsibilities. Managing the transportation modeling program, which includes the activity-based Tahoe travel demand model and other sketch modeling tools; developing web-based analytical tools using R-Shiny; organizing data collection such as the regional travel survey; managing state of California air quality reporting requirements; regional transportation plan forecasting; project analysis"
+  description = "Managed the regional transportation and land use modeling program. Work included managing ongoing enhancements and application of the regional activity-based transportation model, improving regional land use modeling, creating automated workflows and web-based tools, technical writing, statistics, data collection, big data analysis, and program development."
   
 [[experience]]
   title = "Assistant Planner"

@@ -69,6 +69,30 @@
     </item>
     
     <item>
+      <title>Reporting</title>
+      <link>/tags/reporting/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>/tags/reporting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Transportation</title>
+      <link>/tags/transportation/</link>
+      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+      <guid>/tags/transportation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Animation</title>
+      <link>/tags/animation/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>/tags/animation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Dashboards</title>
       <link>/tags/dashboards/</link>
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
@@ -77,26 +101,10 @@
     </item>
     
     <item>
-      <title>Reporting</title>
-      <link>/tags/reporting/</link>
-      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>/tags/reporting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Modeling</title>
       <link>/tags/modeling/</link>
       <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
       <guid>/tags/modeling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Transportation</title>
-      <link>/tags/transportation/</link>
-      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
-      <guid>/tags/transportation/</guid>
       <description></description>
     </item>
     
