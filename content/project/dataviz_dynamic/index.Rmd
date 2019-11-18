@@ -25,7 +25,7 @@ continuous<-read_csv("C:/Users/reidh/Documents/R/scratch/validation_traffic_coun
   mutate(weekday=wday(Date, label=TRUE), month=month(Date, label=TRUE), Day1=as.character(Day))
 ```
 
-We emphasis interactive data visualization because information is increasingly presented in modern, web-based forums. We utilize popular open source tools such as plotly, leaflet, and ggplot to produce visually pleasing and effective maps and charts for summarizing information.
+We specialize in interactive data visualization because information is increasingly presented in modern, web-based forums. We utilize popular open source tools such as [plotly](https://plot.ly/), [leaflet](https://leafletjs.com/), and [ggplot](https://ggplot2.tidyverse.org/index.html) to produce visually pleasing and effective maps and charts which distill messy data into actionable information.
 
 ## Distribution Plots
 

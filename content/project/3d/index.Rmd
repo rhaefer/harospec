@@ -4,11 +4,11 @@ date: "2018-06-01"
 image:
   caption: 
 links:
-summary: 3 dimentional maps
+summary: 3-D mapping
 tags:
 - Data Viz
 - GIS
-title: 3-D
+title: 3-D VIZ
 url_code: ""
 url_pdf: ""
 url_video: ""
