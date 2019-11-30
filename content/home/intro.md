@@ -50,11 +50,11 @@ subtitle = "*hare-o-spec*"
  css_class = ""
 +++
 
-Data is messy and increasingly complex. We transform **data** into meaningful **information** for decision-makers, using innovative and cost-effective tools. The [services](http://reidhaefer.rbind.io/#services) we offer inform all stages of the analytical process and maintain an emphasis data visualization. Our analytical philosophy includes several core tenets:
+Data is messy and increasingly complex. We transform **data** into meaningful **information** for decision-makers, using innovative and cost-effective tools. Our [services](http://reidhaefer.rbind.io/#services) are based upon several core tenents that inform all stages of the analytical process:
 
-* Analysis should directly inform decision-making
-* Information should be presenting in modern, accessible formats
-* Methodologies should be tranparent and reproducible
-* Tools should be modular and cost-effective
+* *Analysis should directly inform decision-making*
+* *Information should be presenting in modern, accessible formats*
+* *Methodologies should be tranparent and reproducible*
+* *Tools should be modular and cost-effective*
 
-[Contact](http://reidhaefer.rbind.io/#contact) us for more information and to solicit service.
+[Contact](http://reidhaefer.rbind.io/#contact) us for more information and to solicit services.

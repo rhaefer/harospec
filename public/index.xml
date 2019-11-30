@@ -430,9 +430,11 @@ $$&lt;/p&gt;
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
       <guid>/project/zoning/</guid>
       <description>
+&lt;link href=&#34;/rmarkdown-libs/font-awesome/css/fontawesome-all.min.css&#34; rel=&#34;stylesheet&#34; /&gt;
 
 
 &lt;p&gt;Our dashboards are data exploration tools that allow users to customize their analyses and better understand information through interactivity. These tools include the ability for users to define customized queries and filters, summarize large datasets based upon unique conditions, and perform on-the-fly geospatial analysis. We utilize open-source tools such as &lt;a href=&#34;https://shiny.rstudio.com/&#34;&gt;Shiny&lt;/a&gt;, that are cost-effective and modular.&lt;/p&gt;
+&lt;i class=&#34;fab  fa-r-project fa-3x &#34;&gt;&lt;/i&gt;
 &lt;div id=&#34;land-usezoning-analysis-tool&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Land Use/Zoning Analysis Tool&lt;/h2&gt;
 &lt;iframe src=&#34;https://reidhaefer.shinyapps.io/use_dashboard/&#34; width=&#34;180%&#34; height=&#34;800px&#34;&gt;
