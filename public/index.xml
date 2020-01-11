@@ -36,14 +36,14 @@
     </item>
     
     <item>
-      <title>2019 Australia Wildfires</title>
+      <title>2019 Australian Fires</title>
       <link>/post/aussie_fires/</link>
       <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/post/aussie_fires/</guid>
       <description>
 
 
-&lt;p&gt;During the end of 2019, wildfires proliferated across Australia. As part of the &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34;&gt;R For Data Science TidyTuesday series&lt;/a&gt;, I analyzed Australian temperature and rainfall data to attempt to discern potential contributers to the historic and devastating fires.&lt;/p&gt;
+&lt;p&gt;During the end of 2019, wildfires proliferated across Australia. As part of the &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34;&gt;R For Data Science TidyTuesday series&lt;/a&gt;, I analyzed Australian temperature and rainfall data to attempt to discern potential contributers to the historic and devastating fires. The visualizations below were created using &lt;a href=&#34;https://www.r-project.org/about.html&#34;&gt;R&lt;/a&gt;. All code can be found on &lt;a href=&#34;https://github.com/reidhaefer/reid.haefer/blob/master/content/post/aussie_fires/index.Rmd&#34;&gt;github here&lt;/a&gt;.&lt;/p&gt;
 &lt;div id=&#34;are-temperatures-increasing&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Are Temperatures Increasing?&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;/post/aussie_fires/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;160%&#34; /&gt;&lt;/p&gt;

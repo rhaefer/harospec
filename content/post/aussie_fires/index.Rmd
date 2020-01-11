@@ -4,19 +4,19 @@ external_link: ""
 image:
   caption: Photo by NY Times
 links:
-summary: Australia Fire Analysis - 2019
+summary: Data analysis and visualization of environmental data related to the 2019 wildfires in Australia
 tags:
 - GIS
 - Data Collection
 - Data Viz
-title: 2019 Australia Wildfires
+title: 2019 Australian Fires
 url_code: ""
 url_pdf: ""
 url_slides: ""
 url_video: ""
 ---
 
-During the end of 2019, wildfires proliferated across Australia. As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I analyzed Australian temperature and rainfall data to attempt to discern potential contributers to the historic and devastating fires. 
+During the end of 2019, wildfires proliferated across Australia. As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I analyzed Australian temperature and rainfall data to attempt to discern potential contributers to the historic and devastating fires. The visualizations below were created using [R](https://www.r-project.org/about.html). All code can be found on [github here](https://github.com/reidhaefer/reid.haefer/blob/master/content/post/aussie_fires/index.Rmd).
 
 
 ```{r warning=F, message=F, echo=F, out.width="130%", include=F}
