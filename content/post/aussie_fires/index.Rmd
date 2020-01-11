@@ -1,0 +1,75 @@
+---
+date: "2020-01-11T00:00:00Z"
+external_link: ""
+image:
+  caption: Photo by NY Times
+links:
+summary: Australia Fire Analysis - 2019
+tags:
+- GIS
+- Data Collection
+- Data Viz
+title: 2019 Australia Wildfires
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+---
+
+During the end of 2019, wildfires proliferated across Australia. As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I analyzed Australian temperature and rainfall data to attempt to discern potential contributers to the historic and devastating fires. 
+
+
+```{r warning=F, message=F, echo=F, out.width="130%", include=F}
+library(pacman)
+p_load(tidyverse, sf, here,mapview, lubridate, broom, ggdark)
+
+rain <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/rainfall.csv')
+
+temp <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/temperature.csv') %>%
+  mutate(lon=case_when(site_name=="PERTH AIRPORT" ~ 115.9672,
+                       site_name=="PORT LINCOLN AWS" ~ 135.88,
+                       site_name=="KENT TOWN" ~ 138.6192,
+                       site_name=="BRISBANE AERO" ~ 153.1218,
+                       site_name=="SYDNEY (OBSERVATORY HILL)" ~ 151.2048,
+                       site_name=="CANBERRA AIRPORT" ~ 149.1934,
+                       site_name=="MELBOURNE (OLYMPIC PARK)" ~ 144.9800),
+         lat=case_when(site_name=="PERTH AIRPORT" ~ 31.9385,
+                       site_name=="PORT LINCOLN AWS" ~ -34.60,
+                       site_name=="KENT TOWN" ~ 34.9203,
+                       site_name=="BRISBANE AERO" ~ 27.3942,
+                       site_name=="SYDNEY (OBSERVATORY HILL)" ~ 33.8595,
+                       site_name=="CANBERRA AIRPORT" ~ 35.3052,
+                       site_name=="MELBOURNE (OLYMPIC PARK)" ~ 37.8204),
+         month=month(date),
+         year=year(date))
+
+fire <- sf::st_read("http://www.rfs.nsw.gov.au/feeds/majorIncidents.json")
+```
+
+
+## Are Temperatures Increasing?
+
+```{r warning=F, message=F, echo=F, out.width="160%"}
+temp %>%
+ # filter(site_name=="PERTH AIRPORT") %>%
+  group_by(year,temp_type, city_name) %>%
+  summarize(temperature=max(temperature)) %>%
+  ggplot(aes(year, temperature, group=temp_type, color=temp_type)) + geom_line() + geom_smooth(method = "lm") +
+   facet_grid(cols = vars(city_name)) + dark_theme_bw() +
+  theme(axis.text.x=element_text(angle=45, hjust=1),legend.position = "none",
+        axis.title = element_blank()) +
+  scale_colour_manual(values=c("#F7FA06","#FAA806")) +
+  ggtitle("Minimum and Maximum Annual Temperatures")
+```
+
+
+## Less Rainfall?
+
+```{r warning=F, message=F, echo=F, out.width="130%"}
+rain %>%
+  group_by(year) %>%
+  summarize(rainfall=mean(rainfall,na.rm=T)) %>%
+  ggplot(aes(year, rainfall)) + geom_line(colour="#06EDFA") + geom_smooth(method = "lm", colour="white") +
+dark_theme_bw() + theme(axis.text.x=element_text(angle=45, hjust=1),axis.title = element_blank()) +
+  ggtitle("Average Annual Rainfall")
+```
