@@ -46,7 +46,8 @@ temp <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidyt
 fire <- sf::st_read("http://www.rfs.nsw.gov.au/feeds/majorIncidents.json")
 
 nasa_fire <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/MODIS_C6_Australia_and_New_Zealand_7d.csv') %>%
-  st_as_sf(crs=4326, coords=c("longitude","latitude"))
+  st_as_sf(crs=4326, coords=c("longitude","latitude"))  %>%
+  filter(daynight=="N")
 ```
 
 ## Fire Locations
@@ -64,7 +65,7 @@ map<-leaflet(nasa_fire) %>%
     popup = paste("Brightness:", nasa_fire$brightness, "<br>",
                                  "Date:", nasa_fire$acq_date, "<br>",
                                  "Time:", nasa_fire$acq_time, "<br>",
-                                 "Day or Night:", nasa_fire$daynight,
+                                 "Day or Night:", nasa_fire$daynight, "<br>",
                                  "NASA Confidence:", nasa_fire$confidence)) %>%
 addTiles() %>% 
   addLegend("bottomright", pal = pal, values = ~brightness,
