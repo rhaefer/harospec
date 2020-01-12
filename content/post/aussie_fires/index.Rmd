@@ -21,7 +21,7 @@ During the end of 2019, wildfires proliferated across Australia. As part of the 
 
 ```{r warning=F, message=F, echo=F, out.width="130%", include=F}
 library(pacman)
-p_load(tidyverse, sf, here,mapview, lubridate, broom, ggdark)
+p_load(tidyverse, sf, here,mapview, lubridate, broom, ggdark,tmap, htmlwidgets, htmltools,widgetframe, leaflet)
 
 rain <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/rainfall.csv')
 
@@ -44,6 +44,35 @@ temp <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidyt
          year=year(date))
 
 fire <- sf::st_read("http://www.rfs.nsw.gov.au/feeds/majorIncidents.json")
+
+nasa_fire <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/MODIS_C6_Australia_and_New_Zealand_7d.csv') %>%
+  st_as_sf(crs=4326, coords=c("longitude","latitude"))
+```
+
+## Fire Locations
+
+```{r warning=F, message=F, echo=F, out.width="160%"}
+
+pal <- colorNumeric(
+  palette = c('#FEBE05','#FE6005','#FE3805','#A82503','#4B1102'),
+  domain = nasa_fire$brightness
+)
+
+map<-leaflet(nasa_fire) %>% 
+  addCircleMarkers(fillColor = ~pal(brightness) ,color="white", weight=1, 
+                   fillOpacity = 0.5, radius=6,
+    popup = paste("Brightness:", nasa_fire$brightness, "<br>",
+                                 "Date:", nasa_fire$acq_date, "<br>",
+                                 "Time:", nasa_fire$acq_time, "<br>",
+                                 "Day or Night:", nasa_fire$daynight,
+                                 "NASA Confidence:", nasa_fire$confidence)) %>%
+addTiles() %>% 
+  addLegend("bottomright", pal = pal, values = ~brightness,
+            title = "Wildfire Brightness",
+            opacity = 1
+  )
+
+frameWidget(map)
 ```
 
 
