@@ -49,6 +49,8 @@ fire <- sf::st_read("http://www.rfs.nsw.gov.au/feeds/majorIncidents.json")
 
 ## Are Temperatures Increasing?
 
+A quick analysis shows that average annual temperatures have increased in almost all cities over the past 75 years.
+
 ```{r warning=F, message=F, echo=F, out.width="160%"}
 temp %>%
  # filter(site_name=="PERTH AIRPORT") %>%
@@ -64,6 +66,8 @@ temp %>%
 
 
 ## Less Rainfall?
+
+The data also shows a trend for decreasing amounts of rainfall.
 
 ```{r warning=F, message=F, echo=F, out.width="130%"}
 rain %>%

@@ -46,10 +46,12 @@
 &lt;p&gt;During the end of 2019, wildfires proliferated across Australia. As part of the &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34;&gt;R For Data Science TidyTuesday series&lt;/a&gt;, I analyzed Australian temperature and rainfall data to attempt to discern potential contributers to the historic and devastating fires. The visualizations below were created using &lt;a href=&#34;https://www.r-project.org/about.html&#34;&gt;R&lt;/a&gt;. All code can be found on &lt;a href=&#34;https://github.com/reidhaefer/reid.haefer/blob/master/content/post/aussie_fires/index.Rmd&#34;&gt;github here&lt;/a&gt;.&lt;/p&gt;
 &lt;div id=&#34;are-temperatures-increasing&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Are Temperatures Increasing?&lt;/h2&gt;
+&lt;p&gt;A quick analysis shows that average annual temperatures have increased in almost all cities over the past 75 years.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post/aussie_fires/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;160%&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;less-rainfall&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Less Rainfall?&lt;/h2&gt;
+&lt;p&gt;The data also shows a trend for decreasing amounts of rainfall.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post/aussie_fires/index_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;130%&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -165,7 +167,7 @@ var leaf_widgets = {};
       <description>
 
 
-&lt;p&gt;As part of the &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34;&gt;R For Data Science TidyTuesday series&lt;/a&gt;, I analyzed data from the first annual &lt;a href=&#34;https://www.thesquirrelcensus.com/&#34;&gt;Central Park Squirrel Census&lt;/a&gt;. The 2018 &lt;a href=&#34;https://www.citylab.com/life/2019/06/squirrel-census-results-population-central-park-nyc/592162/&#34;&gt;survey&lt;/a&gt; identified over 2,000 individual squirrels in New York City’s Central Park and documented detailed individual characteristics such as location, age, color &amp;amp; behavior.&lt;/p&gt;
+&lt;p&gt;As part of the &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34;&gt;R For Data Science TidyTuesday series&lt;/a&gt;, I analyzed data from the first annual &lt;a href=&#34;https://www.thesquirrelcensus.com/&#34;&gt;Central Park Squirrel Census&lt;/a&gt;. The 2018 &lt;a href=&#34;https://www.citylab.com/life/2019/06/squirrel-census-results-population-central-park-nyc/592162/&#34;&gt;survey&lt;/a&gt; identified over 2,000 individual squirrels in New York City’s Central Park and documented detailed individual characteristics such as location, age, color &amp;amp; behavior. All code can be found on &lt;a href=&#34;https://github.com/reidhaefer/reid.haefer/blob/master/content/post/tidytuesday/index.Rmd&#34;&gt;github here&lt;/a&gt;.&lt;/p&gt;
 &lt;div id=&#34;where-are-the-most-squirrels-in-central-park&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Where are the most squirrels in Central Park?&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;/post/tidytuesday/index_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;130%&#34; /&gt;&lt;/p&gt;

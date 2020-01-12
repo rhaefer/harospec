@@ -16,7 +16,7 @@ url_slides: ""
 url_video: ""
 ---
 
-As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I analyzed data from the first annual [Central Park Squirrel Census](https://www.thesquirrelcensus.com/). The 2018 [survey](https://www.citylab.com/life/2019/06/squirrel-census-results-population-central-park-nyc/592162/) identified over 2,000 individual squirrels in New York City's Central Park and documented detailed individual characteristics such as location, age, color & behavior. 
+As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I analyzed data from the first annual [Central Park Squirrel Census](https://www.thesquirrelcensus.com/). The 2018 [survey](https://www.citylab.com/life/2019/06/squirrel-census-results-population-central-park-nyc/592162/) identified over 2,000 individual squirrels in New York City's Central Park and documented detailed individual characteristics such as location, age, color & behavior. All code can be found on [github here](https://github.com/reidhaefer/reid.haefer/blob/master/content/post/tidytuesday/index.Rmd).
 
 
 ```{r warning=F, message=F, echo=F, out.width="130%"}
