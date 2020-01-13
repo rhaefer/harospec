@@ -16,7 +16,7 @@ url_slides: ""
 url_video: ""
 ---
 
-During the end of 2019, wildfires proliferated across Australia. As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I analyzed Australian temperature and rainfall data to attempt to discern potential contributers to the historic and devastating fires. The visualizations below were created using [R](https://www.r-project.org/about.html). All code can be found on [github here](https://github.com/reidhaefer/reid.haefer/blob/master/content/post/aussie_fires/index.Rmd).
+During the end of 2019, wildfires proliferated across Australia. As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I analyzed Australian temperature and rainfall data to attempt to discern potential contributers to the historic and devastating [2019 Australia bush fires](https://en.wikipedia.org/wiki/2019%E2%80%9320_Australian_bushfire_season). The visualizations below were created using [R](https://www.r-project.org/about.html). All code can be found on [github here](https://github.com/reidhaefer/reid.haefer/blob/master/content/post/aussie_fires/index.Rmd).
 
 
 ```{r warning=F, message=F, echo=F, out.width="130%", include=F}

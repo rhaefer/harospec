@@ -46,7 +46,7 @@
 &lt;script src=&#34;/rmarkdown-libs/widgetframe-binding/widgetframe.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;During the end of 2019, wildfires proliferated across Australia. As part of the &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34;&gt;R For Data Science TidyTuesday series&lt;/a&gt;, I analyzed Australian temperature and rainfall data to attempt to discern potential contributers to the historic and devastating fires. The visualizations below were created using &lt;a href=&#34;https://www.r-project.org/about.html&#34;&gt;R&lt;/a&gt;. All code can be found on &lt;a href=&#34;https://github.com/reidhaefer/reid.haefer/blob/master/content/post/aussie_fires/index.Rmd&#34;&gt;github here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;During the end of 2019, wildfires proliferated across Australia. As part of the &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34;&gt;R For Data Science TidyTuesday series&lt;/a&gt;, I analyzed Australian temperature and rainfall data to attempt to discern potential contributers to the historic and devastating &lt;a href=&#34;https://en.wikipedia.org/wiki/2019%E2%80%9320_Australian_bushfire_season&#34;&gt;2019 Australia bush fires&lt;/a&gt;. The visualizations below were created using &lt;a href=&#34;https://www.r-project.org/about.html&#34;&gt;R&lt;/a&gt;. All code can be found on &lt;a href=&#34;https://github.com/reidhaefer/reid.haefer/blob/master/content/post/aussie_fires/index.Rmd&#34;&gt;github here&lt;/a&gt;.&lt;/p&gt;
 &lt;div id=&#34;fire-locations&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Fire Locations&lt;/h2&gt;
 &lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:100%;height:480px;&#34; class=&#34;widgetframe html-widget&#34;&gt;&lt;/div&gt;
