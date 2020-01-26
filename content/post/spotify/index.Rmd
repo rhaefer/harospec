@@ -16,7 +16,7 @@ url_slides: ""
 url_video: ""
 ---
 
-Has popular music evolved over time?. As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I analyzed a large dataset of Spotify songs, which included detailed characteristics of each song. The visualizations below were created using [R](https://www.r-project.org/about.html). All code can be found on [github here](https://github.com/reidhaefer/reid.haefer/blob/master/content/post/spotify/index.Rmd).
+Has popular music evolved over time? Why has it changed? As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I quickly analyzed a large dataset of Spotify songs, which included detailed characteristics of each song. The visualizations below were created using [R](https://www.r-project.org/about.html). All code can be found on [github here](https://github.com/reidhaefer/reid.haefer/blob/master/content/post/spotify/index.Rmd).
 
 
 ```{r warning=F, message=F, echo=F, out.width="130%", include=F}
@@ -34,6 +34,8 @@ spot_wide <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/
 ```
 
 ## All genres and characteristics over time
+
+Each of the 30k songs in the dataset are categorized by genre and values are assigned based upon 12 music characteristics, such as acousticness, temp, and loudness.
 
 ```{r warning=F, message=F, echo=F, fig.width=8, fig.height=10}
 a<-spot %>%
@@ -61,6 +63,8 @@ spot %>%
         axis.text.x=element_text(angle=45, hjust=1, size=7)) 
 ```
 
+For example, the danceability of rap songs experienced its nadir in the early 2010s but has started to increase again in recent years.
+
 ```{r warning=F, message=F, echo=F, fig.width=9, fig.height=5}
 b<-spot %>%
   filter(year >1980 & !character %in% c("valence", "mode","key","liveness")) %>%
@@ -76,6 +80,8 @@ b<-spot %>%
 b +
   transition_reveal(year) + shadow_mark()
 ```
+
+Moreover, the loudness of rock songs has steadily increased over time.
 
 ```{r warning=F, message=F, echo=F, fig.width=9, fig.height=5}
 c<-spot %>%
@@ -95,7 +101,7 @@ c +
 
 ## Linear Model
 
-What determines a song's popularity? A generalized linear model can help us understand.
+What can explain these changes over time? What determines a song's popularity? A generalized linear model can help us understand.
 
 track popularity ~ danceability + energy + key + loudness + mode + speechiness + acousticness + instrumentalness + liveness + valence + tempo + duration
 

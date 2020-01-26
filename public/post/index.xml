@@ -20,16 +20,19 @@
       <description>
 
 
-&lt;p&gt;Has popular music evolved over time?. As part of the &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34;&gt;R For Data Science TidyTuesday series&lt;/a&gt;, I analyzed a large dataset of Spotify songs, which included detailed characteristics of each song. The visualizations below were created using &lt;a href=&#34;https://www.r-project.org/about.html&#34;&gt;R&lt;/a&gt;. All code can be found on &lt;a href=&#34;https://github.com/reidhaefer/reid.haefer/blob/master/content/post/spotify/index.Rmd&#34;&gt;github here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Has popular music evolved over time? Why has it changed? As part of the &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34;&gt;R For Data Science TidyTuesday series&lt;/a&gt;, I quickly analyzed a large dataset of Spotify songs, which included detailed characteristics of each song. The visualizations below were created using &lt;a href=&#34;https://www.r-project.org/about.html&#34;&gt;R&lt;/a&gt;. All code can be found on &lt;a href=&#34;https://github.com/reidhaefer/reid.haefer/blob/master/content/post/spotify/index.Rmd&#34;&gt;github here&lt;/a&gt;.&lt;/p&gt;
 &lt;div id=&#34;all-genres-and-characteristics-over-time&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;All genres and characteristics over time&lt;/h2&gt;
+&lt;p&gt;Each of the 30k songs in the dataset are categorized by genre and values are assigned based upon 12 music characteristics, such as acousticness, temp, and loudness.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post/spotify/index_files/figure-html/unnamed-chunk-2-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;img src=&#34;/post/spotify/index_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;For example, the danceability of rap songs experienced its nadir in the early 2010s but has started to increase again in recent years.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post/spotify/index_files/figure-html/unnamed-chunk-3-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;Moreover, the loudness of rock songs has steadily increased over time.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;/post/spotify/index_files/figure-html/unnamed-chunk-4-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;linear-model&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Linear Model&lt;/h2&gt;
-&lt;p&gt;What determines a song’s popularity? A generalized linear model can help us understand.&lt;/p&gt;
+&lt;p&gt;What can explain these changes over time? What determines a song’s popularity? A generalized linear model can help us understand.&lt;/p&gt;
 &lt;p&gt;track popularity ~ danceability + energy + key + loudness + mode + speechiness + acousticness + instrumentalness + liveness + valence + tempo + duration&lt;/p&gt;
 &lt;table class=&#34;table table-condensed&#34;&gt;
 &lt;thead&gt;
