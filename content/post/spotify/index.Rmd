@@ -16,7 +16,7 @@ url_slides: ""
 url_video: ""
 ---
 
-Has popular music evolved over time? Why has it changed? As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I quickly analyzed a large dataset of Spotify songs, which included detailed characteristics of each song. The visualizations below were created using [R](https://www.r-project.org/about.html). All code can be found on [github here](https://github.com/reidhaefer/reid.haefer/blob/master/content/post/spotify/index.Rmd).
+How has popular music evolved over time? Why has it changed? As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I quickly analyzed a large dataset of Spotify songs, which included detailed characteristics of each song. The visualizations below were created using [R](https://www.r-project.org/about.html). All code can be found on [github here](https://github.com/reidhaefer/reid.haefer/blob/master/content/post/spotify/index.Rmd).
 
 
 ```{r warning=F, message=F, echo=F, out.width="130%", include=F}
@@ -35,7 +35,7 @@ spot_wide <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/
 
 ## All genres and characteristics over time
 
-Each of the 30k songs in the dataset are categorized by genre and values are assigned based upon 12 music characteristics, such as acousticness, temp, and loudness.
+Each of the 30k songs in the dataset are categorized by genre. Values are also assigned to each song based upon 12 music characteristics, such as acousticness, temp, and loudness.
 
 ```{r warning=F, message=F, echo=F, fig.width=8, fig.height=10}
 a<-spot %>%
@@ -101,9 +101,9 @@ c +
 
 ## Linear Model
 
-What can explain these changes over time? What determines a song's popularity? A generalized linear model can help us understand.
+What can explain these changes over time? What determines a song's popularity? The Spotify data includes a measure of each song's popularity. A generalized linear model can help us understand.
 
-track popularity ~ danceability + energy + key + loudness + mode + speechiness + acousticness + instrumentalness + liveness + valence + tempo + duration
+*track popularity* ~ glm(**danceability** + **energy** + **key** + **loudness** + **mode** + **speechiness** + **acousticness** + **instrumentalness** + **liveness** + **valence** + **tempo** + **duration**)
 
 ```{r warning=F, message=F, echo=F, out.width="160%"}
 glm_fit <- glm(track_popularity ~ 
@@ -131,7 +131,16 @@ formattable(tidy(glm_fit) %>%
                  `estimate` = formatter("span", style = x ~ style(color = ifelse(x < 0, "red", "#3B7CF0"), font.weight = "bold")),
                  `std.error` = color_bar("#F0C93B"), 
                  `statistic` = formatter("span", style = x ~ style(color = ifelse(x < 0, "red", "#3B7CF0"), font.weight = "bold"))))
-
-
 ```
+
+```{r warning=F, message=F, echo=F, fig.width=9, fig.height=5}
+td<-tidy(glm_fit, conf.int=T)
+ggplot(td, aes(estimate, term, color=term)) +
+  geom_point() +
+  geom_errorbarh(aes(xmin=conf.low, xmax=conf.high)) +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  ggtitle("Coefficient Plot w/ Error Bars")
+```
+
 

@@ -18,10 +18,10 @@ url_video: ""
 
 
 
-<p>Has popular music evolved over time? Why has it changed? As part of the <a href="https://github.com/rfordatascience/tidytuesday">R For Data Science TidyTuesday series</a>, I quickly analyzed a large dataset of Spotify songs, which included detailed characteristics of each song. The visualizations below were created using <a href="https://www.r-project.org/about.html">R</a>. All code can be found on <a href="https://github.com/reidhaefer/reid.haefer/blob/master/content/post/spotify/index.Rmd">github here</a>.</p>
+<p>How has popular music evolved over time? Why has it changed? As part of the <a href="https://github.com/rfordatascience/tidytuesday">R For Data Science TidyTuesday series</a>, I quickly analyzed a large dataset of Spotify songs, which included detailed characteristics of each song. The visualizations below were created using <a href="https://www.r-project.org/about.html">R</a>. All code can be found on <a href="https://github.com/reidhaefer/reid.haefer/blob/master/content/post/spotify/index.Rmd">github here</a>.</p>
 <div id="all-genres-and-characteristics-over-time" class="section level2">
 <h2>All genres and characteristics over time</h2>
-<p>Each of the 30k songs in the dataset are categorized by genre and values are assigned based upon 12 music characteristics, such as acousticness, temp, and loudness.</p>
+<p>Each of the 30k songs in the dataset are categorized by genre. Values are also assigned to each song based upon 12 music characteristics, such as acousticness, temp, and loudness.</p>
 <p><img src="/post/spotify/index_files/figure-html/unnamed-chunk-2-1.gif" /><!-- --><img src="/post/spotify/index_files/figure-html/unnamed-chunk-2-2.png" width="768" /></p>
 <p>For example, the danceability of rap songs experienced its nadir in the early 2010s but has started to increase again in recent years.</p>
 <p><img src="/post/spotify/index_files/figure-html/unnamed-chunk-3-1.gif" /><!-- --></p>
@@ -30,8 +30,8 @@ url_video: ""
 </div>
 <div id="linear-model" class="section level2">
 <h2>Linear Model</h2>
-<p>What can explain these changes over time? What determines a song’s popularity? A generalized linear model can help us understand.</p>
-<p>track popularity ~ danceability + energy + key + loudness + mode + speechiness + acousticness + instrumentalness + liveness + valence + tempo + duration</p>
+<p>What can explain these changes over time? What determines a song’s popularity? The Spotify data includes a measure of each song’s popularity. A generalized linear model can help us understand.</p>
+<p><em>track popularity</em> ~ glm(<strong>danceability</strong> + <strong>energy</strong> + <strong>key</strong> + <strong>loudness</strong> + <strong>mode</strong> + <strong>speechiness</strong> + <strong>acousticness</strong> + <strong>instrumentalness</strong> + <strong>liveness</strong> + <strong>valence</strong> + <strong>tempo</strong> + <strong>duration</strong>)</p>
 <table class="table table-condensed">
 <thead>
 <tr>
@@ -276,4 +276,5 @@ p.value
 </tr>
 </tbody>
 </table>
+<p><img src="/post/spotify/index_files/figure-html/unnamed-chunk-6-1.png" width="864" /></p>
 </div>
