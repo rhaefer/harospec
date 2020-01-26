@@ -1,0 +1,131 @@
+---
+date: "2020-01-25T00:00:00Z"
+external_link: ""
+image:
+  caption: Photo from www.kaylinpavlik.com
+links:
+summary: Analysis of music music genres and characteristics over time using a large Spotify database.
+tags:
+- Data Science
+- Data Viz
+- Big Data
+title: Music Characterization
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+---
+
+Has popular music evolved over time?. As part of the [R For Data Science TidyTuesday series](https://github.com/rfordatascience/tidytuesday), I analyzed a large dataset of Spotify songs, which included detailed characteristics of each song. The visualizations below were created using [R](https://www.r-project.org/about.html). All code can be found on [github here](https://github.com/reidhaefer/reid.haefer/blob/master/content/post/spotify/index.Rmd).
+
+
+```{r warning=F, message=F, echo=F, out.width="130%", include=F}
+library(pacman)
+p_load(tidyverse, broom, lubridate, plotly, gganimate, formattable)
+
+spot <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-21/spotify_songs.csv') %>%
+  mutate(release_date=as.Date(track_album_release_date, "%Y-%m-%d"),
+         year=year(release_date)) %>%
+  pivot_longer(cols=c(12:23), names_to="character", values_to = "values" )
+
+spot_wide <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-21/spotify_songs.csv') %>%
+  mutate(release_date=as.Date(track_album_release_date, "%Y-%m-%d"),
+         year=year(release_date)) 
+```
+
+## All genres and characteristics over time
+
+```{r warning=F, message=F, echo=F, fig.width=8, fig.height=10}
+a<-spot %>%
+  filter(year >1980 & !character %in% c("valence", "mode","key","liveness")) %>%
+  group_by(year, character, playlist_genre) %>%
+  summarise(values=mean(values,na.rm=T)) %>%
+  na.omit() %>%
+  ggplot(aes(year, values )) + geom_line(color= "#069A89", size=1) + 
+  #geom_smooth(aes(color="#F0A13B")) +
+  facet_grid(rows= vars(character), scales="free", cols = vars(playlist_genre)) +
+  theme_classic() +
+  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title = element_blank(), legend.position = "none",
+        axis.text.x=element_text(angle=45, hjust=1, size=7)) 
+a +
+  transition_reveal(year) + shadow_mark()
+
+spot %>%
+  filter(year >1980 & !character %in% c("valence", "mode","key","liveness")) %>%
+  group_by(year, character, playlist_genre) %>%
+  summarise(values=mean(values,na.rm=T)) %>%
+  ggplot(aes(year, values )) + geom_line() + geom_smooth(aes(color="#F0A13B")) +
+  facet_grid(rows= vars(character), scales="free", cols = vars(playlist_genre)) +
+  theme_classic() +
+  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title = element_blank(), legend.position = "none",
+        axis.text.x=element_text(angle=45, hjust=1, size=7)) 
+```
+
+```{r warning=F, message=F, echo=F, fig.width=9, fig.height=5}
+b<-spot %>%
+  filter(year >1980 & !character %in% c("valence", "mode","key","liveness")) %>%
+  filter(playlist_genre=="rap" & character=="danceability") %>%
+  group_by(year, character, playlist_genre) %>%
+  summarise(values=mean(values,na.rm=T)) %>%
+  na.omit() %>%
+  ggplot(aes(year, values)) + geom_line( size=2, color="#069A89") + 
+  #geom_smooth(aes(color="#F0A13B")) +
+  theme_minimal() +
+  ggtitle("Rap Song Danceability Over Time") +
+  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title = element_blank(), legend.position = "none", axis.text.x=element_text(angle=45, hjust=1, size=14)) 
+b +
+  transition_reveal(year) + shadow_mark()
+```
+
+```{r warning=F, message=F, echo=F, fig.width=9, fig.height=5}
+c<-spot %>%
+  filter(year >1980 & !character %in% c("valence", "mode","key","liveness")) %>%
+  filter(playlist_genre=="rock" & character=="loudness") %>%
+  group_by(year, character, playlist_genre) %>%
+  summarise(values=mean(values,na.rm=T)) %>%
+  na.omit() %>%
+  ggplot(aes(year, values)) + geom_line( size=2, color="#069A89") + 
+  #geom_smooth(aes(color="#F0A13B")) +
+  theme_minimal() +
+  ggtitle("Rock Song Loudness Over Time") +
+  theme(axis.text.y=element_blank(), axis.ticks.y=element_blank(), axis.title = element_blank(), legend.position = "none", axis.text.x=element_text(angle=45, hjust=1, size=14)) 
+c +
+  transition_reveal(year) + shadow_mark()
+```
+
+## Linear Model
+
+What determines a song's popularity? A generalized linear model can help us understand.
+
+track popularity ~ danceability + energy + key + loudness + mode + speechiness + acousticness + instrumentalness + liveness + valence + tempo + duration
+
+```{r warning=F, message=F, echo=F, out.width="160%"}
+glm_fit <- glm(track_popularity ~ 
+            danceability + 
+              energy + 
+              key + 
+              loudness + 
+              mode + 
+              speechiness + 
+              acousticness + 
+              instrumentalness + 
+              liveness + 
+              valence + 
+              tempo + 
+              duration_ms, 
+          data=spot_wide) 
+
+formattable(tidy(glm_fit) %>%
+              mutate(estimate=round(estimate,3),
+                     std.error=round(std.error,3),
+                     statistic=round(statistic,3),
+                     p.value=round(p.value,4)), 
+            #align = c("l",rep("r", NCOL(prevalence) - 1)),
+            list(`term` = formatter("span", style = ~ style(color = "grey", font.weight = "bold")), 
+                 `estimate` = formatter("span", style = x ~ style(color = ifelse(x < 0, "red", "#3B7CF0"), font.weight = "bold")),
+                 `std.error` = color_bar("#F0C93B"), 
+                 `statistic` = formatter("span", style = x ~ style(color = ifelse(x < 0, "red", "#3B7CF0"), font.weight = "bold"))))
+
+
+```
+

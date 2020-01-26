@@ -36,6 +36,273 @@
     </item>
     
     <item>
+      <title>Music Characterization</title>
+      <link>/post/spotify/</link>
+      <pubDate>Sat, 25 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/post/spotify/</guid>
+      <description>
+
+
+&lt;p&gt;Has popular music evolved over time?. As part of the &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34;&gt;R For Data Science TidyTuesday series&lt;/a&gt;, I analyzed a large dataset of Spotify songs, which included detailed characteristics of each song. The visualizations below were created using &lt;a href=&#34;https://www.r-project.org/about.html&#34;&gt;R&lt;/a&gt;. All code can be found on &lt;a href=&#34;https://github.com/reidhaefer/reid.haefer/blob/master/content/post/spotify/index.Rmd&#34;&gt;github here&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;all-genres-and-characteristics-over-time&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;All genres and characteristics over time&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;/post/spotify/index_files/figure-html/unnamed-chunk-2-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;img src=&#34;/post/spotify/index_files/figure-html/unnamed-chunk-2-2.png&#34; width=&#34;768&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/spotify/index_files/figure-html/unnamed-chunk-3-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/spotify/index_files/figure-html/unnamed-chunk-4-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;linear-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Linear Model&lt;/h2&gt;
+&lt;p&gt;What determines a song’s popularity? A generalized linear model can help us understand.&lt;/p&gt;
+&lt;p&gt;track popularity ~ danceability + energy + key + loudness + mode + speechiness + acousticness + instrumentalness + liveness + valence + tempo + duration&lt;/p&gt;
+&lt;table class=&#34;table table-condensed&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+term
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+estimate
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+std.error
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+statistic
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+p.value
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;(Intercept) &lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;77.827&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 100.00%&#34;&gt;1.674&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;46.481&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;danceability &lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;5.043&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 62.66%&#34;&gt;1.049&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;4.809&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;energy &lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: red; font-weight: bold&#34;&gt;-29.519&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 71.57%&#34;&gt;1.198&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: red; font-weight: bold&#34;&gt;-24.642&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;key &lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;0.043&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 2.21%&#34;&gt;0.037&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;1.143&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.2532
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;loudness &lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;1.525&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 3.82%&#34;&gt;0.064&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;23.764&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;mode &lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;0.718&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 16.31%&#34;&gt;0.273&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;2.627&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0086
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;speechiness &lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: red; font-weight: bold&#34;&gt;-7.254&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 81.00%&#34;&gt;1.356&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: red; font-weight: bold&#34;&gt;-5.348&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;acousticness &lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;3.222&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 43.73%&#34;&gt;0.732&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;4.402&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;instrumentalness&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: red; font-weight: bold&#34;&gt;-11.979&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 37.63%&#34;&gt;0.630&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: red; font-weight: bold&#34;&gt;-19.005&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;liveness &lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: red; font-weight: bold&#34;&gt;-4.312&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 52.69%&#34;&gt;0.882&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: red; font-weight: bold&#34;&gt;-4.890&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;valence &lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;2.783&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 38.29%&#34;&gt;0.641&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;4.340&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;tempo &lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;0.021&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 0.30%&#34;&gt;0.005&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;4.171&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: grey; font-weight: bold&#34;&gt;duration_ms &lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: #3B7CF0; font-weight: bold&#34;&gt;0.000&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 0.00%&#34;&gt;0.000&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+&lt;span style=&#34;color: red; font-weight: bold&#34;&gt;-20.170&lt;/span&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>2019 Australian Fires</title>
       <link>/post/aussie_fires/</link>
       <pubDate>Sat, 11 Jan 2020 00:00:00 +0000</pubDate>

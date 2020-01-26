@@ -1,0 +1,276 @@
+---
+date: "2020-01-25T00:00:00Z"
+external_link: ""
+image:
+  caption: Photo from www.kaylinpavlik.com
+links:
+summary: Analysis of music music genres and characteristics over time using a large Spotify database.
+tags:
+- Data Science
+- Data Viz
+- Big Data
+title: Music Characterization
+url_code: ""
+url_pdf: ""
+url_slides: ""
+url_video: ""
+---
+
+
+
+<p>Has popular music evolved over time?. As part of the <a href="https://github.com/rfordatascience/tidytuesday">R For Data Science TidyTuesday series</a>, I analyzed a large dataset of Spotify songs, which included detailed characteristics of each song. The visualizations below were created using <a href="https://www.r-project.org/about.html">R</a>. All code can be found on <a href="https://github.com/reidhaefer/reid.haefer/blob/master/content/post/spotify/index.Rmd">github here</a>.</p>
+<div id="all-genres-and-characteristics-over-time" class="section level2">
+<h2>All genres and characteristics over time</h2>
+<p><img src="/post/spotify/index_files/figure-html/unnamed-chunk-2-1.gif" /><!-- --><img src="/post/spotify/index_files/figure-html/unnamed-chunk-2-2.png" width="768" /></p>
+<p><img src="/post/spotify/index_files/figure-html/unnamed-chunk-3-1.gif" /><!-- --></p>
+<p><img src="/post/spotify/index_files/figure-html/unnamed-chunk-4-1.gif" /><!-- --></p>
+</div>
+<div id="linear-model" class="section level2">
+<h2>Linear Model</h2>
+<p>What determines a song’s popularity? A generalized linear model can help us understand.</p>
+<p>track popularity ~ danceability + energy + key + loudness + mode + speechiness + acousticness + instrumentalness + liveness + valence + tempo + duration</p>
+<table class="table table-condensed">
+<thead>
+<tr>
+<th style="text-align:right;">
+term
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+std.error
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">(Intercept) </span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">77.827</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 100.00%">1.674</span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">46.481</span>
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">danceability </span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">5.043</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 62.66%">1.049</span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">4.809</span>
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">energy </span>
+</td>
+<td style="text-align:right;">
+<span style="color: red; font-weight: bold">-29.519</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 71.57%">1.198</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red; font-weight: bold">-24.642</span>
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">key </span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">0.043</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 2.21%">0.037</span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">1.143</span>
+</td>
+<td style="text-align:right;">
+0.2532
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">loudness </span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">1.525</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 3.82%">0.064</span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">23.764</span>
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">mode </span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">0.718</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 16.31%">0.273</span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">2.627</span>
+</td>
+<td style="text-align:right;">
+0.0086
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">speechiness </span>
+</td>
+<td style="text-align:right;">
+<span style="color: red; font-weight: bold">-7.254</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 81.00%">1.356</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red; font-weight: bold">-5.348</span>
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">acousticness </span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">3.222</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 43.73%">0.732</span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">4.402</span>
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">instrumentalness</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red; font-weight: bold">-11.979</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 37.63%">0.630</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red; font-weight: bold">-19.005</span>
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">liveness </span>
+</td>
+<td style="text-align:right;">
+<span style="color: red; font-weight: bold">-4.312</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 52.69%">0.882</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red; font-weight: bold">-4.890</span>
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">valence </span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">2.783</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 38.29%">0.641</span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">4.340</span>
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">tempo </span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">0.021</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 0.30%">0.005</span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">4.171</span>
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+<span style="color: grey; font-weight: bold">duration_ms </span>
+</td>
+<td style="text-align:right;">
+<span style="color: #3B7CF0; font-weight: bold">0.000</span>
+</td>
+<td style="text-align:right;">
+<span style="display: inline-block; direction: rtl; border-radius: 4px; padding-right: 2px; background-color: #F0C93B; width: 0.00%">0.000</span>
+</td>
+<td style="text-align:right;">
+<span style="color: red; font-weight: bold">-20.170</span>
+</td>
+<td style="text-align:right;">
+0.0000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
