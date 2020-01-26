@@ -133,7 +133,7 @@ formattable(tidy(glm_fit) %>%
                  `statistic` = formatter("span", style = x ~ style(color = ifelse(x < 0, "red", "#3B7CF0"), font.weight = "bold"))))
 ```
 
-```{r warning=F, message=F, echo=F, fig.width=9, fig.height=5}
+```{r warning=F, message=F, echo=F, fig.width=10, fig.height=6}
 td<-tidy(glm_fit, conf.int=T)
 ggplot(td, aes(estimate, term, color=term)) +
   geom_point() +
