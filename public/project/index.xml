@@ -144,18 +144,6 @@ var leaf_widgets = {};
     </item>
     
     <item>
-      <title>3-D VIZ</title>
-      <link>/project/3d/</link>
-      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>/project/3d/</guid>
-      <description>
-
-
-&lt;p&gt;Our dashboards are data exploration tools that allow users to customize their analyses and better understand information through interactivity. These tools include the ability for users to define customized queries and filters, summarize large datasets based upon unique conditions, and perform on-the-fly geospatial analysis. We utilize open-source tools such as &lt;a href=&#34;https://shiny.rstudio.com/&#34;&gt;Shiny&lt;/a&gt;, that are cost-effective and modular.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Animation</title>
       <link>/project/animation/</link>
       <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
@@ -306,6 +294,24 @@ lon=c(-119.923004,#-119.937834,
 
 write.csv(continuous_prep,&amp;quot;filepath&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;clean.jpg&#34; width=&#34;100%&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Shiny</title>
+      <link>/project/munging_copy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/project/munging_copy/</guid>
+      <description>
+
+
+&lt;p&gt;Shiny is an open-sourced R library for creating interactive applications for data visualization, exploration, and analysis. I have utilized shiny to create web-ready applications for several public sector agencies, which allow users to explore and manipulate data with great flexibility and ease. These applications often include both spatial and tabular data that are combined through a seemless data pipeline that is fully transparent and reproducible. Code for all the apps below can be found on &lt;a href=&#34;&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Shiny Examples:&lt;/p&gt;
+&lt;p&gt;*&lt;a href=&#34;https://trpa-shiny-apps.shinyapps.io/effective_population&#34;&gt;User Generated Population Model&lt;/a&gt; - code
+- &lt;a href=&#34;https://trpa-shiny-apps.shinyapps.io/use_dashboard&#34;&gt;Interactive Geospatial Zoning Tool&lt;/a&gt;
+- &lt;a href=&#34;https://trpa-shiny-apps.shinyapps.io/volumes_dashboard&#34;&gt;Using Big Data For Transportation Planning&lt;/a&gt;
+- &lt;a href=&#34;https://trpa-shiny-apps.shinyapps.io/bike_ped_dashboard&#34;&gt;Explore Local Bike/Ped Data&lt;/a&gt;
+- &lt;a href=&#34;https://reidhaefer.shinyapps.io/project_dashboard&#34;&gt;User Submitted Project Information&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
