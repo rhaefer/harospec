@@ -70,6 +70,12 @@
   </url>
   
   <url>
+    <loc>/tags/data-munging/</loc>
+    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/project/dataviz_dynamic/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url>
@@ -78,6 +84,11 @@
     <loc>/project/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/project/shiny/</loc>
+    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -236,11 +247,6 @@
   </url>
   
   <url>
-    <loc>/tags/data-munging/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/false/</loc>
     <priority>0</priority>
   </url>
@@ -262,10 +268,6 @@
   <url>
     <loc>/authors/reid-haefer/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/project/munging_copy/</loc>
   </url>
   
   <url>
