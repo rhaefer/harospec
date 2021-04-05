@@ -19,10 +19,12 @@ Shiny is an open-sourced R library for creating interactive applications for dat
 
 Shiny Examples:
 
+- [User Submitted Project VMT Analysis](https://trpa.shinyapps.io/PIA_Tool/)
+- [Housing Cost-Reduction Analysis](https://trpa.shinyapps.io/housing_cost_dashboard/)
 - [User Generated Population Model](https://trpa.shinyapps.io/effective_population)
 - [Interactive Geospatial Zoning Tool](https://trpa.shinyapps.io/use_dashboard)
 - [Using Big Data For Transportation Planning](https://trpa.shinyapps.io/volumes_dashboard)
 - [Explore Local Bike/Ped Data](https://trpa.shinyapps.io/bike_ped_dashboard)
-- [User Submitted Project Information](https://reidhaefer.shinyapps.io/project_dashboard)
+
 
 
