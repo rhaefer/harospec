@@ -26,6 +26,14 @@ date_format = "Jan 2006"
   date_start = "2017-07-01"
   date_end = "2019-09-01"
   description = "Performed a variety of data analysis and modeling tasks to support regional transportation and land use planning. Examples include updating and running the activity-based Tahoe travel demand model, developing web-based analytical tools using R-Shiny; organizing data collection efforts such as the regional travel survey; curating a respository of regional Census data; managing state of California air quality reporting requirements; regional transportation plan forecasting; project analysis"
+
+[[experience]]
+  title = "Consultant"
+  company = "Resource Systems Group Inc (RSG)"
+  company_url = "https://rsginc.com/"
+  date_start = "2021-09-20"
+  date_end = ""
+  description = "Provided urban planning and data science consulting services to clients throughout the United States. Project examples includes travel demand modeling, strategic planning, data visualization, project prioritization, and VMT analysis."
   
 [[experience]]
   title = "Modeling Program Coordinator"
@@ -33,7 +41,7 @@ date_format = "Jan 2006"
   company_url = "http://www.trpa.org/"
   location = "Stateline, Nevada"
   date_start = "2019-10-01"
-  date_end = ""
+  date_end = "2017-07-01"
   description = "Managed the regional transportation and land use modeling program. Work included managing ongoing enhancements and application of the regional activity-based transportation model, improving regional land use modeling, creating automated workflows and web-based tools, technical writing, statistics, data collection, big data analysis, and program development."
   
 [[experience]]
