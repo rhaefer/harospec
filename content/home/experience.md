@@ -41,7 +41,7 @@ date_format = "Jan 2006"
   company_url = "http://www.trpa.org/"
   location = "Stateline, Nevada"
   date_start = "2019-10-01"
-  date_end = "2017-07-01"
+  date_end = "2021-08-30"
   description = "Managed the regional transportation and land use modeling program. Work included managing ongoing enhancements and application of the regional activity-based transportation model, improving regional land use modeling, creating automated workflows and web-based tools, technical writing, statistics, data collection, big data analysis, and program development."
   
 [[experience]]
