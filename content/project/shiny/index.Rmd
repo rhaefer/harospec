@@ -25,6 +25,9 @@ Shiny Examples:
 - [Interactive Geospatial Zoning Tool](https://trpa.shinyapps.io/use_dashboard)
 - [Using Big Data For Transportation Planning](https://trpa.shinyapps.io/volumes_dashboard)
 - [Explore Local Bike/Ped Data](https://trpa.shinyapps.io/bike_ped_dashboard)
+- [Oregon State Scenario Tool](https://rsginc.shinyapps.io/ODOT_Scenario_Explorer/)
+- [Oregon State Funding Tool](https://rsginc.shinyapps.io/ODOT_Trade_Offs_Test/)
+- [Vermont Regional Scenario Tool](https://rsginc.shinyapps.io/CCRPC_HH_Explorer/)
 
 
 

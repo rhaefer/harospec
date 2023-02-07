@@ -78,3 +78,7 @@ codefolding_show = "hide"
 codefolding_nobutton = true
 
 #custom_css = ["codefolding.css"]
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
