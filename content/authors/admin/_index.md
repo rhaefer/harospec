@@ -15,6 +15,12 @@ interests:
 - Data Science
 - Transportation
 - Urban Planning
+skills:
+- R
+- Python
+- SQL
+- Shiny
+- GIS
 name: Reid Haefer
 organizations:
 - name:
