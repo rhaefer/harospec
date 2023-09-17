@@ -24,7 +24,7 @@ skills:
 name: Reid Haefer
 organizations:
 - name:
-  url: ""
+  url: "about"
 role: Data Modeler & Urban Planner
 social:
 - icon: envelope
