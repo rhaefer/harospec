@@ -11,8 +11,8 @@ education:
     year: 2010
 email: ""
 interests:
+- Climate & Greenhouse Gases
 - Data Science
-- Big Data
 - Transportation
 - Urban Planning
 name: Reid Haefer
@@ -33,4 +33,4 @@ user_groups:
 - Visitors
 ---
 
-Reid Haefer specializes in using data science to support decision-making for both public and private sector clients and has experience as a consultant as well as working directly within the public sector. His expertise spans several disciplines including urban planning, transportation, environmental science, energy, real estate, public policy, and sustainability. His technical interests include GIS, data visualization, modeling, and open-source computer programming. Reid has a bachelor's degree from Western Washington University and a master's degree from the University of Washington. 
+Reid Haefer specializes in using data science to support decision-making for both public and private sector clients and has experience as a consultant as well as working directly within the public sector. His expertise spans several disciplines including urban planning, climate change, transportation, environmental science, energy, real estate, public policy, and sustainability. His technical interests include GIS, data visualization, modeling, and open-source computer programming. Reid has a bachelor's degree from Western Washington University and a master's degree from the University of Washington. 
