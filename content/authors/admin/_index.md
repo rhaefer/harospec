@@ -25,7 +25,7 @@ name: Reid Haefer
 organizations:
 - name:
   url: "about"
-role: Data Modeler & Urban Planner
+role: 
 social:
 - icon: envelope
   icon_pack: fas
@@ -39,4 +39,4 @@ user_groups:
 - Visitors
 ---
 
-Reid Haefer specializes in using data science to support decision-making for both public and private sector clients and has experience as a consultant as well as working directly within the public sector. His expertise spans several disciplines including urban planning, climate change, transportation, environmental science, energy, real estate, public policy, and sustainability. His technical interests include the creation of custom data tools, GIS, data visualization, and modeling using R & Python. Reid has a bachelor's degree from Western Washington University and a master's degree from the University of Washington. 
+Reid Haefer specializes in using data science to support decision-making for both public and private sector clients. His expertise spans several disciplines including urban planning, climate change, transportation, environmental science, energy, real estate, public policy, and sustainability. His technical interests include the creation of custom data tools, GIS, data visualization, and modeling using R & Python. Reid has a bachelor's degree from Western Washington University and a master's degree from the University of Washington. 
