@@ -50,7 +50,7 @@ subtitle = " *hare-o-spec* "
  css_class = ""
 +++
 
-Data is messy and increasingly complex. We transform **data** into meaningful **information** for decision-makers, using innovative and cost-effective tools. Our [services](http://reidhaefer.rbind.io/#services) are based upon several core tenents that inform all stages of the analytical process:
+Data is messy and increasingly complex. We transform **data** into meaningful **information** for decision-makers, using innovative and cost-effective tools. Our [services](http://reidhaefer.rbind.io/#services) are based upon several core tenets that inform all stages of the analytical process:
 
 * *Analysis should directly inform decision-making*
 * *Information should be presenting in modern, accessible formats*

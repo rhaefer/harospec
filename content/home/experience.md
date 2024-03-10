@@ -34,6 +34,14 @@ date_format = "Jan 2006"
   date_start = "2021-09-20"
   date_end = ""
   description = "Provided analytical consulting services to clients on throughout the United States on projects related to climate change, urban planning, and transportation. Project examples included mobile source GHG forecasting, regional and state transportation plans, scenario planning, travel demand modeling, land use planning, and project prioritization. Analytical services included creation of interactive data tools, data visualization, statistics, data pipelines, general programming scripts, and custom data analysis workflows."
+
+[[experience]]
+  title = "Data Science Contractor"
+  company = "New Leaders"
+  company_url = "https://newleaders.com/"
+  date_start = "2024-01-01"
+  date_end = ""
+  description = "Provided ad hoc data science services"
   
 [[experience]]
   title = "Modeling Program Coordinator"

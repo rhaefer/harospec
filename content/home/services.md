@@ -23,7 +23,7 @@ subtitle = ""
 [[feature]]
   icon = "info"
   icon_pack = "fas"
-  name = "Performance Measures1"
+  name = "Performance Measures"
   description = "Transforming raw data into metrics that help measure progress and meet targets"
   
 [[feature]]
