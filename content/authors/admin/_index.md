@@ -11,9 +11,10 @@ education:
     year: 2010
 email: ""
 interests:
-- Climate, Energy, & Greenhouse Gases
-- Data Science (Python, R, SQL)
-- Urban Planning
+- Research Areas: Climate change, energy, public policy, urban planning, transportation, and environmental science
+- Data Science: ETL, predictive modeling, data visualization, BI, data pipelines, geospatial analysis/mapping
+- Programming Languages: R, Python, SQL
+- Other software/technical skills: GIS, Git, technical research & writing
 skills:
 - R
 - Python
@@ -38,4 +39,4 @@ user_groups:
 - Visitors
 ---
 
-Reid Haefer specializes in using data science to support decision-making for both public and private sector clients. His expertise spans several disciplines including urban planning, climate change, transportation, environmental science, energy, real estate, public policy, and sustainability. His technical interests include the creation of custom data tools, GIS, data visualization, and modeling using R & Python. Reid has a bachelor's degree from Western Washington University and a master's degree from the University of Washington. Examples of my work include:
+Reid Haefer specializes in using data science to support decision-making for both public and private sector clients. His expertise spans several disciplines including urban planning, climate change, transportation, environmental science, energy, real estate, public policy, and sustainability. His technical interests include the creation of custom data tools, GIS, data visualization, and modeling using R & Python. Reid has a bachelor's degree from Western Washington University and a master's degree from the University of Washington.
