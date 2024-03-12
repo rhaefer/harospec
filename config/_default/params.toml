@@ -77,8 +77,8 @@ email = "reidhaefer14@gmail.com"
 #   3: OpenStreetMap (Mapbox)
 map = 2
 map_api_key = ""
-latitude = "38.966436"
-longitude = "-119.931118"
+latitude = "38.918613"
+longitude = "-120.003773"
 zoom = 13
 
 ############################
