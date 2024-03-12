@@ -11,9 +11,8 @@ education:
     year: 2010
 email: ""
 interests:
-- Climate & Greenhouse Gases
-- Data Science
-- Transportation
+- Climate, Energy, & Greenhouse Gases
+- Data Science (Python, R, SQL)
 - Urban Planning
 skills:
 - R
