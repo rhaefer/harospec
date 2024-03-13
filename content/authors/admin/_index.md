@@ -39,4 +39,4 @@ user_groups:
 - Visitors
 ---
 
-Reid Haefer specializes in using data science to support decision-making for both public and private sector clients. His expertise spans several disciplines including urban planning, climate change, transportation, environmental science, energy, real estate, public policy, and sustainability. His technical interests include the creation of custom data tools, GIS, data visualization, and modeling using R & Python. Reid has a bachelor's degree from Western Washington University and a master's degree from the University of Washington.
+11Reid Haefer specializes in using data science to support decision-making for both public and private sector clients. His expertise spans several disciplines including urban planning, climate change, transportation, environmental science, energy, real estate, public policy, and sustainability. His technical interests include the creation of custom data tools, GIS, data visualization, and modeling using R & Python. Reid has a bachelor's degree from Western Washington University and a master's degree from the University of Washington.
