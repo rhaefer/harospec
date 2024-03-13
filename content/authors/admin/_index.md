@@ -6,7 +6,7 @@ education:
   - course: Master of Urban Planning
     institution: University of Washington, College of Built Environment
     year: 2014
-  - course: B.A in Environmental Studies
+  - course: B.A in Environmental Studies1
     institution: Western Washington University, Huxley College
     year: 2010
 email: ""
