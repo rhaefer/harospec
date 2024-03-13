@@ -3,8 +3,8 @@ authors:
 - Reid Haefer
 education:
   courses:
-  - course: Master of Urban Planning
-    institution: University of Washington, College of Built Environment
+  - course: Master of Urban Planning1
+    institution: University of Washington1, College of Built Environment
     year: 2014
   - course: B.A in Environmental Studies1
     institution: Western Washington University, Huxley College
