@@ -11,7 +11,7 @@ education:
     year: 2010
 email: ""
 interests:
-- Research Areas: Climate change, energy, public policy, urban planning, transportation, and environmental science
+- Research Areas: Climate1 change, energy, public policy, urban planning, transportation, and environmental science
 - Data Science: ETL, predictive modeling, data visualization, BI, data pipelines, geospatial analysis/mapping
 - Programming Languages: R, Python, SQL
 - Other software/technical skills: GIS, Git, technical research & writing
