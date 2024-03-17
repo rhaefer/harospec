@@ -44,6 +44,14 @@ date_format = "Jan 2006"
   description = "Provided ad hoc data science services"
   
 [[experience]]
+  title = Software Stacks for Climate Tech"
+  company = "Terra.Do"
+  company_url = "https://www.terra.do/"
+  date_start = "2024-01-01"
+  date_end = "2024-02-01"
+  description = "Completed the Terra.Do course, 'Software Stacks for Climate Tech', which provided an overview of software development approaches for climate solutions. The course focused on using python/SQL to explore regional electricity supply/demand analysis, building energy modeling, and IOT (internet of things) sensor development (temperature, co2, pm 2.5)"
+  
+[[experience]]
   title = "Modeling Program Coordinator"
   company = "Tahoe Regional Planning Agency (TRPA)"
   company_url = "http://www.trpa.org/"
