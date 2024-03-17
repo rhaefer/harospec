@@ -41,7 +41,7 @@ date_format = "Jan 2006"
   company_url = "https://newleaders.com/"
   date_start = "2024-01-01"
   date_end = ""
-  description = "Provided ad hoc data science services"
+  description = "Provided ad hoc data science services with a focus on ETL solutions using python."
   
 [[experience]]
   title = Software Stacks for Climate Tech"
